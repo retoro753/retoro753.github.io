@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ideen für eine einfache, bewusste Küche bei CLRTY.space.">
+  <title>Essen - CLRTY.space</title>
+  <style>
+    :root { --paper:#f6f7f3; --ink:#20241e; --muted:#72786d; --line:#dce0d6; --lime:#c9e86a; --moss:#40523a; --white:#fff; --font-sans:"Segoe UI", "Helvetica Neue", Arial, sans-serif; --font-mono:"SFMono-Regular", "Consolas", "Liberation Mono", monospace; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-sans); }
+    header { align-items:center; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; padding:25px 5vw; }
+    .brand { font-size:18px; font-weight:800; letter-spacing:.12em; }
+    .back { color:var(--muted); font:12px var(--font-mono); text-decoration:none; text-transform:uppercase; }
+    .back:hover,.back:focus { color:var(--ink); text-decoration:underline; text-underline-offset:4px; }
+    main { margin:0 auto; max-width:1100px; padding:7vw 5vw 90px; }
+    .eyebrow { color:var(--moss); font:12px var(--font-mono); letter-spacing:.13em; text-transform:uppercase; }
+    .hero { border-bottom:1px solid var(--line); display:grid; gap:48px; grid-template-columns:minmax(0,1fr) minmax(280px,.7fr); padding-bottom:55px; }
+    h1 { font-size:clamp(52px,8vw,108px); letter-spacing:-.08em; line-height:.9; margin:22px 0 28px; }
+    .lead { color:var(--muted); font-size:18px; line-height:1.65; margin:0; max-width:580px; }
+    .post-meta { color:var(--muted); display:flex; flex-wrap:wrap; font:11px var(--font-mono); gap:8px 18px; letter-spacing:.08em; margin-top:30px; text-transform:uppercase; }
+    .hero-image { aspect-ratio:4/3; display:block; object-fit:cover; width:100%; }
+    .content-layout { display:grid; gap:65px; grid-template-columns:minmax(0,1fr) 260px; padding-top:55px; }
+    .section-label { border-bottom:1px solid var(--line); color:var(--muted); font:11px var(--font-mono); letter-spacing:.1em; margin-bottom:4px; padding-bottom:14px; text-transform:uppercase; }
+    .post { border-bottom:1px solid var(--line); padding:32px 0; }
+    .post:first-of-type { padding-top:22px; }
+    .post h2 { font-size:30px; letter-spacing:-.05em; line-height:1.05; margin:0 0 14px; }
+    .post p { color:var(--muted); font-size:15px; line-height:1.75; margin:0 0 15px; }
+    .post p:last-child { margin-bottom:0; }
+    .post-kicker { color:var(--moss); font:11px var(--font-mono); letter-spacing:.1em; margin-bottom:12px; text-transform:uppercase; }
+    .product-list { display:grid; gap:10px; margin:20px 0 5px; }
+    .product { background:var(--white); border:1px solid var(--line); padding:16px 18px; }
+    .product strong { display:block; font-size:14px; margin-bottom:5px; }
+    .product span { color:var(--muted); display:block; font-size:13px; line-height:1.5; }
+    .sidebar { align-self:start; position:sticky; top:24px; }
+    .sidebar-block { border-top:1px solid var(--line); padding:16px 0 22px; }
+    .sidebar-block h2 { font-size:16px; margin:0 0 10px; }
+    .sidebar-block p { color:var(--muted); font-size:13px; line-height:1.6; margin:0; }
+    .principle { background:var(--ink); color:var(--white); font-size:14px; line-height:1.6; margin-top:30px; padding:20px; }
+    .principle strong { color:var(--lime); display:block; font:11px var(--font-mono); letter-spacing:.1em; margin-bottom:8px; text-transform:uppercase; }
+    .back-bottom { border-top:1px solid var(--line); color:var(--muted); display:inline-block; font:12px var(--font-mono); margin-top:48px; padding-top:18px; text-decoration:none; text-transform:uppercase; }
+    .back-bottom:hover,.back-bottom:focus { color:var(--ink); text-decoration:underline; text-underline-offset:4px; }
+    @media (max-width:760px) { .hero,.content-layout { grid-template-columns:1fr; } .hero { gap:32px; } .sidebar { position:static; } }
+    @media (max-width:540px) { header { padding:20px; } main { padding:55px 20px 65px; } h1 { font-size:62px; } .lead { font-size:16px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">CLRTY.space</div>
+    <a class="back" href="../index.html">Zur Übersicht</a>
+  </header>
+
+  <main>
+    <!-- BLOG-KOPF: Titel, Beschreibung, Datum und Bild hier anpassen. -->
+    <section class="hero">
+      <div>
+        <span class="eyebrow">CLRTY / Essen</span>
+        <h1>Einfach essen,<br>besser wählen.</h1>
+        <p class="lead">Weniger Auswahl, bessere Zutaten und eine Küche, die du gern nutzt. Grundzutaten sind vielseitig, einfach und gut für den Geldbeutel.</p>
+        <div class="post-meta"><span>09.09.2026</span><span>Lesedauer: 4 Min.</span><span>Kategorie: Essen</span></div>
+      </div>
+      <img class="hero-image" src="essen-motiv.svg" alt="Minimalistische Schale mit wenigen Zutaten für den Bereich Essen">
+    </section>
+
+    <div class="content-layout">
+      <section aria-label="Blogbeiträge">
+        <div class="section-label">01 / Ideen und Beiträge</div>
+
+        <!-- BEITRAGSMUSTER: Diesen article-Block kopieren, um einen Beitrag zu ergänzen. -->
+        <article class="post">
+          <div class="post-kicker">Grundlagen / Beitrag 01</div>
+          <h2>10 Grundzutaten für eine ruhige Küche</h2>
+          <p>Eine überschaubare Auswahl macht das Kochen leichter. Wähle Zutaten, die du gern isst und in mehreren Gerichten verwenden kannst.</p>
+          <p>Für den Anfang reichen zum Beispiel Haferflocken, Reis, Nudeln, Kartoffeln, Linsen, Tomaten, Zwiebeln, Eier, Olivenöl und ein saisonales Gemüse.</p>
+          <div class="product-list" aria-label="Produkt- und Ideenmuster">
+            <div class="product"><strong>Produktidee: Vorratsglas</strong><span>Ein schlichtes Glas für trockene Zutaten. Sichtbar lagern hilft, doppelte Einkäufe zu vermeiden.</span></div>
+            <div class="product"><strong>Idee: Eine Basis pro Woche</strong><span>Koche eine größere Portion Reis, Linsen oder Kartoffeln und verwende sie in mehreren Mahlzeiten.</span></div>
+          </div>
+        </article>
+
+        <!-- BEITRAGSMUSTER: Überschrift, Text und Produktideen ersetzen. -->
+        <article class="post">
+          <div class="post-kicker">Küche / Beitrag 02</div>
+          <h2>Ein Werkzeug pro Aufgabe</h2>
+          <p>Eine Küche muss nicht viele Spezialgeräte besitzen. Behalte die Werkzeuge, die du regelmäßig nutzt und gern in die Hand nimmst.</p>
+          <div class="product-list" aria-label="Produkt- und Ideenmuster">
+            <div class="product"><strong>Produktidee: gutes Küchenmesser</strong><span>Ein langlebiges Messer kann mehrere kleine Geräte ersetzen und nimmt wenig Platz ein.</span></div>
+            <div class="product"><strong>Idee: Erst leihen, dann kaufen</strong><span>Probiere selten genutzte Geräte bei Freunden oder in einer Leihbibliothek aus.</span></div>
+          </div>
+        </article>
+
+        <!-- BEITRAGSMUSTER: Ein weiterer eigenständiger Artikel. -->
+        <article class="post">
+          <div class="post-kicker">Planung / Beitrag 03</div>
+          <h2>Plan statt Verzicht</h2>
+          <p>Plane drei Gerichte vor, nicht sieben. Ein kleiner Rahmen schafft Struktur und lässt trotzdem Raum für spontane Momente.</p>
+          <p>Notiere unter jedem zukünftigen Beitrag deine Zutaten, eine kurze persönliche Erfahrung und eine konkrete Idee zum Ausprobieren.</p>
+        </article>
+
+        <div class="principle"><strong>CLRTY-Prinzip</strong>Ein einfaches Gericht kann alles sein, was du brauchst.</div>
+        <a class="back-bottom" href="../index.html">← Zurück zu allen Bereichen</a>
+      </section>
+
+      <!-- SIDEBAR: Für Hinweise, Produktempfehlungen oder eigene Links. -->
+      <aside class="sidebar" aria-label="Weitere Informationen">
+        <div class="sidebar-block"><h2>Darum geht es</h2><p>Bewusster essen, weniger besitzen und die eigene Küche so gestalten, dass sie den Alltag unterstützt.</p></div>
+        <div class="sidebar-block"><h2>Produktnotizen</h2><p>Hier kannst du später Links, Preise, persönliche Erfahrungen oder Empfehlungen ergänzen.</p></div>
+        <div class="sidebar-block"><h2>Als Nächstes</h2><p>Ein Beitrag über saisonale Zutaten, einfache Rezepte oder weniger Lebensmittelverschwendung.</p></div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

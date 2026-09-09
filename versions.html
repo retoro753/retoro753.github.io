@@ -16,8 +16,10 @@
     .wordmark { font-size:18px; font-weight:800; letter-spacing:.1em; }
     header > a { color:var(--muted); font:12px var(--font-mono); text-decoration:none; text-transform:uppercase; }
     header > a:hover,header > a:focus { color:var(--ink); text-decoration:underline; text-underline-offset:4px; }
-    main { margin:0 auto; max-width:980px; padding:7vw 5vw 90px; }
+    main { display:flex; flex-direction:column; margin:0 auto; max-width:980px; padding:7vw 5vw 90px; }
     .intro { border-bottom:1px solid var(--line); margin-bottom:30px; padding-bottom:50px; }
+    .version-card[aria-labelledby="v11"] { order:1; }
+    .version-card[aria-labelledby="v10"] { order:2; }
     .eyebrow { color:var(--moss); font:12px var(--font-mono); letter-spacing:.13em; text-transform:uppercase; }
     h1 { font-size:clamp(48px,7.5vw,96px); letter-spacing:-.08em; line-height:.9; margin:20px 0 0; max-width:700px; }
     .version-card { background:var(--white); border:1px solid var(--line); border-radius:4px; margin-bottom:28px; padding:26px 28px; }
@@ -30,6 +32,8 @@
     .change { border-top:1px solid var(--line); padding-top:16px; }
     .change strong { display:block; font-size:15px; margin-bottom:7px; }
     .change p { color:var(--muted); font-size:15px; line-height:1.65; margin:0; }
+    .change a { color:var(--ink); text-underline-offset:4px; }
+    .change a:hover,.change a:focus { color:var(--moss); }
     footer { border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:24px; padding:24px 5vw 30px; }
     .footer-brand { font-size:14px; font-weight:800; letter-spacing:.12em; }
     .footer-links { display:flex; flex-wrap:wrap; gap:10px 24px; }
@@ -46,7 +50,7 @@
     <article class="version-card" aria-labelledby="v10">
       <div class="version-top">
         <div>
-          <div class="version-label">Aktuell</div>
+          <div class="version-label">Vorherige Version</div>
           <h2 id="v10">v1.0</h2>
         </div>
         <div class="version-number">Stand: 01.09.2026</div>
@@ -63,16 +67,17 @@
     <article class="version-card" aria-labelledby="v11">
       <div class="version-top">
         <div>
-          <div class="version-label">Nächste Version</div>
+          <div class="version-label">Aktuell</div>
           <h2 id="v11">v1.1</h2>
         </div>
-        <div class="version-number">geplant</div>
+        <div class="version-number">Stand: 09.09.2026</div>
       </div>
-      <div class="meta">Kleine Verbesserungen</div>
+      <div class="meta">Inhalte / neue Blogbereiche</div>
       <div class="changes">
-        <div class="change"><strong>Feinjustierung</strong><p>Mehr Abstand und bessere Lesbarkeit auf mobilen Geräten.</p></div>
-        <div class="change"><strong>Performance</strong><p>Optimierungen der Mindmap.</p></div>
-        <div class="change"><strong>Inhalte</strong><p>Ergänzung von neuen Gedanken, Beispielen und Blogbeiträgen.</p></div>
+        <div class="change"><strong>Neue Blogbereiche</strong><p>Zu allen acht Lebensbereichen gibt es jetzt eigene Blogseiten. <a href="blogs/essen.html">Den Bereich Essen ansehen</a> oder über die <a href="index.html">Übersicht</a> einen anderen Bereich auswählen.</p></div>
+        <div class="change"><strong>Lesbare Beiträge</strong><p>Jede Blogseite enthält verständliche Gedanken, praktische Ideen und konkrete Ansätze für den Alltag.</p></div>
+        <div class="change"><strong>Produkte und Empfehlungen</strong><p>In den Beiträgen werden passende Produktideen und persönliche Notizen sichtbar voneinander getrennt, damit Inhalte leichter eingeordnet werden können.</p></div>
+        <div class="change"><strong>Neue Blogstruktur</strong><p>Die Seiten haben jetzt einen klaren Kopfbereich, ein Musterbild, einzelne Beiträge und Hinweise für kommende Themen. <a href="blogs/wohnen.html">Beispiel: Wohnen</a></p></div>
       </div>
     </article>
 
