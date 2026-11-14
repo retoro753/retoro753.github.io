@@ -81,6 +81,8 @@
   .entry { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
   .entry a { min-width: 220px; font-weight: 600; }
   .entry span { color: var(--muted); }
+  .all-link { align-self: flex-start; margin-top: 8px; padding: 10px 14px; text-decoration: none; border: 2px solid var(--line); }
+  [hidden] { display: none !important; }
 
   /* Kontakt */
   button.btn95 { font: 600 15px 'IBM Plex Mono', monospace; cursor: pointer; min-height: 44px; }
@@ -167,15 +169,11 @@
     <div class="dir">
       <p class="prompt">C:\WRITEUPS&gt; dir</p>
       <p class="intro-line" data-i18n="writeupsIntro">CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.</p>
-      <!--
-        Neues Writeup eintragen: diesen Block kopieren, Kommentarzeichen entfernen und ausfüllen.
-        <div class="entry">
-          <a href="writeups/raumname.html">raumname.txt</a>
-          <span>TryHackMe · Easy · TT.MM.JJJJ · web, linux</span>
-        </div>
-      -->
-      <p class="soon pixel"><span data-i18n="writeupsSoon">Erstes Writeup in Arbeit</span><span class="cursor" aria-hidden="true">_</span></p>
-      <p class="prompt" data-i18n="files">0 Datei(en)</p>
+      <!-- Die neuesten Writeups kommen automatisch aus writeups/writeups.json -->
+      <div id="latest-writeups"></div>
+      <p class="soon pixel" id="writeups-empty"><span data-i18n="writeupsSoon">Erstes Writeup in Arbeit</span><span class="cursor" aria-hidden="true">_</span></p>
+      <p class="prompt" id="writeups-count"></p>
+      <a href="writeups/" class="all-link" id="writeups-all" data-i18n="allWriteups" hidden>Alle Writeups ›</a>
     </div>
   </section>
 
@@ -220,6 +218,7 @@
       soon: 'Kommt bald',
       writeupsIntro: 'CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.',
       writeupsSoon: 'Erstes Writeup in Arbeit',
+      allWriteups: 'Alle Writeups ›',
       files: '0 Datei(en)',
       contact: 'Kontakt',
       showMail: 'E-Mail anzeigen',
@@ -235,6 +234,7 @@
       soon: 'Coming soon',
       writeupsIntro: "CTF walkthroughs without flags: how I approached it, what didn't work and what I learned.",
       writeupsSoon: 'First writeup in progress',
+      allWriteups: 'All writeups ›',
       files: '0 file(s)',
       contact: 'Contact',
       showMail: 'Show email',
@@ -242,7 +242,49 @@
     }
   };
 
+  // Neueste Writeups aus writeups/writeups.json
+  var currentLang = 'de';
+  var WRITEUPS = [];
+
+  function fmtDate(iso) {
+    var p = String(iso).split('-');
+    return currentLang === 'de' && p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
+  }
+
+  function renderWriteups() {
+    var box = document.getElementById('latest-writeups');
+    box.textContent = '';
+    WRITEUPS.slice(0, 5).forEach(function (w) {
+      var row = document.createElement('div');
+      row.className = 'entry';
+      var a = document.createElement('a');
+      a.href = 'writeups/' + w.slug + '.html';
+      a.textContent = w.title;
+      var meta = document.createElement('span');
+      meta.textContent = [w.platform, w.difficulty, fmtDate(w.date), (w.tags || []).join(', ')].join(' · ');
+      row.appendChild(a);
+      row.appendChild(meta);
+      box.appendChild(row);
+    });
+    var n = WRITEUPS.length;
+    document.getElementById('writeups-empty').hidden = n > 0;
+    document.getElementById('writeups-all').hidden = n === 0;
+    document.getElementById('writeups-count').textContent =
+      currentLang === 'de' ? n + ' Datei(en)' : n + ' file(s)';
+  }
+
+  fetch('writeups/writeups.json')
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (data) {
+      WRITEUPS = (Array.isArray(data) ? data : []).sort(function (a, b) {
+        return String(b.date).localeCompare(String(a.date));
+      });
+      renderWriteups();
+    })
+    .catch(function () {});
+
   function setLang(lang) {
+    currentLang = lang;
     var t = TEXTS[lang];
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
@@ -252,6 +294,7 @@
       btn.setAttribute('aria-pressed', btn.getAttribute('data-lang') === lang ? 'true' : 'false');
     });
     try { localStorage.setItem('lang', lang); } catch (e) {}
+    renderWriteups();
   }
 
   document.querySelectorAll('.lang button').forEach(function (btn) {
