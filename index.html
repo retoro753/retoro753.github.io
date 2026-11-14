@@ -77,6 +77,10 @@
   /* Tools */
   .dir { border: 2px solid var(--line); padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; }
   .dir .soon { margin: 0; font-size: 32px; line-height: 1.1; color: #ffffff; }
+  .dir .intro-line { margin: 0 0 8px; color: var(--muted); }
+  .entry { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .entry a { min-width: 220px; font-weight: 600; }
+  .entry span { color: var(--muted); }
 
   /* Kontakt */
   button.btn95 { font: 600 15px 'IBM Plex Mono', monospace; cursor: pointer; min-height: 44px; }
@@ -100,6 +104,7 @@
     <a href="#top" class="logo pixel">RETORO_NEO</a>
     <div class="menu">
       <a href="#projekte" data-i18n="navProjects">Projekte</a>
+      <a href="#writeups">Writeups</a>
       <a href="#tools">Tools</a>
       <a href="#thm">TryHackMe</a>
       <div class="lang" role="group" aria-label="Sprache / Language">
@@ -157,6 +162,23 @@
     </div>
   </section>
 
+  <section id="writeups">
+    <h2 class="pixel">&gt; Writeups</h2>
+    <div class="dir">
+      <p class="prompt">C:\WRITEUPS&gt; dir</p>
+      <p class="intro-line" data-i18n="writeupsIntro">CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.</p>
+      <!--
+        Neues Writeup eintragen: diesen Block kopieren, Kommentarzeichen entfernen und ausfüllen.
+        <div class="entry">
+          <a href="writeups/raumname.html">raumname.txt</a>
+          <span>TryHackMe · Easy · TT.MM.JJJJ · web, linux</span>
+        </div>
+      -->
+      <p class="soon pixel"><span data-i18n="writeupsSoon">Erstes Writeup in Arbeit</span><span class="cursor" aria-hidden="true">_</span></p>
+      <p class="prompt" data-i18n="files">0 Datei(en)</p>
+    </div>
+  </section>
+
   <section id="tools">
     <h2 class="pixel">&gt; Tools</h2>
     <div class="dir">
@@ -196,6 +218,8 @@
       open: 'Öffnen ›',
       nextProject: 'nächstes Projekt …',
       soon: 'Kommt bald',
+      writeupsIntro: 'CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.',
+      writeupsSoon: 'Erstes Writeup in Arbeit',
       files: '0 Datei(en)',
       contact: 'Kontakt',
       showMail: 'E-Mail anzeigen',
@@ -209,6 +233,8 @@
       open: 'Open ›',
       nextProject: 'next project …',
       soon: 'Coming soon',
+      writeupsIntro: "CTF walkthroughs without flags: how I approached it, what didn't work and what I learned.",
+      writeupsSoon: 'First writeup in progress',
       files: '0 file(s)',
       contact: 'Contact',
       showMail: 'Show email',
