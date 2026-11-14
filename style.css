@@ -91,5 +91,5 @@
   .entry span { flex: 1 1 320px; }
 
 /* Logo mit Pixel-Qualle */
-.logo { display: inline-flex; align-items: center; gap: 20px; }
-.logo img { display: block; width: 24px; height: 24px; image-rendering: pixelated; }
+.logo { display: inline-flex; align-items: center; gap: 0; }
+.logo img { display: block; width: 24px; height: 24px; margin-right: 32px; image-rendering: pixelated; }
