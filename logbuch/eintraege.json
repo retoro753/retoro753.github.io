@@ -1,1 +1,14 @@
-[]
+[
+ {
+  "type": "notiz",
+  "slug": "omarchy-t2-macbook",
+  "title": "Omarchy auf MacBooks mit T2-Chip",
+  "date": "2026-11-14",
+  "tags": [
+   "linux",
+   "omarchy",
+   "macbook",
+   "hardware"
+  ]
+ }
+]
