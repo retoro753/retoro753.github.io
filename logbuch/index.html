@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Writeups · RETORO_NEO</title>
-<meta name="description" content="CTF-Writeups ohne Flags: Lösungswege, Sackgassen und was ich gelernt habe.">
+<title>Logbuch · RETORO_NEO</title>
+<meta name="description" content="Logbuch: CTF-Writeups ohne Flags und kurze Notizen zu Linux, Security und Technik.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <link rel="icon" href="../logo.svg" type="image/svg+xml">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="stylesheet" href="../fonts/fonts.css">
-<link rel="stylesheet" href="writeup.css">
+<link rel="stylesheet" href="logbuch.css">
 </head>
 <body>
 
@@ -27,14 +27,22 @@
 </header>
 
 <main class="wrap">
-  <p class="prompt">C:\WRITEUPS&gt; dir /all</p>
-  <h1 class="pixel">Writeups</h1>
-  <p data-i18n="intro">CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.</p>
+  <p class="prompt">C:\LOGBUCH&gt; dir /all</p>
+  <h1 class="pixel" data-i18n="title">Logbuch</h1>
+  <p data-i18n="intro">CTF-Writeups ohne Flags und kurze Notizen: Erkenntnisse, Tipps und Erfahrungen rund um Linux, Security und Technik.</p>
 
   <div class="filters" id="filters" hidden>
     <div class="field">
       <label for="search" data-i18n="searchLabel">Suche</label>
       <input id="search" type="search" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="type" data-i18n="typeLabel">Art</label>
+      <select id="type">
+        <option value="" data-i18n="all">Alle</option>
+        <option value="writeup" data-i18n="typeWriteups">Writeups</option>
+        <option value="notiz" data-i18n="typeNotes">Notizen</option>
+      </select>
     </div>
     <div class="field">
       <label for="difficulty" data-i18n="diffLabel">Schwierigkeit</label>
@@ -51,7 +59,7 @@
 
   <div class="list">
     <div id="results"></div>
-    <p class="empty pixel" id="empty"><span data-i18n="soon">Erstes Writeup in Arbeit</span><span class="cursor" aria-hidden="true">_</span></p>
+    <p class="empty pixel" id="empty"><span data-i18n="soon">Erster Eintrag in Arbeit</span><span class="cursor" aria-hidden="true">_</span></p>
     <p class="count" id="count"></p>
   </div>
 </main>

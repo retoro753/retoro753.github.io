@@ -10,9 +10,11 @@
       github: 'Auf GitHub ›',
       nextProject: 'nächstes Projekt …',
       soon: 'Kommt bald',
-      writeupsIntro: 'CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.',
-      writeupsSoon: 'Erstes Writeup in Arbeit',
-      allWriteups: 'Alle Writeups ›',
+      navLog: 'Logbuch',
+      logIntro: 'CTF-Writeups ohne Flags und kurze Notizen: Erkenntnisse, Tipps und Erfahrungen rund um Linux, Security und Technik.',
+      logSoon: 'Erster Eintrag in Arbeit',
+      allLog: 'Ganzes Logbuch ›',
+      labels: { writeup: 'WRITEUP', notiz: 'NOTIZ' },
       files: '1 Datei(en)',
       contact: 'Kontakt',
       showMail: 'E-Mail anzeigen',
@@ -28,9 +30,11 @@
       github: 'On GitHub ›',
       nextProject: 'next project …',
       soon: 'Coming soon',
-      writeupsIntro: "CTF walkthroughs without flags: how I approached it, what didn't work and what I learned.",
-      writeupsSoon: 'First writeup in progress',
-      allWriteups: 'All writeups ›',
+      navLog: 'Log',
+      logIntro: 'CTF writeups without flags and short notes: findings, tips and experiences around Linux, security and tech.',
+      logSoon: 'First entry in progress',
+      allLog: 'Full log ›',
+      labels: { writeup: 'WRITEUP', notiz: 'NOTE' },
       files: '1 file(s)',
       contact: 'Contact',
       showMail: 'Show email',
@@ -38,44 +42,52 @@
     }
   };
 
-  // Neueste Writeups aus writeups/writeups.json
+  // Neueste Logbuch-Einträge aus logbuch/eintraege.json
   var currentLang = 'de';
-  var WRITEUPS = [];
+  var ENTRIES = [];
 
   function fmtDate(iso) {
     var p = String(iso).split('-');
     return currentLang === 'de' && p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
   }
 
-  function renderWriteups() {
-    var box = document.getElementById('latest-writeups');
+  function metaLine(e) {
+    var parts = ['[' + (TEXTS[currentLang].labels[e.type] || e.type) + ']'];
+    if (e.type === 'writeup') { parts.push(e.platform, e.difficulty); }
+    parts.push(fmtDate(e.date));
+    if (e.tags && e.tags.length) parts.push(e.tags.join(', '));
+    return parts.filter(Boolean).join(' · ');
+  }
+
+  function renderLog() {
+    var box = document.getElementById('latest-log');
     box.textContent = '';
-    WRITEUPS.slice(0, 5).forEach(function (w) {
+    ENTRIES.slice(0, 5).forEach(function (e) {
       var row = document.createElement('div');
       row.className = 'entry';
       var a = document.createElement('a');
-      a.href = 'writeups/' + w.slug + '.html';
-      a.textContent = w.title;
+      a.href = 'logbuch/' + e.slug + '.html';
+      a.textContent = e.title;
       var meta = document.createElement('span');
-      meta.textContent = [w.platform, w.difficulty, fmtDate(w.date), (w.tags || []).join(', ')].join(' · ');
+      meta.textContent = metaLine(e);
       row.appendChild(a);
       row.appendChild(meta);
       box.appendChild(row);
     });
-    var n = WRITEUPS.length;
-    document.getElementById('writeups-empty').hidden = n > 0;
-    document.getElementById('writeups-all').hidden = n === 0;
-    document.getElementById('writeups-count').textContent =
+    var n = ENTRIES.length;
+    document.getElementById('log-empty').hidden = n > 0;
+    document.getElementById('log-all').hidden = n === 0;
+    document.getElementById('log-count').textContent =
       currentLang === 'de' ? n + ' Datei(en)' : n + ' file(s)';
   }
 
-  fetch('writeups/writeups.json')
+  fetch('logbuch/eintraege.json')
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (data) {
-      WRITEUPS = (Array.isArray(data) ? data : []).sort(function (a, b) {
+      ENTRIES = (Array.isArray(data) ? data : []).sort(function (a, b) {
         return String(b.date).localeCompare(String(a.date));
       });
-      renderWriteups();
+      renderLog();
     })
     .catch(function () {});
 
@@ -84,13 +96,14 @@
     var t = TEXTS[lang];
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      el.textContent = t[el.getAttribute('data-i18n')];
+      var v = t[el.getAttribute('data-i18n')];
+      if (typeof v === 'string') el.textContent = v;
     });
     document.querySelectorAll('.lang button').forEach(function (btn) {
       btn.setAttribute('aria-pressed', btn.getAttribute('data-lang') === lang ? 'true' : 'false');
     });
     try { localStorage.setItem('lang', lang); } catch (e) {}
-    renderWriteups();
+    renderLog();
   }
 
   document.querySelectorAll('.lang button').forEach(function (btn) {
