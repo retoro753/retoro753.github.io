@@ -19,7 +19,13 @@
 <header>
   <nav class="wrap">
     <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
-    <a href="./" class="back">‹ Logbuch</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -27,42 +33,72 @@
 
   <article>
     <p class="prompt">C:\LOGBUCH&gt; type [dateiname].txt</p>
-    <h1 class="pixel">[TITEL]</h1>
+    <p id="lang-notice" class="notice" hidden></p>
 
-    <dl class="meta">
-      <div><dt>Art</dt><dd>Notiz</dd></div>
-      <div><dt>Datum</dt><dd>[TT.MM.JJJJ]</dd></div>
-      <div><dt>Getestet mit</dt><dd>[z. B. Gerät, System, Version]</dd></div>
-    </dl>
-    <ul class="tags">
-      <li>[linux]</li>
-      <li>[hardware]</li>
-    </ul>
+    <div data-content="de">
+      <h1 class="pixel">[TITEL]</h1>
 
-    <h2 class="pixel">&gt; Kurz gesagt</h2>
-    <p>[Die Erkenntnis in ein bis zwei Sätzen.]</p>
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Notiz</dd></div>
+        <div><dt>Datum</dt><dd>[TT.MM.JJJJ]</dd></div>
+        <div><dt>Getestet mit</dt><dd>[z. B. Gerät, System, Version]</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>[linux]</li>
+        <li>[hardware]</li>
+      </ul>
 
-    <h2 class="pixel">&gt; Ausgangslage</h2>
-    <p>[Was wolltest du machen, und was hattest du erwartet?]</p>
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>[Die Erkenntnis in ein bis zwei Sätzen.]</p>
 
-    <h2 class="pixel">&gt; Was ich herausgefunden habe</h2>
-    <p>[Was funktioniert, was nicht, worauf muss man achten?]</p>
-<pre><code>[optional: Befehle oder Konfiguration]</code></pre>
+      <h2 class="pixel">&gt; Ausgangslage</h2>
+      <p>[Was wolltest du machen, und was hattest du erwartet?]</p>
 
-    <h2 class="pixel">&gt; Quellen</h2>
-    <ul>
-      <li><a href="[LINK]" target="_blank" rel="noopener noreferrer">[optional: Links zu Doku, Forum, Issue]</a></li>
-    </ul>
+      <h2 class="pixel">&gt; Was ich herausgefunden habe</h2>
+      <p>[Was funktioniert, was nicht, worauf muss man achten?]</p>
+  <pre><code>[optional: Befehle oder Konfiguration]</code></pre>
+
+      <h2 class="pixel">&gt; Quellen</h2>
+      <ul>
+        <li><a href="[LINK]" target="_blank" rel="noopener noreferrer">[optional: Links zu Doku, Forum, Issue]</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <!-- Englische Fassung (optional). Ohne diesen Block zeigt die Seite bei EN die deutsche Fassung mit Hinweis. -->
+      <h1 class="pixel">[TITLE]</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Note</dd></div>
+        <div><dt>Date</dt><dd>[YYYY-MM-DD]</dd></div>
+        <div><dt>Tested on</dt><dd>[device, system, version]</dd></div>
+      </dl>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>[The finding in one or two sentences.]</p>
+
+      <h2 class="pixel">&gt; Background</h2>
+      <p>[What were you trying to do, and what did you expect?]</p>
+
+      <h2 class="pixel">&gt; What I found</h2>
+      <p>[What works, what doesn't, what to watch out for?]</p>
+
+      <h2 class="pixel">&gt; Sources</h2>
+      <ul>
+        <li><a href="[LINK]" target="_blank" rel="noopener noreferrer">[optional: links]</a></li>
+      </ul>
+    </div>
   </article>
 
 </main>
 
 <footer>
   <div class="wrap foot">
-    <a href="./">‹ Zurück zum Logbuch</a>
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
     <span>RETORO_NEO</span>
   </div>
 </footer>
 
+<script src="artikel.js"></script>
 </body>
 </html>

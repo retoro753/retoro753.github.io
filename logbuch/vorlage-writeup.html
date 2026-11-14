@@ -19,7 +19,13 @@
 <header>
   <nav class="wrap">
     <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
-    <a href="./" class="back">‹ Logbuch</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -27,58 +33,97 @@
 
   <article>
     <p class="prompt">C:\LOGBUCH&gt; type [raumname].txt</p>
-    <h1 class="pixel">[RAUMNAME]</h1>
+    <p id="lang-notice" class="notice" hidden></p>
 
-    <dl class="meta">
-      <div><dt>Plattform</dt><dd>[TryHackMe]</dd></div>
-      <div><dt>Schwierigkeit</dt><dd>[Easy / Medium / Hard]</dd></div>
-      <div><dt>Datum</dt><dd>[TT.MM.JJJJ]</dd></div>
-      <div><dt>Raum</dt><dd><a href="[LINK ZUM RAUM]" target="_blank" rel="noopener noreferrer">[Link zum Raum]</a></dd></div>
-    </dl>
-    <ul class="tags">
-      <li>[web]</li>
-      <li>[linux]</li>
-      <li>[privesc]</li>
-    </ul>
+    <div data-content="de">
+      <h1 class="pixel">[RAUMNAME]</h1>
 
-    <p class="notice">Keine Flags, keine Passwörter. Hier geht es um den Weg, nicht ums Abschreiben.</p>
+      <dl class="meta">
+        <div><dt>Plattform</dt><dd>[TryHackMe]</dd></div>
+        <div><dt>Schwierigkeit</dt><dd>[Easy / Medium / Hard]</dd></div>
+        <div><dt>Datum</dt><dd>[TT.MM.JJJJ]</dd></div>
+        <div><dt>Raum</dt><dd><a href="[LINK ZUM RAUM]" target="_blank" rel="noopener noreferrer">[Link zum Raum]</a></dd></div>
+      </dl>
+      <ul class="tags">
+        <li>[web]</li>
+        <li>[linux]</li>
+        <li>[privesc]</li>
+      </ul>
 
-    <h2 class="pixel">&gt; Überblick</h2>
-    <p>[Worum geht es in dem Raum? Was war das Ziel, und was wusstest du am Anfang?]</p>
+      <p class="notice">Keine Flags, keine Passwörter. Hier geht es um den Weg, nicht ums Abschreiben.</p>
 
-    <h2 class="pixel">&gt; Aufklärung</h2>
-    <p>[Womit hast du angefangen und warum?]</p>
-<pre><code>nmap -sC -sV [ZIEL-IP]</code></pre>
-    <p>[Was ist dir im Ergebnis aufgefallen?]</p>
+      <h2 class="pixel">&gt; Überblick</h2>
+      <p>[Worum geht es in dem Raum? Was war das Ziel, und was wusstest du am Anfang?]</p>
 
-    <h2 class="pixel">&gt; Erster Zugang</h2>
-    <p>[Wie bist du ins System gekommen? Welche Schwachstelle, welche Idee?]</p>
-    <details>
-      <summary>Hinweis anzeigen</summary>
-      <p>[Ein Tipp für Leute, die selbst weiterknobeln wollen.]</p>
-    </details>
+      <h2 class="pixel">&gt; Aufklärung</h2>
+      <p>[Womit hast du angefangen und warum?]</p>
+  <pre><code>nmap -sC -sV [ZIEL-IP]</code></pre>
+      <p>[Was ist dir im Ergebnis aufgefallen?]</p>
 
-    <h2 class="pixel">&gt; Rechte ausweiten</h2>
-    <p>[Wie bist du vom normalen Benutzer zu root/Admin gekommen?]</p>
+      <h2 class="pixel">&gt; Erster Zugang</h2>
+      <p>[Wie bist du ins System gekommen? Welche Schwachstelle, welche Idee?]</p>
+      <details>
+        <summary>Hinweis anzeigen</summary>
+        <p>[Ein Tipp für Leute, die selbst weiterknobeln wollen.]</p>
+      </details>
 
-    <h2 class="pixel">&gt; Sackgassen</h2>
-    <p>[Was hast du probiert, das nicht funktioniert hat, und warum nicht?]</p>
+      <h2 class="pixel">&gt; Rechte ausweiten</h2>
+      <p>[Wie bist du vom normalen Benutzer zu root/Admin gekommen?]</p>
 
-    <h2 class="pixel">&gt; Gelernt</h2>
-    <ul>
-      <li>[Neues Werkzeug oder neue Technik]</li>
-      <li>[Was du beim nächsten Mal anders machen würdest]</li>
-    </ul>
+      <h2 class="pixel">&gt; Sackgassen</h2>
+      <p>[Was hast du probiert, das nicht funktioniert hat, und warum nicht?]</p>
+
+      <h2 class="pixel">&gt; Gelernt</h2>
+      <ul>
+        <li>[Neues Werkzeug oder neue Technik]</li>
+        <li>[Was du beim nächsten Mal anders machen würdest]</li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <!-- Englische Fassung (optional). Ohne diesen Block zeigt die Seite bei EN die deutsche Fassung mit Hinweis. -->
+      <h1 class="pixel">[ROOM NAME]</h1>
+
+      <dl class="meta">
+        <div><dt>Platform</dt><dd>[TryHackMe]</dd></div>
+        <div><dt>Difficulty</dt><dd>[Easy / Medium / Hard]</dd></div>
+        <div><dt>Date</dt><dd>[YYYY-MM-DD]</dd></div>
+        <div><dt>Room</dt><dd><a href="[LINK ZUM RAUM]" target="_blank" rel="noopener noreferrer">[Link to the room]</a></dd></div>
+      </dl>
+
+      <p class="notice">No flags, no passwords. This is about the path, not about copying answers.</p>
+
+      <h2 class="pixel">&gt; Overview</h2>
+      <p>[What is the room about?]</p>
+
+      <h2 class="pixel">&gt; Recon</h2>
+      <p>[Where did you start and why?]</p>
+
+      <h2 class="pixel">&gt; Initial access</h2>
+      <p>[How did you get in?]</p>
+
+      <h2 class="pixel">&gt; Privilege escalation</h2>
+      <p>[How did you get to root/admin?]</p>
+
+      <h2 class="pixel">&gt; Dead ends</h2>
+      <p>[What didn't work, and why?]</p>
+
+      <h2 class="pixel">&gt; Lessons learned</h2>
+      <ul>
+        <li>[New tool or technique]</li>
+      </ul>
+    </div>
   </article>
 
 </main>
 
 <footer>
   <div class="wrap foot">
-    <a href="./">‹ Zurück zum Logbuch</a>
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
     <span>RETORO_NEO</span>
   </div>
 </footer>
 
+<script src="artikel.js"></script>
 </body>
 </html>

@@ -55,7 +55,7 @@ function render() {
   var diff = document.getElementById('difficulty').value;
 
   var shown = entries.filter(function (e) {
-    var text = (e.title + ' ' + (e.platform || '') + ' ' + (e.tags || []).join(' ')).toLowerCase();
+    var text = (e.title + ' ' + (e.title_en || '') + ' ' + (e.platform || '') + ' ' + (e.tags || []).join(' ')).toLowerCase();
     return (!q || text.indexOf(q) !== -1)
       && (!type || e.type === type)
       && (!diff || e.difficulty === diff)
@@ -69,7 +69,7 @@ function render() {
     row.className = 'entry';
     var a = document.createElement('a');
     a.href = e.slug + '.html';
-    a.textContent = e.title;
+    a.textContent = (lang === 'en' && e.title_en) || e.title;
     var meta = document.createElement('span');
     meta.textContent = metaLine(e);
     row.appendChild(a);

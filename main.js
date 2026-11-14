@@ -67,7 +67,7 @@
       row.className = 'entry';
       var a = document.createElement('a');
       a.href = 'logbuch/' + e.slug + '.html';
-      a.textContent = e.title;
+      a.textContent = (currentLang === 'en' && e.title_en) || e.title;
       var meta = document.createElement('span');
       meta.textContent = metaLine(e);
       row.appendChild(a);

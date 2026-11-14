@@ -16,7 +16,13 @@
 <header>
   <nav class="wrap">
     <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
-    <a href="./" class="back">‹ Logbuch</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -24,51 +30,94 @@
 
   <article>
     <p class="prompt">C:\LOGBUCH&gt; type omarchy-t2-macbook.txt</p>
-    <h1 class="pixel">Omarchy auf MacBooks mit T2-Chip</h1>
+    <p id="lang-notice" class="notice" hidden></p>
 
-    <dl class="meta">
-      <div><dt>Art</dt><dd>Notiz</dd></div>
-      <div><dt>Datum</dt><dd>14.11.2026</dd></div>
-      <div><dt>Getestet mit</dt><dd>MacBook mit T2-Chip, Omarchy</dd></div>
-    </dl>
-    <ul class="tags">
-      <li>linux</li>
-      <li>omarchy</li>
-      <li>macbook</li>
-      <li>hardware</li>
-    </ul>
+    <div data-content="de">
+      <h1 class="pixel">Omarchy auf MacBooks mit T2-Chip</h1>
 
-    <h2 class="pixel">&gt; Kurz gesagt</h2>
-    <p>Omarchy läuft auf einem MacBook mit T2-Chip direkt nach der Installation. Touchbar, Tastatur, Touchpad und Sound funktionieren, ohne dass man Treiber oder Pakete nachinstallieren muss.</p>
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Notiz</dd></div>
+        <div><dt>Datum</dt><dd>14.11.2026</dd></div>
+        <div><dt>Getestet mit</dt><dd>MacBook mit T2-Chip, Omarchy</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>linux</li>
+        <li>omarchy</li>
+        <li>macbook</li>
+        <li>hardware</li>
+      </ul>
 
-    <h2 class="pixel">&gt; Ausgangslage</h2>
-    <p>Intel-MacBooks mit T2-Chip haben den Ruf, unter Linux mühsam zu sein: Für Tastatur, Touchbar oder Sound braucht man einen angepassten Kernel und zusätzliche Treiber. Ich hatte deshalb erwartet, nach der Installation einiges von Hand nachrüsten zu müssen.</p>
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>Omarchy läuft auf einem MacBook mit T2-Chip direkt nach der Installation. Touchbar, Tastatur, Touchpad und Sound funktionieren, ohne dass man Treiber oder Pakete nachinstallieren muss.</p>
 
-    <h2 class="pixel">&gt; Was ich herausgefunden habe</h2>
-    <p>Nichts davon war nötig. Direkt nach der Installation liefen:</p>
-    <ul>
-      <li>Touchbar</li>
-      <li>Tastatur</li>
-      <li>Touchpad</li>
-      <li>Sound</li>
-    </ul>
-    <p>Der Grund: Seit Version 3.0 unterstützt Omarchy MacBooks mit T2-Chip offiziell. Der Installer richtet den passenden Kernel und die Treiber selbst ein.</p>
+      <h2 class="pixel">&gt; Ausgangslage</h2>
+      <p>Intel-MacBooks mit T2-Chip haben den Ruf, unter Linux mühsam zu sein: Für Tastatur, Touchbar oder Sound braucht man einen angepassten Kernel und zusätzliche Treiber. Ich hatte deshalb erwartet, nach der Installation einiges von Hand nachrüsten zu müssen.</p>
 
-    <h2 class="pixel">&gt; Quellen</h2>
-    <ul>
-      <li><a href="https://learn.omacom.io/2/the-omarchy-manual/97/mac-support" target="_blank" rel="noopener noreferrer">Omarchy-Handbuch: Mac support</a></li>
-      <li><a href="https://github.com/basecamp/omarchy" target="_blank" rel="noopener noreferrer">Omarchy auf GitHub</a></li>
-    </ul>
+      <h2 class="pixel">&gt; Was ich herausgefunden habe</h2>
+      <p>Nichts davon war nötig. Direkt nach der Installation liefen:</p>
+      <ul>
+        <li>Touchbar</li>
+        <li>Tastatur</li>
+        <li>Touchpad</li>
+        <li>Sound</li>
+      </ul>
+      <p>Der Grund: Seit Version 3.0 unterstützt Omarchy MacBooks mit T2-Chip offiziell. Der Installer richtet den passenden Kernel und die Treiber selbst ein.</p>
+
+      <h2 class="pixel">&gt; Quellen</h2>
+      <ul>
+        <li><a href="https://learn.omacom.io/2/the-omarchy-manual/97/mac-support" target="_blank" rel="noopener noreferrer">Omarchy-Handbuch: Mac support</a></li>
+        <li><a href="https://github.com/basecamp/omarchy" target="_blank" rel="noopener noreferrer">Omarchy auf GitHub</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">Omarchy on MacBooks with a T2 chip</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Note</dd></div>
+        <div><dt>Date</dt><dd>2026-11-14</dd></div>
+        <div><dt>Tested on</dt><dd>MacBook with T2 chip, Omarchy</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>linux</li>
+        <li>omarchy</li>
+        <li>macbook</li>
+        <li>hardware</li>
+      </ul>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>Omarchy runs on a MacBook with a T2 chip right after installation. Touch Bar, keyboard, trackpad and sound all work without installing any extra drivers or packages.</p>
+
+      <h2 class="pixel">&gt; Background</h2>
+      <p>Intel MacBooks with a T2 chip have a reputation for being a pain on Linux: the keyboard, Touch Bar or sound need a patched kernel and extra drivers. So I expected to fix quite a few things by hand after installing.</p>
+
+      <h2 class="pixel">&gt; What I found</h2>
+      <p>None of that was necessary. Right after installation, these worked:</p>
+      <ul>
+        <li>Touch Bar</li>
+        <li>Keyboard</li>
+        <li>Trackpad</li>
+        <li>Sound</li>
+      </ul>
+      <p>The reason: since version 3.0, Omarchy officially supports MacBooks with a T2 chip. The installer sets up the right kernel and drivers on its own.</p>
+
+      <h2 class="pixel">&gt; Sources</h2>
+      <ul>
+        <li><a href="https://learn.omacom.io/2/the-omarchy-manual/97/mac-support" target="_blank" rel="noopener noreferrer">Omarchy manual: Mac support</a></li>
+        <li><a href="https://github.com/basecamp/omarchy" target="_blank" rel="noopener noreferrer">Omarchy on GitHub</a></li>
+      </ul>
+    </div>
   </article>
 
 </main>
 
 <footer>
   <div class="wrap foot">
-    <a href="./">‹ Zurück zum Logbuch</a>
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
     <span>RETORO_NEO</span>
   </div>
 </footer>
 
+<script src="artikel.js"></script>
 </body>
 </html>
