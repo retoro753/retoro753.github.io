@@ -5,44 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Writeups · RETORO_NEO</title>
 <meta name="description" content="CTF-Writeups ohne Flags: Lösungswege, Sackgassen und was ich gelernt habe.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="../fonts/fonts.css">
 <link rel="stylesheet" href="writeup.css">
-<style>
-  .lang { display: flex; }
-  .lang button {
-    min-width: 44px; min-height: 44px; padding: 0 12px;
-    font: 600 15px 'IBM Plex Mono', monospace; cursor: pointer;
-    border: 2px solid var(--line); background: transparent; color: var(--text);
-  }
-  .lang button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #000000; }
-  .nav-right { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-
-  .filters { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; margin: 24px 0; }
-  .field { display: flex; flex-direction: column; gap: 4px; flex: 1 1 220px; }
-  .field label { font-size: 13px; color: var(--muted); }
-  .field input, .field select {
-    min-height: 44px; padding: 0 12px; background: #000000; color: var(--text);
-    border: 2px solid var(--line); font: 15px 'IBM Plex Mono', monospace;
-  }
-  .field input:focus, .field select:focus { outline: 2px solid var(--accent); outline-offset: 0; }
-  .tag-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .tag-filter button {
-    min-height: 36px; padding: 0 12px; cursor: pointer; background: transparent;
-    border: 1px solid var(--accent); color: var(--accent); font: 14px 'IBM Plex Mono', monospace;
-  }
-  .tag-filter button[aria-pressed="true"] { background: var(--accent); color: #000000; }
-
-  .list { border: 2px solid var(--line); padding: 20px 24px; }
-  .entry { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
-  .entry:last-of-type { border-bottom: none; }
-  .entry a { min-width: 220px; font-weight: 600; }
-  .entry span { color: var(--muted); }
-  .empty { margin: 0; font-size: 28px; color: #ffffff; }
-  .count { margin: 12px 0 0; color: #8a9aa8; }
-  [hidden] { display: none !important; }
-</style>
 </head>
 <body>
 
@@ -96,132 +62,7 @@
   </div>
 </footer>
 
-<script>
-  var TEXTS = {
-    de: {
-      home: '‹ Startseite',
-      intro: 'CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.',
-      searchLabel: 'Suche',
-      diffLabel: 'Schwierigkeit',
-      all: 'Alle',
-      soon: 'Erstes Writeup in Arbeit',
-      noMatch: 'Nichts gefunden',
-      files: function (n) { return n + ' Datei(en)'; }
-    },
-    en: {
-      home: '‹ Home',
-      intro: "CTF walkthroughs without flags: how I approached it, what didn't work and what I learned.",
-      searchLabel: 'Search',
-      diffLabel: 'Difficulty',
-      all: 'All',
-      soon: 'First writeup in progress',
-      noMatch: 'Nothing found',
-      files: function (n) { return n + ' file(s)'; }
-    }
-  };
-
-  var lang = 'de';
-  var writeups = [];
-  var activeTag = '';
-
-  function fmtDate(iso) {
-    var p = String(iso).split('-');
-    return lang === 'de' && p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
-  }
-
-  function render() {
-    var t = TEXTS[lang];
-    var q = document.getElementById('search').value.trim().toLowerCase();
-    var diff = document.getElementById('difficulty').value;
-
-    var shown = writeups.filter(function (w) {
-      var text = (w.title + ' ' + w.platform + ' ' + (w.tags || []).join(' ')).toLowerCase();
-      return (!q || text.indexOf(q) !== -1)
-        && (!diff || w.difficulty === diff)
-        && (!activeTag || (w.tags || []).indexOf(activeTag) !== -1);
-    });
-
-    var box = document.getElementById('results');
-    box.textContent = '';
-    shown.forEach(function (w) {
-      var row = document.createElement('div');
-      row.className = 'entry';
-      var a = document.createElement('a');
-      a.href = w.slug + '.html';
-      a.textContent = w.title;
-      var meta = document.createElement('span');
-      meta.textContent = [w.platform, w.difficulty, fmtDate(w.date), (w.tags || []).join(', ')].join(' · ');
-      row.appendChild(a);
-      row.appendChild(meta);
-      box.appendChild(row);
-    });
-
-    var empty = document.getElementById('empty');
-    empty.hidden = shown.length > 0;
-    empty.firstElementChild.textContent = writeups.length ? t.noMatch : t.soon;
-    document.getElementById('count').textContent = t.files(shown.length);
-  }
-
-  function buildTags() {
-    var all = [];
-    writeups.forEach(function (w) {
-      (w.tags || []).forEach(function (tag) { if (all.indexOf(tag) === -1) all.push(tag); });
-    });
-    all.sort();
-    var box = document.getElementById('tags');
-    box.textContent = '';
-    all.forEach(function (tag) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = tag;
-      b.setAttribute('aria-pressed', 'false');
-      b.addEventListener('click', function () {
-        activeTag = activeTag === tag ? '' : tag;
-        box.querySelectorAll('button').forEach(function (x) {
-          x.setAttribute('aria-pressed', x.textContent === activeTag ? 'true' : 'false');
-        });
-        render();
-      });
-      box.appendChild(b);
-    });
-  }
-
-  function setLang(l) {
-    lang = l;
-    var t = TEXTS[l];
-    document.documentElement.lang = l;
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var v = t[el.getAttribute('data-i18n')];
-      if (typeof v === 'string') el.textContent = v;
-    });
-    document.querySelectorAll('.lang button').forEach(function (btn) {
-      btn.setAttribute('aria-pressed', btn.getAttribute('data-lang') === l ? 'true' : 'false');
-    });
-    try { localStorage.setItem('lang', l); } catch (e) {}
-    render();
-  }
-
-  document.querySelectorAll('.lang button').forEach(function (btn) {
-    btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang')); });
-  });
-  document.getElementById('search').addEventListener('input', render);
-  document.getElementById('difficulty').addEventListener('change', render);
-
-  try { if (localStorage.getItem('lang') === 'en') lang = 'en'; } catch (e) {}
-  setLang(lang);
-
-  fetch('writeups.json')
-    .then(function (r) { return r.ok ? r.json() : []; })
-    .then(function (data) {
-      writeups = (Array.isArray(data) ? data : []).sort(function (a, b) {
-        return String(b.date).localeCompare(String(a.date));
-      });
-      document.getElementById('filters').hidden = writeups.length === 0;
-      buildTags();
-      render();
-    })
-    .catch(function () {});
-</script>
+<script src="overview.js"></script>
 
 </body>
 </html>

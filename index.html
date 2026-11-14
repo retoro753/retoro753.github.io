@@ -5,99 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RETORO_NEO</title>
 <meta name="description" content="Kleine Projekte und Cybersecurity.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0b0f14;
-    --text: #d8e1e8;
-    --muted: #9fb0bf;
-    --line: #2b3a48;
-    --accent: #33ff66;
-    --link: #7fdbff;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  a { color: var(--link); }
-  a:hover { color: #ffffff; }
-  .pixel { font-family: 'VT323', monospace; font-weight: 400; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
-
-  /* Kopfzeile */
-  header { border-bottom: 2px solid #1e2a36; }
-  nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; }
-  .logo { font-size: 40px; line-height: 1; color: var(--accent); text-decoration: none; letter-spacing: 2px; }
-  .menu { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-  .menu a { padding: 10px 14px; text-decoration: none; border: 2px solid var(--line); }
-  .lang { display: flex; margin-left: 8px; }
-  .lang button {
-    min-width: 44px; min-height: 44px; padding: 0 12px;
-    font: 600 15px 'IBM Plex Mono', monospace; cursor: pointer;
-    border: 2px solid var(--line); background: transparent; color: var(--text);
-  }
-  .lang button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #000000; }
-
-  /* Inhalt */
-  main { display: flex; flex-direction: column; gap: 64px; padding-top: 56px; padding-bottom: 40px; }
-  section { display: flex; flex-direction: column; gap: 20px; }
-  .prompt { margin: 0; color: #8a9aa8; }
-  h1 { margin: 0; font-size: 64px; line-height: 1; color: #ffffff; }
-  h2 { margin: 0; font-size: 44px; color: var(--accent); }
-  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-  .cursor { color: var(--accent); animation: blink 1s steps(1) infinite; }
-  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } html { scroll-behavior: auto; } }
-
-  /* Projekt-Fenster im Windows-95-Stil */
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-  .bevel { border-top: 2px solid #ffffff; border-left: 2px solid #ffffff; border-right: 2px solid #404040; border-bottom: 2px solid #404040; }
-  .window { background: #c0c0c0; color: #000000; display: flex; flex-direction: column; }
-  .titlebar { background: #000080; color: #ffffff; padding: 4px 8px; display: flex; justify-content: space-between; font-weight: 600; font-size: 14px; }
-  .window-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
-  .window h3 { margin: 0; font-size: 20px; }
-  .window p { margin: 0; font-size: 15px; flex-grow: 1; }
-  .btn95 { align-self: flex-start; color: #000000; text-decoration: none; background: #c0c0c0; padding: 8px 18px; font-weight: 600; }
-  .btn95:hover { color: #000080; }
-  .btn95:active { border-top-color: #404040; border-left-color: #404040; border-right-color: #ffffff; border-bottom-color: #ffffff; }
-  .construction { border: 2px dashed #3a4a58; color: #8a9aa8; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; min-height: 200px; text-align: center; font-size: 26px; line-height: 1.2; }
-  .construction p { margin: 0; }
-
-  /* TryHackMe */
-  .terminal { background: #000000; border: 2px solid var(--accent); padding: 24px; display: flex; flex-direction: column; gap: 20px; overflow-x: auto; }
-  .terminal .prompt { color: var(--accent); }
-
-  /* Tools */
-  .dir { border: 2px solid var(--line); padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; }
-  .dir .soon { margin: 0; font-size: 32px; line-height: 1.1; color: #ffffff; }
-  .dir .intro-line { margin: 0 0 8px; color: var(--muted); }
-  .entry { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
-  .entry a { min-width: 220px; font-weight: 600; }
-  .entry span { color: var(--muted); }
-  .all-link { align-self: flex-start; margin-top: 8px; padding: 10px 14px; text-decoration: none; border: 2px solid var(--line); }
-  [hidden] { display: none !important; }
-
-  /* Kontakt */
-  button.btn95 { font: 600 15px 'IBM Plex Mono', monospace; cursor: pointer; min-height: 44px; }
-  .mail-link { font-size: 18px; word-break: break-all; }
-
-  footer { border-top: 2px solid #1e2a36; }
-  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 24px 0; font-size: 14px; color: var(--muted); }
-
-  @media (max-width: 600px) {
-    .wrap { padding: 0 20px; }
-    h1 { font-size: 44px; }
-    h2 { font-size: 36px; }
-    .lang { margin-left: 0; }
-  }
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; frame-src https://tryhackme.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -159,7 +70,7 @@
     <div class="terminal">
       <p class="prompt">user@thm:~$ ./status</p>
       <div class="badge">
-        <script src="https://tryhackme.com/badge/t/1fda6a58d939529ef9bc62c8ae5f4aa359a923e551449fabaf72efe738aeb7394706c73be9cd278b71ca9a402a8a9aa7?theme=dark"></script>
+        <iframe class="thm-badge" src="https://tryhackme.com/badge/t/1fda6a58d939529ef9bc62c8ae5f4aa359a923e551449fabaf72efe738aeb7394706c73be9cd278b71ca9a402a8a9aa7/embed?theme=dark" title="TryHackMe-Profil" width="400" height="172" loading="lazy" scrolling="no" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
       </div>
     </div>
   </section>
@@ -205,121 +116,7 @@
   </div>
 </footer>
 
-<script>
-  // Texte für beide Sprachen
-  var TEXTS = {
-    de: {
-      navProjects: 'Projekte',
-      intro: 'Kleine Projekte und Cybersecurity.',
-      kakeibo: 'Haushaltsbuch nach der japanischen Kakeibo-Methode: Einnahmen und Ausgaben festhalten und bewusster sparen.',
-      clrty: 'Blog über ein bewussteres Leben: weniger, aber besser.',
-      open: 'Öffnen ›',
-      nextProject: 'nächstes Projekt …',
-      soon: 'Kommt bald',
-      writeupsIntro: 'CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.',
-      writeupsSoon: 'Erstes Writeup in Arbeit',
-      allWriteups: 'Alle Writeups ›',
-      files: '0 Datei(en)',
-      contact: 'Kontakt',
-      showMail: 'E-Mail anzeigen',
-      footer: 'Gebaut mit HTML & CSS · gehostet auf GitHub Pages'
-    },
-    en: {
-      navProjects: 'Projects',
-      intro: 'Small projects and cybersecurity.',
-      kakeibo: 'A budgeting book based on the Japanese kakeibo method: track income and spending and save more mindfully.',
-      clrty: 'A blog about living more intentionally: less, but better.',
-      open: 'Open ›',
-      nextProject: 'next project …',
-      soon: 'Coming soon',
-      writeupsIntro: "CTF walkthroughs without flags: how I approached it, what didn't work and what I learned.",
-      writeupsSoon: 'First writeup in progress',
-      allWriteups: 'All writeups ›',
-      files: '0 file(s)',
-      contact: 'Contact',
-      showMail: 'Show email',
-      footer: 'Built with HTML & CSS · hosted on GitHub Pages'
-    }
-  };
-
-  // Neueste Writeups aus writeups/writeups.json
-  var currentLang = 'de';
-  var WRITEUPS = [];
-
-  function fmtDate(iso) {
-    var p = String(iso).split('-');
-    return currentLang === 'de' && p.length === 3 ? p[2] + '.' + p[1] + '.' + p[0] : iso;
-  }
-
-  function renderWriteups() {
-    var box = document.getElementById('latest-writeups');
-    box.textContent = '';
-    WRITEUPS.slice(0, 5).forEach(function (w) {
-      var row = document.createElement('div');
-      row.className = 'entry';
-      var a = document.createElement('a');
-      a.href = 'writeups/' + w.slug + '.html';
-      a.textContent = w.title;
-      var meta = document.createElement('span');
-      meta.textContent = [w.platform, w.difficulty, fmtDate(w.date), (w.tags || []).join(', ')].join(' · ');
-      row.appendChild(a);
-      row.appendChild(meta);
-      box.appendChild(row);
-    });
-    var n = WRITEUPS.length;
-    document.getElementById('writeups-empty').hidden = n > 0;
-    document.getElementById('writeups-all').hidden = n === 0;
-    document.getElementById('writeups-count').textContent =
-      currentLang === 'de' ? n + ' Datei(en)' : n + ' file(s)';
-  }
-
-  fetch('writeups/writeups.json')
-    .then(function (r) { return r.ok ? r.json() : []; })
-    .then(function (data) {
-      WRITEUPS = (Array.isArray(data) ? data : []).sort(function (a, b) {
-        return String(b.date).localeCompare(String(a.date));
-      });
-      renderWriteups();
-    })
-    .catch(function () {});
-
-  function setLang(lang) {
-    currentLang = lang;
-    var t = TEXTS[lang];
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      el.textContent = t[el.getAttribute('data-i18n')];
-    });
-    document.querySelectorAll('.lang button').forEach(function (btn) {
-      btn.setAttribute('aria-pressed', btn.getAttribute('data-lang') === lang ? 'true' : 'false');
-    });
-    try { localStorage.setItem('lang', lang); } catch (e) {}
-    renderWriteups();
-  }
-
-  document.querySelectorAll('.lang button').forEach(function (btn) {
-    btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang')); });
-  });
-
-  // E-Mail erst per Klick zusammensetzen (Schutz vor einfachen Spam-Bots)
-  document.getElementById('show-mail').addEventListener('click', function () {
-    var parts = ['retro.overgrown542', 'silomails', 'com'];
-    var addr = parts[0] + '@' + parts[1] + '.' + parts[2];
-    var link = document.createElement('a');
-    link.href = 'mailto:' + addr;
-    link.textContent = addr;
-    link.className = 'mail-link';
-    var slot = document.getElementById('mail-slot');
-    slot.innerHTML = '';
-    slot.appendChild(link);
-  });
-
-  // Gespeicherte Sprache wiederherstellen
-  try {
-    var saved = localStorage.getItem('lang');
-    if (saved === 'en') setLang('en');
-  } catch (e) {}
-</script>
+<script src="main.js"></script>
 
 </body>
 </html>
