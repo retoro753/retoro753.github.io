@@ -13,7 +13,7 @@
       writeupsIntro: 'CTF-Lösungswege ohne Flags: wie ich vorgegangen bin, was nicht geklappt hat und was ich gelernt habe.',
       writeupsSoon: 'Erstes Writeup in Arbeit',
       allWriteups: 'Alle Writeups ›',
-      files: '0 Datei(en)',
+      files: '1 Datei(en)',
       contact: 'Kontakt',
       showMail: 'E-Mail anzeigen',
       footer: 'Gebaut mit HTML & CSS · gehostet auf GitHub Pages'
@@ -31,7 +31,7 @@
       writeupsIntro: "CTF walkthroughs without flags: how I approached it, what didn't work and what I learned.",
       writeupsSoon: 'First writeup in progress',
       allWriteups: 'All writeups ›',
-      files: '0 file(s)',
+      files: '1 file(s)',
       contact: 'Contact',
       showMail: 'Show email',
       footer: 'Built with HTML & CSS · hosted on GitHub Pages'
