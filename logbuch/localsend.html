@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LocalSend: AirDrop für alle Geräte · RETORO_NEO</title>
+<meta name="description" content="LocalSend ist eine Open-Source-Alternative zu AirDrop: Dateien zwischen Windows, macOS, Linux, Android und iPhone im lokalen Netz verschicken, ohne Cloud und ohne Konto.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="logbuch.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <article>
+    <p class="prompt">C:\LOGBUCH&gt; type localsend.txt</p>
+    <p id="lang-notice" class="notice" hidden></p>
+
+    <div data-content="de">
+      <h1 class="pixel">LocalSend: AirDrop für alle Geräte</h1>
+
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Notiz</dd></div>
+        <div><dt>Datum</dt><dd>15.11.2026</dd></div>
+        <div><dt>Plattformen</dt><dd>Windows, macOS, Linux, iPhone, Android, Browser</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tools</li>
+        <li>privacy</li>
+        <li>linux</li>
+        <li>omarchy</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>LocalSend ist eine kostenlose Open-Source-Alternative zu AirDrop, die nicht nur zwischen Apple-Geräten funktioniert, sondern zwischen Windows, macOS, Linux, Android und iPhone. Die Dateien gehen direkt von Gerät zu Gerät über das eigene WLAN. Kein Internet, keine Cloud, kein Konto.</p>
+
+      <h2 class="pixel">&gt; Wie ich darauf gestoßen bin</h2>
+      <p>LocalSend ist bei Omarchy vorinstalliert und richtig gut eingebunden:</p>
+      <ul>
+        <li><code>Super + Ctrl + S</code> öffnet das Teilen-Menü.</li>
+        <li>Im Dateimanager per Rechtsklick auf <em>Send via LocalSend</em>.</li>
+        <li>Im Terminal mit <code>omarchy share file</code>, <code>omarchy share folder</code> oder <code>omarchy share clipboard</code>.</li>
+        <li>Die Firewall von Omarchy ist ab Werk zu, nur der Port von LocalSend ist offen. Es funktioniert also direkt nach der Installation.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; So funktioniert es</h2>
+      <ul>
+        <li>Alle Geräte im selben WLAN finden sich automatisch. Man wählt Dateien aus und tippt auf das Zielgerät.</li>
+        <li>Jeder Dateityp geht: Fotos, Videos, Dokumente, auch einfach Text.</li>
+        <li>Übertragen wird mit voller WLAN-Geschwindigkeit, ohne Größenlimit.</li>
+        <li>Die Verbindung ist per <strong>HTTPS verschlüsselt</strong>. Jedes Gerät erzeugt dafür sein eigenes Zertifikat.</li>
+        <li>Optional lässt sich eine <strong>PIN</strong> einstellen, die der Sender eingeben muss.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Coole Extras</h2>
+      <ul>
+        <li><strong>Webversion:</strong> Unter web.localsend.org läuft LocalSend direkt im Browser, praktisch auf fremden Rechnern ohne Installation.</li>
+        <li><strong>Komplett kostenlos:</strong> Open Source (Apache-2.0-Lizenz), ohne Werbung, ohne Tracking.</li>
+        <li><strong>Offenes Protokoll:</strong> Das Übertragungsprotokoll ist öffentlich dokumentiert, es gibt sogar eigene Umsetzungen von anderen Entwicklern.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Gut zu wissen</h2>
+      <ul>
+        <li>Es klappt nur, wenn beide Geräte im <strong>selben Netzwerk</strong> sind. Übers Internet verschickt LocalSend nichts.</li>
+        <li>In öffentlichen WLANs, etwa im Café oder Hotel, sehen dich andere LocalSend-Nutzer im selben Netz. Dort lieber die PIN einschalten oder die App schließen.</li>
+        <li>Klappt die Suche nicht, blockiert oft die Firewall. LocalSend nutzt standardmäßig Port <code>53317</code>.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Quellen</h2>
+      <ul>
+        <li><a href="https://localsend.org/" target="_blank" rel="noopener noreferrer">localsend.org</a></li>
+        <li><a href="https://github.com/localsend/localsend" target="_blank" rel="noopener noreferrer">LocalSend auf GitHub</a></li>
+        <li><a href="https://github.com/localsend/protocol" target="_blank" rel="noopener noreferrer">Das LocalSend-Protokoll</a></li>
+        <li><a href="https://learn.omacom.io/2/the-omarchy-manual/60/guis" target="_blank" rel="noopener noreferrer">Omarchy-Handbuch: GUIs (LocalSend)</a></li>
+        <li><a href="https://web.localsend.org/" target="_blank" rel="noopener noreferrer">LocalSend im Browser</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">LocalSend: AirDrop for every device</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Note</dd></div>
+        <div><dt>Date</dt><dd>2026-11-15</dd></div>
+        <div><dt>Platforms</dt><dd>Windows, macOS, Linux, iPhone, Android, browser</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tools</li>
+        <li>privacy</li>
+        <li>linux</li>
+        <li>omarchy</li>
+      </ul>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>LocalSend is a free, open-source alternative to AirDrop that doesn't just work between Apple devices, but between Windows, macOS, Linux, Android and iPhone. Files go straight from device to device over your own Wi-Fi. No internet, no cloud, no account.</p>
+
+      <h2 class="pixel">&gt; How I found it</h2>
+      <p>LocalSend comes preinstalled with Omarchy and is nicely integrated:</p>
+      <ul>
+        <li><code>Super + Ctrl + S</code> opens the share menu.</li>
+        <li>In the file manager, right-click and choose <em>Send via LocalSend</em>.</li>
+        <li>In the terminal with <code>omarchy share file</code>, <code>omarchy share folder</code> or <code>omarchy share clipboard</code>.</li>
+        <li>Omarchy's firewall is closed by default except for LocalSend's port, so it works right after installation.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; How it works</h2>
+      <ul>
+        <li>All devices on the same Wi-Fi find each other automatically. Pick your files and tap the target device.</li>
+        <li>Any file type works: photos, videos, documents, even plain text.</li>
+        <li>Transfers run at full Wi-Fi speed, with no size limit.</li>
+        <li>The connection is <strong>encrypted with HTTPS</strong>. Each device generates its own certificate for that.</li>
+        <li>You can optionally set a <strong>PIN</strong> that the sender has to enter.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Cool extras</h2>
+      <ul>
+        <li><strong>Web version:</strong> web.localsend.org runs LocalSend right in the browser, handy on other people's computers without installing anything.</li>
+        <li><strong>Completely free:</strong> open source (Apache 2.0 license), no ads, no tracking.</li>
+        <li><strong>Open protocol:</strong> the transfer protocol is publicly documented, and other developers have even built their own implementations.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Good to know</h2>
+      <ul>
+        <li>It only works when both devices are on the <strong>same network</strong>. LocalSend doesn't send anything over the internet.</li>
+        <li>On public Wi-Fi, like in a café or hotel, other LocalSend users on the same network can see you. Turn on the PIN there or close the app.</li>
+        <li>If devices don't show up, the firewall is often the culprit. LocalSend uses port <code>53317</code> by default.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Sources</h2>
+      <ul>
+        <li><a href="https://localsend.org/" target="_blank" rel="noopener noreferrer">localsend.org</a></li>
+        <li><a href="https://github.com/localsend/localsend" target="_blank" rel="noopener noreferrer">LocalSend on GitHub</a></li>
+        <li><a href="https://github.com/localsend/protocol" target="_blank" rel="noopener noreferrer">The LocalSend protocol</a></li>
+        <li><a href="https://learn.omacom.io/2/the-omarchy-manual/60/guis" target="_blank" rel="noopener noreferrer">Omarchy manual: GUIs (LocalSend)</a></li>
+        <li><a href="https://web.localsend.org/" target="_blank" rel="noopener noreferrer">LocalSend in the browser</a></li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
+    <span>RETORO_NEO</span>
+  </div>
+</footer>
+
+<script src="artikel.js"></script>
+</body>
+</html>

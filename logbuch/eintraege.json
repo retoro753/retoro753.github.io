@@ -1,6 +1,19 @@
 [
  {
   "type": "notiz",
+  "slug": "localsend",
+  "title": "LocalSend: AirDrop für alle Geräte",
+  "title_en": "LocalSend: AirDrop for every device",
+  "date": "2026-11-15",
+  "tags": [
+   "tools",
+   "privacy",
+   "linux",
+   "omarchy"
+  ]
+ },
+ {
+  "type": "notiz",
   "slug": "cryptomator",
   "title": "Cryptomator: Cloud-Speicher sicher nutzen",
   "title_en": "Cryptomator: use cloud storage securely",
