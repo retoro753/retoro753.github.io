@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cryptomator: Cloud-Speicher sicher nutzen · RETORO_NEO</title>
+<meta name="description" content="Cryptomator verschlüsselt Dateien auf dem eigenen Gerät, bevor sie in der Cloud landen. Open Source, für Desktop, iPhone und Android.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="logbuch.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <article>
+    <p class="prompt">C:\LOGBUCH&gt; type cryptomator.txt</p>
+    <p id="lang-notice" class="notice" hidden></p>
+
+    <div data-content="de">
+      <h1 class="pixel">Cryptomator: Cloud-Speicher sicher nutzen</h1>
+
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Notiz</dd></div>
+        <div><dt>Datum</dt><dd>15.11.2026</dd></div>
+        <div><dt>Plattformen</dt><dd>Windows, macOS, Linux, iPhone, Android</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>security</li>
+        <li>encryption</li>
+        <li>cloud</li>
+        <li>privacy</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>Cryptomator ist ein Open-Source-Tool, mit dem man fast jeden Cloud-Speicher sicher nutzen kann. Die Dateien werden auf dem eigenen Gerät verschlüsselt, bevor sie hochgeladen werden. Der Cloud-Anbieter sieht nur Datensalat. Damit lassen sich auch Google Drive oder andere kostenlose Angebote nutzen, ohne ihnen die eigenen Daten anzuvertrauen.</p>
+
+      <h2 class="pixel">&gt; Das Problem</h2>
+      <p>Die meisten Cloud-Anbieter verschlüsseln zwar ihre Server, besitzen aber selbst den Schlüssel. Sie könnten die Dateien also lesen, durchsuchen oder bei einem Datenleck preisgeben.</p>
+
+      <h2 class="pixel">&gt; So funktioniert es</h2>
+      <ul>
+        <li>Man legt im Cloud-Ordner einen <strong>Tresor</strong> an und gibt ihm ein Passwort.</li>
+        <li>Nach dem Entsperren erscheint der Tresor wie ein normales Laufwerk. Alles, was man dort ablegt, wird automatisch verschlüsselt.</li>
+        <li>Verschlüsselt werden Inhalte <em>und</em> Dateinamen, mit AES und 256-Bit-Schlüsseln. Auch die Ordnerstruktur wird verschleiert.</li>
+        <li>Kein Konto, keine Registrierung, kein eigener Server: Der Schlüssel bleibt bei dir.</li>
+        <li>Der Code ist öffentlich auf GitHub, und die Software wurde von unabhängigen Sicherheitsforschern geprüft.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Auf dem Handy</h2>
+      <p>Die iPhone-App kann Tresore direkt aus der Cloud öffnen, bequem per <strong>Face ID</strong> oder Touch ID, und ist in die Dateien-App eingebunden. Eine Android-App gibt es ebenfalls. Die Desktop-Version ist kostenlos, für die Vollversion der iPhone-App zahlt man einmalig einen kleinen Betrag.</p>
+
+      <h2 class="pixel">&gt; Gut zu wissen</h2>
+      <ul>
+        <li><strong>Passwort weg = Daten weg.</strong> Es gibt keine Hintertür. Das Passwort gehört in einen Passwortmanager.</li>
+        <li>Der Anbieter sieht zwar keine Inhalte und Namen, aber noch, wie viele Dateien es ungefähr gibt, wie groß sie sind und wann sie sich ändern.</li>
+        <li>Cryptomator schützt die Dateien in der Cloud. Ein mit Schadsoftware befallenes Gerät, auf dem der Tresor gerade offen ist, schützt es nicht.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Quellen</h2>
+      <ul>
+        <li><a href="https://cryptomator.org/" target="_blank" rel="noopener noreferrer">cryptomator.org</a></li>
+        <li><a href="https://github.com/cryptomator/cryptomator" target="_blank" rel="noopener noreferrer">Cryptomator auf GitHub</a></li>
+        <li><a href="https://cryptomator.readthedocs.io/en/1.7/security/architecture/" target="_blank" rel="noopener noreferrer">Sicherheitsarchitektur (Doku, Englisch)</a></li>
+        <li><a href="https://apps.apple.com/app/id1560822163" target="_blank" rel="noopener noreferrer">Cryptomator im App Store</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">Cryptomator: use cloud storage securely</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Note</dd></div>
+        <div><dt>Date</dt><dd>2026-11-15</dd></div>
+        <div><dt>Platforms</dt><dd>Windows, macOS, Linux, iPhone, Android</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>security</li>
+        <li>encryption</li>
+        <li>cloud</li>
+        <li>privacy</li>
+      </ul>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>Cryptomator is an open-source tool that lets you use almost any cloud storage securely. Files are encrypted on your own device before they are uploaded, so the cloud provider only sees gibberish. That way you can even use Google Drive or other free services without trusting them with your data.</p>
+
+      <h2 class="pixel">&gt; The problem</h2>
+      <p>Most cloud providers do encrypt their servers, but they hold the key themselves. So they could read or scan your files, or expose them in a data breach.</p>
+
+      <h2 class="pixel">&gt; How it works</h2>
+      <ul>
+        <li>You create a <strong>vault</strong> inside your cloud folder and give it a password.</li>
+        <li>Once unlocked, the vault shows up like a normal drive. Everything you put there is encrypted automatically.</li>
+        <li>Both contents <em>and</em> file names are encrypted, using AES with 256-bit keys. The folder structure is obscured as well.</li>
+        <li>No account, no sign-up, no server of its own: the key stays with you.</li>
+        <li>The code is public on GitHub, and the software has been reviewed by independent security researchers.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; On your phone</h2>
+      <p>The iPhone app can open vaults straight from the cloud, conveniently with <strong>Face ID</strong> or Touch ID, and is built into the Files app. There is an Android app too. The desktop version is free; the full version of the iPhone app is a small one-time purchase.</p>
+
+      <h2 class="pixel">&gt; Good to know</h2>
+      <ul>
+        <li><strong>Lost password = lost data.</strong> There is no backdoor. Keep the password in a password manager.</li>
+        <li>The provider can't see contents or names, but can still roughly see how many files there are, how big they are and when they change.</li>
+        <li>Cryptomator protects your files in the cloud. It can't protect a malware-infected device while the vault is open on it.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Sources</h2>
+      <ul>
+        <li><a href="https://cryptomator.org/" target="_blank" rel="noopener noreferrer">cryptomator.org</a></li>
+        <li><a href="https://github.com/cryptomator/cryptomator" target="_blank" rel="noopener noreferrer">Cryptomator on GitHub</a></li>
+        <li><a href="https://cryptomator.readthedocs.io/en/1.7/security/architecture/" target="_blank" rel="noopener noreferrer">Security architecture (docs)</a></li>
+        <li><a href="https://apps.apple.com/app/id1560822163" target="_blank" rel="noopener noreferrer">Cryptomator on the App Store</a></li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
+    <span>RETORO_NEO</span>
+  </div>
+</footer>
+
+<script src="artikel.js"></script>
+</body>
+</html>

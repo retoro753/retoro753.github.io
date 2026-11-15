@@ -1,6 +1,19 @@
 [
  {
   "type": "notiz",
+  "slug": "cryptomator",
+  "title": "Cryptomator: Cloud-Speicher sicher nutzen",
+  "title_en": "Cryptomator: use cloud storage securely",
+  "date": "2026-11-15",
+  "tags": [
+   "security",
+   "encryption",
+   "cloud",
+   "privacy"
+  ]
+ },
+ {
+  "type": "notiz",
   "slug": "omarchy-t2-macbook",
   "title": "Omarchy auf MacBooks mit T2-Chip",
   "date": "2026-11-14",
