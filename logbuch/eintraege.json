@@ -1,6 +1,19 @@
 [
  {
   "type": "notiz",
+  "slug": "tailcat",
+  "title": "Tailcat: sichere Tunnel in Sekunden",
+  "title_en": "Tailcat: secure tunnels in seconds",
+  "date": "2026-11-16",
+  "tags": [
+   "tools",
+   "networking",
+   "ssh",
+   "security"
+  ]
+ },
+ {
+  "type": "notiz",
   "slug": "localsend",
   "title": "LocalSend: AirDrop für alle Geräte",
   "title_en": "LocalSend: AirDrop for every device",

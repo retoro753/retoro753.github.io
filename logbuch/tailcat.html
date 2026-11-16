@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tailcat: sichere Tunnel in Sekunden · RETORO_NEO</title>
+<meta name="description" content="Tailcat von Tailscale: verschlüsselte WireGuard-Tunnel zwischen zwei Rechnern für SSH, Dateien und Ports, ohne Konto und ohne Root-Rechte.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="logbuch.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <article>
+    <p class="prompt">C:\LOGBUCH&gt; type tailcat.txt</p>
+    <p id="lang-notice" class="notice" hidden></p>
+
+    <div data-content="de">
+      <h1 class="pixel">Tailcat: sichere Tunnel in Sekunden</h1>
+
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Notiz</dd></div>
+        <div><dt>Datum</dt><dd>16.11.2026</dd></div>
+        <div><dt>Plattformen</dt><dd>Linux, macOS, Windows</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tools</li>
+        <li>networking</li>
+        <li>ssh</li>
+        <li>security</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>Tailcat ist ein Kommandozeilen-Tool von Tailscale, das zwei Rechner in Sekunden über einen verschlüsselten Tunnel verbindet. Damit kann man sich per SSH einloggen, Daten übertragen oder Ports weiterleiten. Man braucht dafür weder ein Konto noch Root-Rechte, und es funktioniert nicht nur im Heimnetz, sondern auch über das Internet.</p>
+
+      <h2 class="pixel">&gt; So funktioniert es</h2>
+      <ul>
+        <li>Auf dem Rechner, den man erreichen will, startet man Tailcat. Es zeigt eine <strong>Tailcat-Adresse</strong> an, eine lange Zeichenkette, die mit <code>tc</code> beginnt.</li>
+        <li>Diese Adresse gibt man dem anderen Rechner. Damit baut Tailcat den Tunnel auf.</li>
+        <li>Verschlüsselt wird mit <strong>WireGuard</strong>, demselben Protokoll, das auch Tailscale nutzt.</li>
+        <li>Wenn möglich, verbinden sich die Rechner direkt. Klappt das nicht, etwa wegen Router oder Firewall, läuft die Verbindung über ein Relais von Tailscale.</li>
+        <li>Tailcat läuft komplett als normales Programm: kein Root, keine Änderungen an Netzwerk-Einstellungen oder DNS.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Was man damit machen kann</h2>
+      <p>Text oder Daten schicken:</p>
+<pre><code># Rechner A (zeigt die Adresse an)
+tailcat
+
+# Rechner B
+echo hallo | tailcat [ADRESSE]</code></pre>
+      <p>Per SSH einloggen:</p>
+<pre><code># Rechner A
+tailcat --serve=no-auth-ssh
+
+# Rechner B
+tailcat ssh [ADRESSE]</code></pre>
+      <p>Einen Port weiterleiten, zum Beispiel einen lokalen Webserver:</p>
+<pre><code># Rechner A
+tailcat --serve=8080
+
+# Rechner B
+tailcat [ADRESSE] 8080</code></pre>
+      <p>Außerdem gibt es einen SOCKS5-Proxy und einen SFTP-Server für Dateiübertragungen über den Tunnel.</p>
+
+      <h2 class="pixel">&gt; Tailcat oder Tailscale?</h2>
+      <p>Tailcat ist für <strong>kurze, spontane Verbindungen</strong> gedacht: mal schnell per SSH auf einen Rechner, eine Datei rüberschieben, einen Dienst kurz freigeben. Wer seine Geräte <strong>dauerhaft</strong> in einem privaten Netz verbinden will, ist mit Tailscale selbst besser bedient. Tailcat ist ausdrücklich kein Ersatz dafür.</p>
+
+      <h2 class="pixel">&gt; Gut zu wissen</h2>
+      <ul>
+        <li><strong>Die Tailcat-Adresse ist wie ein Passwort.</strong> Wer sie hat, kann sich verbinden. Also nicht posten, nicht in Git einchecken und nur über einen sicheren Weg weitergeben, etwa per Signal.</li>
+        <li>Bei <code>no-auth-ssh</code> ist die Adresse der einzige Schutz. Für mehr Sicherheit kann man mit <code>--ssh-authorized-keys</code> zusätzlich SSH-Schlüssel verlangen.</li>
+        <li>Das öffentliche Relais von Tailscale speichert Metadaten der Verbindungen. Die Inhalte bleiben verschlüsselt, aber für maximale Privatsphäre ist das Relais nicht gedacht.</li>
+        <li>Tailcat ist noch sehr neu (erschienen im September 2026) und kann sich noch ändern.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Quellen</h2>
+      <ul>
+        <li><a href="https://tailscale.com/tailcat" target="_blank" rel="noopener noreferrer">tailscale.com/tailcat</a></li>
+        <li><a href="https://github.com/tailscale/tailcat" target="_blank" rel="noopener noreferrer">Tailcat auf GitHub</a></li>
+        <li><a href="https://linuxcommandlibrary.com/man/tailcat" target="_blank" rel="noopener noreferrer">Tailcat-Befehle (Linux Command Library)</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">Tailcat: secure tunnels in seconds</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Note</dd></div>
+        <div><dt>Date</dt><dd>2026-11-16</dd></div>
+        <div><dt>Platforms</dt><dd>Linux, macOS, Windows</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tools</li>
+        <li>networking</li>
+        <li>ssh</li>
+        <li>security</li>
+      </ul>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>Tailcat is a command-line tool from Tailscale that connects two machines through an encrypted tunnel in seconds. You can use it to log in via SSH, transfer data or forward ports. It needs no account and no root privileges, and it works not just on your home network but across the internet too.</p>
+
+      <h2 class="pixel">&gt; How it works</h2>
+      <ul>
+        <li>On the machine you want to reach, you start Tailcat. It prints a <strong>tailcat address</strong>, a long string starting with <code>tc</code>.</li>
+        <li>You hand that address to the other machine, and Tailcat builds the tunnel with it.</li>
+        <li>Encryption is done with <strong>WireGuard</strong>, the same protocol Tailscale uses.</li>
+        <li>Where possible, the machines connect directly. If that fails, for example because of a router or firewall, traffic goes through a Tailscale relay.</li>
+        <li>Tailcat runs entirely as a normal program: no root, no changes to network settings or DNS.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; What you can do with it</h2>
+      <p>Send text or data:</p>
+<pre><code># Machine A (prints the address)
+tailcat
+
+# Machine B
+echo hello | tailcat [ADDRESS]</code></pre>
+      <p>Log in via SSH:</p>
+<pre><code># Machine A
+tailcat --serve=no-auth-ssh
+
+# Machine B
+tailcat ssh [ADDRESS]</code></pre>
+      <p>Forward a port, for example a local web server:</p>
+<pre><code># Machine A
+tailcat --serve=8080
+
+# Machine B
+tailcat [ADDRESS] 8080</code></pre>
+      <p>There is also a SOCKS5 proxy and an SFTP server for file transfers through the tunnel.</p>
+
+      <h2 class="pixel">&gt; Tailcat or Tailscale?</h2>
+      <p>Tailcat is made for <strong>short, ad-hoc connections</strong>: quickly SSH into a machine, move a file over, expose a service for a moment. If you want to connect your devices <strong>permanently</strong> in a private network, Tailscale itself is the better fit. Tailcat is explicitly not a replacement for it.</p>
+
+      <h2 class="pixel">&gt; Good to know</h2>
+      <ul>
+        <li><strong>A tailcat address is like a password.</strong> Anyone who has it can connect. So don't post it, don't commit it to Git, and only share it through a secure channel, like Signal.</li>
+        <li>With <code>no-auth-ssh</code>, the address is the only protection. For more security, you can additionally require SSH keys with <code>--ssh-authorized-keys</code>.</li>
+        <li>Tailscale's public relay keeps metadata logs of connections. The contents stay encrypted, but the relay isn't meant for maximum privacy.</li>
+        <li>Tailcat is still very new (released in September 2026) and may still change.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Sources</h2>
+      <ul>
+        <li><a href="https://tailscale.com/tailcat" target="_blank" rel="noopener noreferrer">tailscale.com/tailcat</a></li>
+        <li><a href="https://github.com/tailscale/tailcat" target="_blank" rel="noopener noreferrer">Tailcat on GitHub</a></li>
+        <li><a href="https://linuxcommandlibrary.com/man/tailcat" target="_blank" rel="noopener noreferrer">Tailcat commands (Linux Command Library)</a></li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
+    <span>RETORO_NEO</span>
+  </div>
+</footer>
+
+<script src="artikel.js"></script>
+</body>
+</html>
