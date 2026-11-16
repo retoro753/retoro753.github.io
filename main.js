@@ -2,7 +2,7 @@
   var TEXTS = {
     de: {
       navProjects: 'Projekte',
-      intro: 'Kleine Projekte und Cybersecurity.',
+      intro: 'Projekte, Notizen und Writeups.',
       kakeibo: 'Haushaltsbuch nach der japanischen Kakeibo-Methode: Einnahmen und Ausgaben festhalten und bewusster sparen.',
       clrty: 'Blog über ein bewussteres Leben: weniger, aber besser.',
       open: 'Öffnen ›',
@@ -22,7 +22,7 @@
     },
     en: {
       navProjects: 'Projects',
-      intro: 'Small projects and cybersecurity.',
+      intro: 'Projects, notes and writeups.',
       kakeibo: 'A budgeting book based on the Japanese kakeibo method: track income and spending and save more mindfully.',
       clrty: 'A blog about living more intentionally: less, but better.',
       open: 'Open ›',
