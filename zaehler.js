@@ -14,7 +14,9 @@
   if (!box) return;
 
   fetch(GC + '/counter/TOTAL.json')
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    // GoatCounter antwortet mit 404, solange es noch keine Besuche gibt; die Antwort enthält dann count "0".
+    // Die Zahl wird dort bis zu 4 Stunden zwischengespeichert, der Zähler hinkt also etwas hinterher.
+    .then(function (r) { if (!r.ok && r.status !== 404) throw new Error(r.status); return r.json(); })
     .then(function (data) {
       var digits = String(data.count).replace(/\D/g, '');
       while (digits.length < 6) digits = '0' + digits;
