@@ -50,13 +50,13 @@
       <p class="notice">Stand: 17.11.2026. Die Sache ist noch nicht abschließend geklärt. Ich ergänze diese Notiz, sobald es Neues gibt.</p>
 
       <h2 class="pixel">&gt; Kurz gesagt</h2>
-      <p>Beim Update von Omarchy auf meinem T2-MacBook ist mir im Namen des Kernels eine politische Beleidigung gegen DHH, den Gründer von Omarchy, aufgefallen. Das Paket stammte aus einer fremden Paketquelle, die ohne Signaturprüfung eingebunden war. Die Botschaft selbst ist nicht das eigentliche Problem. Das Problem ist, dass jemand unbemerkt einen veränderten Kernel ausliefern konnte.</p>
+      <p>Beim Update von Omarchy auf meinem T2-MacBook ist mir im Namen des Kernels eine politische Äußerung über DHH, den Gründer von Omarchy, aufgefallen. Das Paket stammte aus einer fremden Paketquelle, die ohne Signaturprüfung eingebunden war. Die Botschaft selbst ist nicht das eigentliche Problem. Das Problem ist, dass jemand unbemerkt einen veränderten Kernel ausliefern konnte.</p>
 
       <h2 class="pixel">&gt; Was passiert ist</h2>
       <ul>
         <li>Betroffen ist das Paket <code>linux-t2</code> in Version 7.3.4.arch1-2 aus der Paketquelle <code>[arch-mact2]</code>. Diese Quelle wird nicht von Omarchy selbst betrieben.</li>
         <li>Das Paket wurde am 14.11.2026 von einem unbekannten Ersteller („Unknown Packager“) gebaut.</li>
-        <li>Die Beleidigung steht im Versionsnamen des Kernels. Sie erscheint über jeder Konsolen-Anmeldung und bei <code>uname -r</code>.</li>
+        <li>Die Äußerung steht im Versionsnamen des Kernels. Sie erscheint über jeder Konsolen-Anmeldung und bei <code>uname -r</code>.</li>
         <li>Die Paketquelle war mit <code>SigLevel = Never</code> eingebunden. Das System hat also nicht geprüft, von wem die Pakete stammen.</li>
         <li>Omarchy hat am 16.11.2026 reagiert und bezieht die T2-Pakete seitdem aus der eigenen Quelle <code>[omarchy]</code>.</li>
       </ul>
@@ -70,7 +70,7 @@
 
       <h2 class="pixel">&gt; Warum das wichtig ist</h2>
       <p>Wer eine Paketquelle betreibt, kann jederzeit neue Versionen mit beliebigem Inhalt veröffentlichen. Das ist bei jeder Quelle so: Man vertraut immer den Menschen dahinter. Signaturen beweisen wenigstens, <em>von wem</em> ein Paket kommt. Fehlt die Prüfung, kann auch jemand anderes Pakete unterschieben.</p>
-      <p>Diesmal war es eine Beleidigung im Namen. Genauso hätte Schadcode in einem Kernel stecken können, und der Kernel hat volle Kontrolle über das ganze System. Solche Angriffe über die Lieferkette nennt man <strong>Supply-Chain-Angriffe</strong>.</p>
+      <p>Diesmal war es eine Äußerung im Namen. Genauso hätte Schadcode in einem Kernel stecken können, und der Kernel hat volle Kontrolle über das ganze System. Solche Angriffe über die Lieferkette nennt man <strong>Supply-Chain-Angriffe</strong>.</p>
 
       <h2 class="pixel">&gt; So prüfst du dein System</h2>
       <p>Welcher Kernel läuft gerade?</p>
@@ -104,13 +104,13 @@
       <p class="notice">As of 2026-11-17. This hasn't been fully resolved yet. I'll update this note as soon as there's news.</p>
 
       <h2 class="pixel">&gt; In short</h2>
-      <p>While updating Omarchy on my T2 MacBook, I noticed a political insult against DHH, the founder of Omarchy, in the kernel's name. The package came from a third-party package source that was set up without signature checking. The message itself isn't the real problem. The problem is that someone could ship a modified kernel without anyone noticing.</p>
+      <p>While updating Omarchy on my T2 MacBook, I noticed a political statement about DHH, the founder of Omarchy, in the kernel's name. The package came from a third-party package source that was set up without signature checking. The message itself isn't the real problem. The problem is that someone could ship a modified kernel without anyone noticing.</p>
 
       <h2 class="pixel">&gt; What happened</h2>
       <ul>
         <li>The affected package is <code>linux-t2</code> version 7.3.4.arch1-2 from the <code>[arch-mact2]</code> package source. That source is not run by Omarchy itself.</li>
         <li>The package was built on 2026-11-14 by an unknown builder ("Unknown Packager").</li>
-        <li>The insult is in the kernel's version name. It shows up above every console login and in <code>uname -r</code>.</li>
+        <li>The statement is in the kernel's version name. It shows up above every console login and in <code>uname -r</code>.</li>
         <li>The package source was configured with <code>SigLevel = Never</code>, so the system never checked who the packages came from.</li>
         <li>Omarchy responded on 2026-11-16 and now takes the T2 packages from its own <code>[omarchy]</code> source.</li>
       </ul>
@@ -124,7 +124,7 @@
 
       <h2 class="pixel">&gt; Why this matters</h2>
       <p>Whoever runs a package source can publish new versions with any content at any time. That's true for every source: you always trust the people behind it. Signatures at least prove <em>who</em> a package comes from. Without that check, someone else can slip packages in as well.</p>
-      <p>This time it was an insult in a name. It could just as well have been malware in a kernel, and the kernel has full control over the entire system. Attacks like this through the delivery chain are called <strong>supply-chain attacks</strong>.</p>
+      <p>This time it was a statement in a name. It could just as well have been malware in a kernel, and the kernel has full control over the entire system. Attacks like this through the delivery chain are called <strong>supply-chain attacks</strong>.</p>
 
       <h2 class="pixel">&gt; How to check your system</h2>
       <p>Which kernel is running right now?</p>
