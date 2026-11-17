@@ -2,8 +2,8 @@
 // Jeder Beitrag hat einen Block <div data-content="de"> und optional <div data-content="en">.
 // Fehlt der englische Block, bleibt der deutsche sichtbar und ein Hinweis erscheint.
 var UI = {
-  de: { back: '‹ Logbuch', backLong: '‹ Zurück zum Logbuch', onlyOther: 'Dieser Beitrag ist nur auf Englisch verfügbar.' },
-  en: { back: '‹ Log', backLong: '‹ Back to the log', onlyOther: 'This entry is only available in German.' }
+  de: { home: '‹ Startseite', privacy: 'Datenschutz', back: '‹ Logbuch', backLong: '‹ Zurück zum Logbuch', onlyOther: 'Dieser Beitrag ist nur auf Englisch verfügbar.' },
+  en: { home: '‹ Home', privacy: 'Privacy', back: '‹ Log', backLong: '‹ Back to the log', onlyOther: 'This entry is only available in German.' }
 };
 
 function setLang(lang) {

@@ -1,6 +1,7 @@
 var TEXTS = {
   de: {
     home: '‹ Startseite',
+    privacy: 'Datenschutz',
     title: 'Logbuch',
     intro: 'CTF-Writeups ohne Flags und kurze Notizen: Erkenntnisse, Tipps und Erfahrungen rund um Linux, Security und Technik.',
     searchLabel: 'Suche',
@@ -16,6 +17,7 @@ var TEXTS = {
   },
   en: {
     home: '‹ Home',
+    privacy: 'Privacy',
     title: 'Log',
     intro: 'CTF writeups without flags and short notes: findings, tips and experiences around Linux, security and tech.',
     searchLabel: 'Search',
