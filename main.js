@@ -12,6 +12,7 @@
       soon: 'Kommt bald',
       navLog: 'Logbuch',
       visitors: 'Besucher',
+      breaking: '+++ EILMELDUNG +++',
       privacy: 'Datenschutz',
       logIntro: 'CTF-Writeups ohne Flags und kurze Notizen: Erkenntnisse, Tipps und Erfahrungen rund um Linux, Security und Technik.',
       logSoon: 'Erster Eintrag in Arbeit',
@@ -34,6 +35,7 @@
       soon: 'Coming soon',
       navLog: 'Log',
       visitors: 'Visitors',
+      breaking: '+++ BREAKING +++',
       privacy: 'Privacy',
       logIntro: 'CTF writeups without flags and short notes: findings, tips and experiences around Linux, security and tech.',
       logSoon: 'First entry in progress',
@@ -78,6 +80,16 @@
       row.appendChild(meta);
       box.appendChild(row);
     });
+    // Ticker: neuester Eintrag mit "breaking": true in logbuch/eintraege.json
+    var hot = ENTRIES.filter(function (e) { return e.breaking; })[0];
+    var ticker = document.getElementById('ticker');
+    if (hot) {
+      ticker.href = 'logbuch/' + hot.slug + '.html';
+      document.getElementById('ticker-text').textContent =
+        (currentLang === 'en' ? (hot.ticker_en || hot.title_en) : hot.ticker) || hot.title;
+    }
+    ticker.hidden = !hot;
+
     var n = ENTRIES.length;
     document.getElementById('log-empty').hidden = n > 0;
     document.getElementById('log-all').hidden = n === 0;

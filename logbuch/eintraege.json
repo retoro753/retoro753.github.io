@@ -1,6 +1,22 @@
 [
  {
   "type": "notiz",
+  "slug": "t2-kernel-paketquelle",
+  "title": "T2-Kernel mit Botschaft: Paketquellen sind Vertrauenssache",
+  "title_en": "T2 kernel with a message: package sources are a matter of trust",
+  "date": "2026-11-17",
+  "tags": [
+   "security",
+   "supply-chain",
+   "linux",
+   "omarchy"
+  ],
+  "breaking": true,
+  "ticker": "Politische Botschaft im T2-Kernel aus fremder Paketquelle: betrifft Omarchy auf Intel-Macs. Jetzt prüfen ›",
+  "ticker_en": "Political message in T2 kernel from a third-party package source: affects Omarchy on Intel Macs. Check now ›"
+ },
+ {
+  "type": "notiz",
   "slug": "tailcat",
   "title": "Tailcat: sichere Tunnel in Sekunden",
   "title_en": "Tailcat: secure tunnels in seconds",

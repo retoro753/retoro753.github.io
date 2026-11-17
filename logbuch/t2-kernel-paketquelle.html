@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T2-Kernel mit Botschaft: Paketquellen sind Vertrauenssache · RETORO_NEO</title>
+<meta name="description" content="Ein T2-Kernel aus einer fremden, unsignierten Paketquelle trug eine politische Botschaft im Versionsnamen. Was passiert ist, was offen ist und wie du dein System prüfst.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://retr0.goatcounter.com; connect-src 'self' https://retr0.goatcounter.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="logbuch.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <article>
+    <p class="prompt">C:\LOGBUCH&gt; type t2-kernel-paketquelle.txt</p>
+    <p id="lang-notice" class="notice" hidden></p>
+
+    <div data-content="de">
+      <h1 class="pixel">T2-Kernel mit Botschaft: Paketquellen sind Vertrauenssache</h1>
+
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Notiz</dd></div>
+        <div><dt>Datum</dt><dd>17.11.2026</dd></div>
+        <div><dt>Betrifft</dt><dd>Omarchy auf Intel-Macs mit T2-Chip</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>security</li>
+        <li>supply-chain</li>
+        <li>linux</li>
+        <li>omarchy</li>
+      </ul>
+
+      <p class="notice">Stand: 17.11.2026. Die Sache ist noch nicht abschließend geklärt. Ich ergänze diese Notiz, sobald es Neues gibt.</p>
+
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>Beim Update von Omarchy auf meinem T2-MacBook ist mir im Namen des Kernels eine politische Beleidigung gegen DHH, den Gründer von Omarchy, aufgefallen. Das Paket stammte aus einer fremden Paketquelle, die ohne Signaturprüfung eingebunden war. Die Botschaft selbst ist nicht das eigentliche Problem. Das Problem ist, dass jemand unbemerkt einen veränderten Kernel ausliefern konnte.</p>
+
+      <h2 class="pixel">&gt; Was passiert ist</h2>
+      <ul>
+        <li>Betroffen ist das Paket <code>linux-t2</code> in Version 7.3.4.arch1-2 aus der Paketquelle <code>[arch-mact2]</code>. Diese Quelle wird nicht von Omarchy selbst betrieben.</li>
+        <li>Das Paket wurde am 14.11.2026 von einem unbekannten Ersteller („Unknown Packager“) gebaut.</li>
+        <li>Die Beleidigung steht im Versionsnamen des Kernels. Sie erscheint über jeder Konsolen-Anmeldung und bei <code>uname -r</code>.</li>
+        <li>Die Paketquelle war mit <code>SigLevel = Never</code> eingebunden. Das System hat also nicht geprüft, von wem die Pakete stammen.</li>
+        <li>Omarchy hat am 16.11.2026 reagiert und bezieht die T2-Pakete seitdem aus der eigenen Quelle <code>[omarchy]</code>.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Was noch offen ist</h2>
+      <ul>
+        <li>Ob nur der Name geändert wurde oder auch der Code des Kernels, ist <strong>nicht belegt</strong>. Bisher hat niemand den Code mit dem Original verglichen.</li>
+        <li>Omarchy hat sich zu dem GitHub-Eintrag noch nicht geäußert.</li>
+        <li>Aus derselben Quelle kamen auch andere T2-Pakete, etwa für Audio, WLAN-Firmware und die Lüftersteuerung.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Warum das wichtig ist</h2>
+      <p>Wer eine Paketquelle betreibt, kann jederzeit neue Versionen mit beliebigem Inhalt veröffentlichen. Das ist bei jeder Quelle so: Man vertraut immer den Menschen dahinter. Signaturen beweisen wenigstens, <em>von wem</em> ein Paket kommt. Fehlt die Prüfung, kann auch jemand anderes Pakete unterschieben.</p>
+      <p>Diesmal war es eine Beleidigung im Namen. Genauso hätte Schadcode in einem Kernel stecken können, und der Kernel hat volle Kontrolle über das ganze System. Solche Angriffe über die Lieferkette nennt man <strong>Supply-Chain-Angriffe</strong>.</p>
+
+      <h2 class="pixel">&gt; So prüfst du dein System</h2>
+      <p>Welcher Kernel läuft gerade?</p>
+<pre><code>uname -r</code></pre>
+      <p>Ist die fremde Quelle noch eingetragen, und wie ist die Signaturprüfung eingestellt?</p>
+<pre><code>grep -A3 "arch-mact2" /etc/pacman.conf</code></pre>
+      <p>Laut dem GitHub-Eintrag ersetzt ein Update über die Quelle <code>[omarchy]</code> das betroffene Paket. Vorher unbedingt ein <strong>Backup</strong> machen: Ein Kernelwechsel auf einem T2-Mac kann schiefgehen.</p>
+
+      <h2 class="pixel">&gt; Quellen</h2>
+      <ul>
+        <li><a href="https://github.com/omacom/omarchy-iso/issues/462" target="_blank" rel="noopener noreferrer">GitHub: omacom/omarchy-iso, Issue #462</a></li>
+        <li><a href="omarchy-t2-macbook.html">Meine Notiz: Omarchy auf MacBooks mit T2-Chip</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">T2 kernel with a message: package sources are a matter of trust</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Note</dd></div>
+        <div><dt>Date</dt><dd>2026-11-17</dd></div>
+        <div><dt>Affects</dt><dd>Omarchy on Intel Macs with a T2 chip</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>security</li>
+        <li>supply-chain</li>
+        <li>linux</li>
+        <li>omarchy</li>
+      </ul>
+
+      <p class="notice">As of 2026-11-17. This hasn't been fully resolved yet. I'll update this note as soon as there's news.</p>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>While updating Omarchy on my T2 MacBook, I noticed a political insult against DHH, the founder of Omarchy, in the kernel's name. The package came from a third-party package source that was set up without signature checking. The message itself isn't the real problem. The problem is that someone could ship a modified kernel without anyone noticing.</p>
+
+      <h2 class="pixel">&gt; What happened</h2>
+      <ul>
+        <li>The affected package is <code>linux-t2</code> version 7.3.4.arch1-2 from the <code>[arch-mact2]</code> package source. That source is not run by Omarchy itself.</li>
+        <li>The package was built on 2026-11-14 by an unknown builder ("Unknown Packager").</li>
+        <li>The insult is in the kernel's version name. It shows up above every console login and in <code>uname -r</code>.</li>
+        <li>The package source was configured with <code>SigLevel = Never</code>, so the system never checked who the packages came from.</li>
+        <li>Omarchy responded on 2026-11-16 and now takes the T2 packages from its own <code>[omarchy]</code> source.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; What's still unclear</h2>
+      <ul>
+        <li>Whether only the name was changed or the kernel code as well is <strong>not established</strong>. So far nobody has compared the code against the original.</li>
+        <li>Omarchy hasn't commented on the GitHub issue yet.</li>
+        <li>Other T2 packages came from the same source too, for example for audio, Wi-Fi firmware and fan control.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Why this matters</h2>
+      <p>Whoever runs a package source can publish new versions with any content at any time. That's true for every source: you always trust the people behind it. Signatures at least prove <em>who</em> a package comes from. Without that check, someone else can slip packages in as well.</p>
+      <p>This time it was an insult in a name. It could just as well have been malware in a kernel, and the kernel has full control over the entire system. Attacks like this through the delivery chain are called <strong>supply-chain attacks</strong>.</p>
+
+      <h2 class="pixel">&gt; How to check your system</h2>
+      <p>Which kernel is running right now?</p>
+<pre><code>uname -r</code></pre>
+      <p>Is the third-party source still configured, and how is signature checking set?</p>
+<pre><code>grep -A3 "arch-mact2" /etc/pacman.conf</code></pre>
+      <p>According to the GitHub issue, an update from the <code>[omarchy]</code> source replaces the affected package. Make a <strong>backup</strong> first: swapping the kernel on a T2 Mac can go wrong.</p>
+
+      <h2 class="pixel">&gt; Sources</h2>
+      <ul>
+        <li><a href="https://github.com/omacom/omarchy-iso/issues/462" target="_blank" rel="noopener noreferrer">GitHub: omacom/omarchy-iso, issue #462</a></li>
+        <li><a href="omarchy-t2-macbook.html">My note: Omarchy on MacBooks with a T2 chip</a></li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
+    <a href="../datenschutz.html" data-i18n="privacy">Datenschutz</a>
+  </div>
+</footer>
+
+<script src="artikel.js"></script>
+<script src="../zaehler.js"></script>
+</body>
+</html>
