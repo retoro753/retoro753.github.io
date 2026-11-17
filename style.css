@@ -93,3 +93,12 @@
 /* Logo mit Pixel-Qualle */
 .logo { display: inline-flex; align-items: center; gap: 0; }
 .logo img { display: block; width: 24px; height: 24px; margin-right: 32px; image-rendering: pixelated; }
+
+/* Retro-Besucherzähler */
+.visitor-counter { display: inline-flex; align-items: center; gap: 8px; }
+.visitor-counter .digits { display: inline-flex; gap: 2px; }
+.visitor-counter .digit {
+  font-family: 'VT323', monospace; font-size: 22px; line-height: 1;
+  min-width: 16px; padding: 2px 3px; text-align: center;
+  background: #000000; color: var(--accent); border: 1px solid #3a4a58;
+}

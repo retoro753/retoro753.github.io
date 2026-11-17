@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RETORO_NEO</title>
 <meta name="description" content="Projekte, Notizen und Writeups.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; frame-src https://tryhackme.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://retr0.goatcounter.com; connect-src 'self' https://retr0.goatcounter.com; frame-src https://tryhackme.com; object-src 'none'; base-uri 'self'; form-action 'none'">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="stylesheet" href="fonts/fonts.css">
@@ -116,11 +116,13 @@
 <footer>
   <div class="wrap foot">
     <span data-i18n="footer">Gebaut mit HTML &amp; CSS · gehostet auf GitHub Pages</span>
+    <span class="visitor-counter" id="visitor-counter" hidden><span data-i18n="visitors">Besucher</span>: <span class="digits" id="visitor-digits"></span></span>
     <span>Best viewed with any browser · 800×600</span>
   </div>
 </footer>
 
 <script src="main.js"></script>
 
+<script src="zaehler.js"></script>
 </body>
 </html>
