@@ -101,4 +101,4 @@ footer { border-top: 2px solid #1e2a36; }
 
 /* Themen-Icon (Motto) in der Writeup-Überschrift */
 .motto-wrap { display: inline-block; }
-.motto { height: 0.62em; width: auto; vertical-align: baseline; }
+.motto { height: 0.4em; width: auto; vertical-align: baseline; }
