@@ -1,5 +1,21 @@
 [
  {
+  "type": "writeup",
+  "slug": "corp-website",
+  "title": "Corp Website",
+  "title_en": "Corp Website",
+  "platform": "TryHackMe",
+  "difficulty": "Easy",
+  "date": "2026-11-18",
+  "tags": [
+   "tryhackme",
+   "web",
+   "rce",
+   "cve",
+   "privesc"
+  ]
+ },
+ {
   "type": "notiz",
   "slug": "t2-kernel-paketquelle",
   "title": "T2-Kernel mit Botschaft: Paketquellen sind Vertrauenssache",

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corp Website (TryHackMe) – CVE-RCE und sudo-Privesc · RETORO_NEO</title>
+<meta name="description" content="Writeup zum TryHackMe-Raum Corp Website (Pfad Love at first Breach): von der Enumeration über eine unauthentifizierte RCE in Next.js bis zu root per sudo python3. Ohne Flags.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://retr0.goatcounter.com; connect-src 'self' https://retr0.goatcounter.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="logbuch.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <article>
+    <p class="prompt">C:\LOGBUCH&gt; type corp-website.txt</p>
+    <p id="lang-notice" class="notice" hidden></p>
+
+    <div data-content="de">
+      <h1 class="pixel">Corp Website</h1>
+
+      <dl class="meta">
+        <div><dt>Plattform</dt><dd>TryHackMe</dd></div>
+        <div><dt>Pfad</dt><dd>Love at first Breach</dd></div>
+        <div><dt>Schwierigkeit</dt><dd>Easy</dd></div>
+        <div><dt>Datum</dt><dd>18.11.2026</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tryhackme</li>
+        <li>web</li>
+        <li>rce</li>
+        <li>cve</li>
+        <li>privesc</li>
+      </ul>
+
+      <p class="notice">Keine Flags, keine Passwörter. Hier geht es um den Weg, nicht ums Abschreiben. Die Ziel-IP wechselt pro Session und steht hier als <code>ZIEL-IP</code>.</p>
+
+      <h2 class="pixel">&gt; Überblick</h2>
+      <p>„Corp Website“ ist ein Linux-Ziel mit einer Firmen-Webseite. Offen sind nur zwei Ports: SSH und ein Webserver. Die Webseite läuft auf einem veralteten Web-Framework mit einer kritischen Lücke. Darüber bekommt man ohne Login eine Shell und wird am Ende über eine lasche <code>sudo</code>-Regel zu root.</p>
+      <ul>
+        <li><strong>Web-App:</strong> Port 3000, Next.js 16.0.6</li>
+        <li><strong>SSH:</strong> Port 22</li>
+        <li><strong>Einfallstor:</strong> CVE-2025-55182 (unauthentifizierte RCE)</li>
+        <li><strong>Privesc:</strong> <code>sudo /usr/bin/python3</code> (NOPASSWD)</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Aufklärung</h2>
+      <p>Zuerst alle Ports scannen, nicht nur die üblichen:</p>
+<pre><code>nmap -p- -T4 ZIEL-IP     # nur 22 (SSH) und 3000 (Web)</code></pre>
+      <p>Beim Verzeichnis-Scan meldete <code>dirb</code> einen Treffer auf <code>/cgi-bin</code>. Der war aber gar nicht echt. So habe ich das geprüft:</p>
+<pre><code>curl -i http://ZIEL-IP:3000/cgi-bin/          # vermeintlicher Treffer
+curl -i http://ZIEL-IP:3000/gibtesnichtxyz/   # bewusst erfundene Adresse</code></pre>
+      <p>Beide gaben <code>404</code> zurück. Der „Treffer“ war also nur Rauschen des Scanners. Das nennt man einen <strong>Soft-404</strong>: Die Seite antwortet auf alles, statt bei Unsinn einen echten Fehler zu liefern. <strong>Merksatz:</strong> einen verdächtigen Fund immer gegen eine frei erfundene Adresse gegentesten.</p>
+      <p>Welche Software läuft? Ein Blick mit dem Browser-Plugin <strong>Wappalyzer</strong> zeigte <strong>Next.js 16.0.6</strong>. Die genaue Version ist Gold wert, denn damit findet man die passende Schwachstelle.</p>
+
+      <h2 class="pixel">&gt; Erster Zugang</h2>
+      <p>Für Next.js 16.0.6 gibt es <strong>CVE-2025-55182</strong>: eine unsichere Deserialisierung in den React Server Components. Die Eckdaten:</p>
+      <ul>
+        <li>Schweregrad CVSS <strong>10.0</strong>, also das Maximum</li>
+        <li><strong>unauthentifiziert</strong>, man braucht keinen Login</li>
+        <li>betroffen sind Next.js 16.0.0 bis 16.0.6, behoben in 16.0.7 — das Ziel läuft auf 16.0.6, passt also</li>
+      </ul>
+      <p>Für solche frischen Framework-Lücken findet <code>searchsploit</code> meist nichts. Die funktionierenden PoCs (Proof of Concept, also ein Beispiel-Exploit) liegen auf GitHub. Damit ließ sich zuerst prüfen, ob das Ziel verwundbar ist, und dann eine Shell öffnen:</p>
+<pre><code># 1. Prüfen, ob verwundbar
+python3 CVE-2025-55182.py -u http://ZIEL-IP:3000           # Vulnerable: 1
+
+# 2. Interaktive Shell öffnen
+python3 CVE-2025-55182.py -u http://ZIEL-IP:3000 --exploit</code></pre>
+      <p>Damit landet man als Web-Benutzer (hier <code>webuser</code>) auf dem System und kommt an die User-Flag.</p>
+      <details>
+        <summary>Hinweis: Wo fange ich an?</summary>
+        <p>Erst die genaue Version des Frameworks bestimmen (Wappalyzer oder HTTP-Header), dann gezielt nach „&lt;Framework&gt; &lt;Version&gt; CVE“ suchen. Nicht wild Exploits raten.</p>
+      </details>
+
+      <h2 class="pixel">&gt; Rechte ausweiten</h2>
+      <p>Erster Reflex nach dem Zugang: Was darf dieser Benutzer als root tun?</p>
+<pre><code>sudo -l
+    (root) NOPASSWD: /usr/bin/python3</code></pre>
+      <p>Das heißt: <code>webuser</code> darf <code>python3</code> als root starten, ohne Passwort. Python kann beliebige Befehle ausführen, also ist das praktisch ein Generalschlüssel. Solche „Wie werde ich damit root?“-Tricks stehen gesammelt bei <strong>GTFOBins</strong>.</p>
+      <details>
+        <summary>Hinweis: Was tun mit sudo python3?</summary>
+        <p>Schau bei GTFOBins unter „python → Sudo“. Python kann mit <code>os.system</code> oder <code>os.listdir</code> als root auf Dateien zugreifen, die dir sonst verwehrt sind.</p>
+      </details>
+
+      <h2 class="pixel">&gt; Sackgassen</h2>
+      <p>Die Shell aus dem Exploit ist kein echtes Terminal. Sie <strong>zerbrach an einfachen Anführungszeichen</strong> (<code>'...'</code>): Jeder Befehl mit Anführungszeichen gab nur eine Statuszahl zurück, aber keine Ausgabe.</p>
+<pre><code>echo 'test123'      # nur eine Zahl, kaputt
+python3 --version   # funktioniert</code></pre>
+      <p>Also lag es an den Anführungszeichen, nicht an Python oder sudo. Mein Python-Einzeiler für die Privesc brauchte aber genau solche Anführungszeichen.</p>
+      <p><strong>Lösung – der Umweg über Base64:</strong> Ich habe den Python-Code auf meiner Angriffs-VM (<code>retoro_neo</code>) als Base64 kodiert. Base64 besteht nur aus Buchstaben und Zahlen, enthält also keine Anführungszeichen. Auf dem Ziel wird er wieder dekodiert und direkt an <code>sudo python3</code> weitergereicht:</p>
+<pre><code># auf meiner Angriffs-VM (retoro_neo): Code zu Base64 machen
+echo 'print(open("/root/root.txt").read())' | base64
+
+# in der kaputten Shell: dekodieren und als root ausführen
+echo &lt;BASE64&gt; | base64 -d | sudo /usr/bin/python3</code></pre>
+      <p>So lässt sich die Root-Flag auslesen, ohne dass ein einziges Anführungszeichen durch die Shell muss.</p>
+
+      <h2 class="pixel">&gt; Gelernt</h2>
+      <ul>
+        <li>Scanner lügen manchmal: einen Treffer mit dem Soft-404-Test gegenprüfen.</li>
+        <li>Methodik: scannen → Software bestimmen → Version → passende CVE → Exploit → Privesc.</li>
+        <li><code>searchsploit</code> kennt frische Framework- und npm-Lücken oft nicht. PoCs leben auf GitHub.</li>
+        <li><code>sudo -l</code> ist beim Privesc immer der erste Check.</li>
+        <li>GTFOBins ist das Nachschlagewerk für „darf X als sudo – wie werde ich damit root?“.</li>
+        <li>Eingeschränkte Shells umgehen: Wenn Zeichen gefiltert werden, hilft Base64 als Transportweg.</li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">Corp Website</h1>
+
+      <dl class="meta">
+        <div><dt>Platform</dt><dd>TryHackMe</dd></div>
+        <div><dt>Path</dt><dd>Love at first Breach</dd></div>
+        <div><dt>Difficulty</dt><dd>Easy</dd></div>
+        <div><dt>Date</dt><dd>2026-11-18</dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tryhackme</li>
+        <li>web</li>
+        <li>rce</li>
+        <li>cve</li>
+        <li>privesc</li>
+      </ul>
+
+      <p class="notice">No flags, no passwords. This is about the path, not about copying answers. The target IP changes per session and appears here as <code>ZIEL-IP</code>.</p>
+
+      <h2 class="pixel">&gt; Overview</h2>
+      <p>"Corp Website" is a Linux target running a company website. Only two ports are open: SSH and a web server. The site runs on an outdated web framework with a critical flaw. That gives an unauthenticated shell, and a loose <code>sudo</code> rule then leads to root.</p>
+      <ul>
+        <li><strong>Web app:</strong> port 3000, Next.js 16.0.6</li>
+        <li><strong>SSH:</strong> port 22</li>
+        <li><strong>Entry point:</strong> CVE-2025-55182 (unauthenticated RCE)</li>
+        <li><strong>Privesc:</strong> <code>sudo /usr/bin/python3</code> (NOPASSWD)</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Recon</h2>
+      <p>First scan all ports, not just the common ones:</p>
+<pre><code>nmap -p- -T4 ZIEL-IP     # only 22 (SSH) and 3000 (web)</code></pre>
+      <p>During directory scanning, <code>dirb</code> reported a hit on <code>/cgi-bin</code>. But it wasn't real. Here's how I checked:</p>
+<pre><code>curl -i http://ZIEL-IP:3000/cgi-bin/          # supposed hit
+curl -i http://ZIEL-IP:3000/doesnotexistxyz/  # deliberately made-up path</code></pre>
+      <p>Both returned <code>404</code>. So the "hit" was just scanner noise. This is called a <strong>soft 404</strong>: the site answers everything instead of returning a real error for nonsense. <strong>Rule of thumb:</strong> always test a suspicious finding against a made-up path.</p>
+      <p>What software is running? A quick look with the browser plugin <strong>Wappalyzer</strong> showed <strong>Next.js 16.0.6</strong>. The exact version is worth its weight in gold, because it leads you to the matching vulnerability.</p>
+
+      <h2 class="pixel">&gt; Initial access</h2>
+      <p>For Next.js 16.0.6 there is <strong>CVE-2025-55182</strong>: insecure deserialization in React Server Components. The key facts:</p>
+      <ul>
+        <li>CVSS severity <strong>10.0</strong>, the maximum</li>
+        <li><strong>unauthenticated</strong>, no login needed</li>
+        <li>affects Next.js 16.0.0 to 16.0.6, fixed in 16.0.7 — the target runs 16.0.6, so it fits</li>
+      </ul>
+      <p>For fresh framework flaws like this, <code>searchsploit</code> usually finds nothing. The working PoCs (proof of concept, i.e. an example exploit) live on GitHub. With one I first checked whether the target was vulnerable, then opened a shell:</p>
+<pre><code># 1. Check whether vulnerable
+python3 CVE-2025-55182.py -u http://ZIEL-IP:3000           # Vulnerable: 1
+
+# 2. Open an interactive shell
+python3 CVE-2025-55182.py -u http://ZIEL-IP:3000 --exploit</code></pre>
+      <p>This drops you onto the system as the web user (here <code>webuser</code>) and gives access to the user flag.</p>
+      <details>
+        <summary>Hint: where do I start?</summary>
+        <p>First determine the exact framework version (Wappalyzer or HTTP headers), then search specifically for "&lt;framework&gt; &lt;version&gt; CVE". Don't guess exploits at random.</p>
+      </details>
+
+      <h2 class="pixel">&gt; Privilege escalation</h2>
+      <p>First reflex after getting in: what may this user do as root?</p>
+<pre><code>sudo -l
+    (root) NOPASSWD: /usr/bin/python3</code></pre>
+      <p>That means <code>webuser</code> may run <code>python3</code> as root without a password. Python can run arbitrary commands, so this is effectively a master key. These "how do I get root with this?" tricks are collected at <strong>GTFOBins</strong>.</p>
+      <details>
+        <summary>Hint: what to do with sudo python3?</summary>
+        <p>Check GTFOBins under "python → Sudo". Python can use <code>os.system</code> or <code>os.listdir</code> to reach files as root that are otherwise off limits.</p>
+      </details>
+
+      <h2 class="pixel">&gt; Dead ends</h2>
+      <p>The shell from the exploit isn't a real terminal. It <strong>broke on single quotes</strong> (<code>'...'</code>): every command with quotes returned only a status number, no output.</p>
+<pre><code>echo 'test123'      # only a number, broken
+python3 --version   # works</code></pre>
+      <p>So the quotes were the problem, not Python or sudo. But my Python one-liner for the privesc needed exactly those quotes.</p>
+      <p><strong>Solution – the detour via Base64:</strong> I encoded the Python code as Base64 on my attack VM (<code>retoro_neo</code>). Base64 is only letters and numbers, so it contains no quotes. On the target it's decoded again and piped straight into <code>sudo python3</code>:</p>
+<pre><code># on my attack VM (retoro_neo): turn the code into Base64
+echo 'print(open("/root/root.txt").read())' | base64
+
+# in the broken shell: decode and run as root
+echo &lt;BASE64&gt; | base64 -d | sudo /usr/bin/python3</code></pre>
+      <p>That reads the root flag without a single quote ever passing through the shell.</p>
+
+      <h2 class="pixel">&gt; Lessons learned</h2>
+      <ul>
+        <li>Scanners sometimes lie: verify a hit with the soft-404 test.</li>
+        <li>Method: scan → identify software → version → matching CVE → exploit → privesc.</li>
+        <li><code>searchsploit</code> often doesn't know fresh framework and npm flaws. PoCs live on GitHub.</li>
+        <li><code>sudo -l</code> is always the first check for privesc.</li>
+        <li>GTFOBins is the reference for "may run X as sudo – how do I become root?".</li>
+        <li>Getting past restricted shells: when characters are filtered, Base64 works as a transport.</li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
+    <a href="../datenschutz.html" data-i18n="privacy">Datenschutz</a>
+  </div>
+</footer>
+
+<script src="artikel.js"></script>
+<script src="../zaehler.js"></script>
+</body>
+</html>
