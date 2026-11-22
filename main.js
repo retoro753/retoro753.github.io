@@ -80,16 +80,6 @@
       row.appendChild(meta);
       box.appendChild(row);
     });
-    // Ticker: neuester Eintrag mit "breaking": true in logbuch/eintraege.json
-    var hot = ENTRIES.filter(function (e) { return e.breaking; })[0];
-    var ticker = document.getElementById('ticker');
-    if (hot) {
-      ticker.href = 'logbuch/' + hot.slug + '.html';
-      document.getElementById('ticker-text').textContent =
-        (currentLang === 'en' ? (hot.ticker_en || hot.title_en) : hot.ticker) || hot.title;
-    }
-    ticker.hidden = !hot;
-
     var n = ENTRIES.length;
     document.getElementById('log-empty').hidden = n > 0;
     document.getElementById('log-all').hidden = n === 0;
@@ -107,6 +97,26 @@
     })
     .catch(function () {});
 
+  // Ticker: freier Text aus logbuch/ticker.json (echte News oder Spaß)
+  var TICKER = null;
+  function renderTicker() {
+    var ticker = document.getElementById('ticker');
+    var t = TICKER;
+    var text = t && t.aktiv ? (currentLang === 'en' ? (t.text_en || t.text) : t.text) : '';
+    if (!text) { ticker.hidden = true; return; }
+    document.getElementById('ticker-text').textContent = text;
+    var label = currentLang === 'en' ? (t.label_en || t.label || '') : (t.label || '');
+    document.querySelector('#ticker .ticker-label').textContent = label;
+    if (t.href) { ticker.setAttribute('href', t.href); }
+    else { ticker.removeAttribute('href'); }
+    ticker.hidden = false;
+  }
+
+  fetch('logbuch/ticker.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (data) { TICKER = data; renderTicker(); })
+    .catch(function () {});
+
   function setLang(lang) {
     currentLang = lang;
     var t = TEXTS[lang];
@@ -120,6 +130,7 @@
     });
     try { localStorage.setItem('lang', lang); } catch (e) {}
     renderLog();
+    renderTicker();
   }
 
   document.querySelectorAll('.lang button').forEach(function (btn) {

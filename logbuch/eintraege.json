@@ -26,10 +26,7 @@
    "supply-chain",
    "linux",
    "omarchy"
-  ],
-  "breaking": true,
-  "ticker": "Politische Botschaft im T2-Kernel aus fremder Paketquelle: betrifft Omarchy auf Intel-Macs. Jetzt prüfen ›",
-  "ticker_en": "Political message in T2 kernel from a third-party package source: affects Omarchy on Intel Macs. Check now ›"
+  ]
  },
  {
   "type": "notiz",
