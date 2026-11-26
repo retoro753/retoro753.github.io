@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://retr0.goatcounter.com; connect-src 'self' https://retr0.goatcounter.com; frame-src https://tryhackme.com; object-src 'none'; base-uri 'self'; form-action 'none'">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,117 +17,114 @@
   <span class="ticker-track"><span class="ticker-text" id="ticker-text"></span></span>
 </a>
 
-<header>
-  <nav class="wrap">
-    <a href="#top" class="logo pixel"><img src="logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
-    <div class="menu">
-      <a href="#projekte" data-i18n="navProjects">Projekte</a>
-      <a href="#logbuch" data-i18n="navLog">Logbuch</a>
-      <a href="#tools">Tools</a>
-      <a href="#thm">TryHackMe</a>
-      <div class="lang" role="group" aria-label="Sprache / Language">
+<div class="wrap">
+  <div class="panel" id="top">
+
+    <header class="banner">
+      <h1 class="logo"><img src="logo.svg" alt="" width="30" height="30">RETORO_NEO</h1>
+      <p class="sub" data-i18n="intro">Projekte, Notizen und Writeups.</p>
+    </header>
+
+    <nav>
+      <span class="menu">[ <a href="#projekte" data-i18n="navProjects">Projekte</a> | <a href="#logbuch" data-i18n="navLog">Logbuch</a> | <a href="#tools">Tools</a> | <a href="#thm">TryHackMe</a> ]</span>
+      <span class="lang" role="group" aria-label="Sprache / Language">
         <button type="button" data-lang="de" aria-pressed="true">DE</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      </div>
-    </div>
-  </nav>
-</header>
+      </span>
+    </nav>
 
-<main id="top" class="wrap">
+    <div class="content">
 
-  <section>
-    <p class="prompt">C:\&gt; whoami</p>
-    <h1 class="pixel"><span data-i18n="intro">Projekte, Notizen und Writeups.</span><span class="cursor" aria-hidden="true"> █</span></h1>
-  </section>
+      <p class="intro"><span data-i18n="welcome">Willkommen auf meiner Homepage!</span> <span class="new">NEW</span><span class="cursor" aria-hidden="true">_</span></p>
 
-  <section id="projekte">
-    <h2 class="pixel">&gt; <span data-i18n="navProjects">Projekte</span></h2>
-    <div class="grid">
+      <hr>
 
-      <article class="window bevel">
-        <div class="titlebar"><span>kakeibo.exe</span><span aria-hidden="true">_ □ ×</span></div>
-        <div class="window-body">
-          <h3>Kakeibo</h3>
-          <p data-i18n="kakeibo">Haushaltsbuch nach der japanischen Kakeibo-Methode: Einnahmen und Ausgaben festhalten und bewusster sparen.</p>
-          <a class="btn95 bevel" href="https://retoro753.github.io/kakeibook/" data-i18n="open" target="_blank" rel="noopener noreferrer">Öffnen ›</a>
+      <section id="projekte">
+        <h2><span class="ball"></span><span data-i18n="navProjects">Projekte</span></h2>
+        <div class="grid">
+
+          <article class="window bevel">
+            <div class="titlebar"><span>kakeibo.exe</span><span aria-hidden="true">_ □ ×</span></div>
+            <div class="window-body">
+              <h3>Kakeibo</h3>
+              <p data-i18n="kakeibo">Haushaltsbuch nach der japanischen Kakeibo-Methode: Einnahmen und Ausgaben festhalten und bewusster sparen.</p>
+              <a class="btn95 bevel" href="https://retoro753.github.io/kakeibook/" data-i18n="open" target="_blank" rel="noopener noreferrer">Öffnen ›</a>
+            </div>
+          </article>
+
+          <article class="window bevel">
+            <div class="titlebar"><span>clrty.exe</span><span aria-hidden="true">_ □ ×</span></div>
+            <div class="window-body">
+              <h3>CLRTY</h3>
+              <p data-i18n="clrty">Blog über ein bewussteres Leben: weniger, aber besser.</p>
+              <span class="soon-label" data-i18n="soon">Kommt bald</span>
+            </div>
+          </article>
+
+          <article class="construction">
+            <p>⚠ UNDER CONSTRUCTION ⚠</p>
+            <p data-i18n="nextProject">nächstes Projekt …</p>
+          </article>
+
         </div>
-      </article>
+      </section>
 
-      <article class="window bevel">
-        <div class="titlebar"><span>clrty.exe</span><span aria-hidden="true">_ □ ×</span></div>
-        <div class="window-body">
-          <h3>CLRTY</h3>
-          <p data-i18n="clrty">Blog über ein bewussteres Leben: weniger, aber besser.</p>
-          <span class="soon-label" data-i18n="soon">Kommt bald</span>
+      <hr>
+
+      <section id="thm">
+        <h2><span class="ball"></span>TryHackMe</h2>
+        <div class="badge">
+          <iframe class="thm-badge" src="https://tryhackme.com/badge/t/1fda6a58d939529ef9bc62c8ae5f4aa359a923e551449fabaf72efe738aeb7394706c73be9cd278b71ca9a402a8a9aa7/embed?theme=dark" title="TryHackMe-Profil" width="400" height="172" loading="lazy" scrolling="no" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
         </div>
-      </article>
+      </section>
 
-      <article class="construction pixel">
-        <p>UNDER CONSTRUCTION</p>
-        <p data-i18n="nextProject">nächstes Projekt …</p>
-      </article>
+      <hr>
 
-    </div>
-  </section>
+      <section id="logbuch">
+        <h2><span class="ball"></span><span data-i18n="navLog">Logbuch</span></h2>
+        <p class="intro-line" data-i18n="logIntro">CTF-Writeups ohne Flags und kurze Notizen: Erkenntnisse, Tipps und Erfahrungen rund um Linux, Security und Technik.</p>
+        <div id="latest-log"></div>
+        <p class="soon" id="log-empty"><span data-i18n="logSoon">Erster Eintrag in Arbeit</span><span class="cursor" aria-hidden="true">_</span></p>
+        <p class="count" id="log-count"></p>
+        <a href="logbuch/" class="all-link" id="log-all" data-i18n="allLog" hidden>Ganzes Logbuch ›</a>
+      </section>
 
-  <section id="thm">
-    <h2 class="pixel">&gt; TryHackMe</h2>
-    <div class="terminal">
-      <p class="prompt">user@thm:~$ ./status</p>
-      <div class="badge">
-        <iframe class="thm-badge" src="https://tryhackme.com/badge/t/1fda6a58d939529ef9bc62c8ae5f4aa359a923e551449fabaf72efe738aeb7394706c73be9cd278b71ca9a402a8a9aa7/embed?theme=dark" title="TryHackMe-Profil" width="400" height="172" loading="lazy" scrolling="no" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <hr>
+
+      <section id="tools">
+        <h2><span class="ball"></span>Tools</h2>
+        <ul class="plain">
+          <li><a href="https://github.com/retoro753/primeTime" target="_blank" rel="noopener noreferrer">primetime.py</a> — <span data-i18n="primetime">Krypto-Helfer für die Kommandozeile, gebaut für CTF-Aufgaben: rechnet RSA und Diffie-Hellman Schritt für Schritt aus und zeigt den Rechenweg. Mit Faktorisieren von n und einem CTF-Modus, der aus n, e und c direkt den Klartext holt.</span></li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section id="kontakt">
+        <h2><span class="ball"></span><span data-i18n="contact">Kontakt</span></h2>
+        <div id="mail-slot">
+          <button type="button" id="show-mail" class="btn95 bevel" data-i18n="showMail">✉ E-Mail anzeigen</button>
+        </div>
+      </section>
+
+      <div class="counter" id="visitor-counter" hidden>
+        <span data-i18n="visitors">Du bist Besucher Nr.</span>
+        <span class="digits" id="visitor-digits"></span>
       </div>
+
+      <div class="uc-row"><span class="uc"><span class="blink">⚠ UNDER CONSTRUCTION ⚠</span></span></div>
+
     </div>
-  </section>
 
-  <section id="logbuch">
-    <h2 class="pixel">&gt; <span data-i18n="navLog">Logbuch</span></h2>
-    <div class="dir">
-      <p class="prompt">C:\LOGBUCH&gt; dir</p>
-      <p class="intro-line" data-i18n="logIntro">CTF-Writeups ohne Flags und kurze Notizen: Erkenntnisse, Tipps und Erfahrungen rund um Linux, Security und Technik.</p>
-      <!-- Die neuesten Einträge kommen automatisch aus logbuch/eintraege.json -->
-      <div id="latest-log"></div>
-      <p class="soon pixel" id="log-empty"><span data-i18n="logSoon">Erster Eintrag in Arbeit</span><span class="cursor" aria-hidden="true">_</span></p>
-      <p class="prompt" id="log-count"></p>
-      <a href="logbuch/" class="all-link" id="log-all" data-i18n="allLog" hidden>Ganzes Logbuch ›</a>
-    </div>
-  </section>
-
-  <section id="tools">
-    <h2 class="pixel">&gt; Tools</h2>
-    <div class="dir">
-      <p class="prompt">C:\TOOLS&gt; dir</p>
-      <div class="entry">
-        <a href="https://github.com/retoro753/primeTime" target="_blank" rel="noopener noreferrer">primetime.py</a>
-        <span data-i18n="primetime">Krypto-Helfer für die Kommandozeile, gebaut für CTF-Aufgaben: rechnet RSA und Diffie-Hellman Schritt für Schritt aus und zeigt den Rechenweg. Mit Faktorisieren von n und einem CTF-Modus, der aus n, e und c direkt den Klartext holt.</span>
-      </div>
-      <p class="prompt" data-i18n="files">1 Datei(en)</p>
-    </div>
-  </section>
-
-  <section id="kontakt">
-    <h2 class="pixel">&gt; <span data-i18n="contact">Kontakt</span></h2>
-    <div class="dir">
-      <p class="prompt">C:\&gt; mail</p>
-      <div id="mail-slot">
-        <button type="button" id="show-mail" class="btn95 bevel" data-i18n="showMail">E-Mail anzeigen</button>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <span data-i18n="footer">Gebaut mit HTML &amp; CSS · gehostet auf GitHub Pages</span>
-    <span class="visitor-counter" id="visitor-counter" hidden><span data-i18n="visitors">Besucher</span>: <span class="digits" id="visitor-digits"></span></span>
-    <span>Best viewed with any browser · 800×600</span>
-    <a href="datenschutz.html" data-i18n="privacy">Datenschutz</a>
   </div>
-</footer>
+
+  <footer>
+    <span class="netscape">Best viewed with Netscape Navigator at 800×600</span><br>
+    <a href="datenschutz.html" data-i18n="privacy">Datenschutz</a> · © 2026 RETORO_NEO
+  </footer>
+</div>
 
 <script src="main.js"></script>
-
 <script src="zaehler.js"></script>
 </body>
 </html>
