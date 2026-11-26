@@ -76,6 +76,27 @@ adb shell getprop ro.product.device
 # Erst gefahrlos anschauen, nichts wird geändert
 ./hyperlight.sh --dry-run</code></pre>
 
+      <h2 class="pixel">&gt; Abschlusstest mit Highscore</h2>
+      <p>Das dritte Skript, <code>hyperlight-check.sh</code>, ist ein reines Audit: Es <strong>liest nur</strong> und verändert nichts am Handy. Es prüft, wie frei dein Gerät von Xiaomi und Google ist, und vergibt am Ende einen Highscore mit Rang – im Stil eines alten Arcade-Automaten.</p>
+      <div class="hs-box">
+        <div class="hs-title">★ HIGHSCORE ★</div>
+        <div class="hs-bar">███████████████░░░░░ 77/100</div>
+        <div class="hs-rank">Rang A – Fast frei</div>
+      </div>
+      <p>So setzen sich die 100 Punkte zusammen:</p>
+      <ul>
+        <li>Xiaomi-Liste entfernt – 30</li>
+        <li>Google-Apps entfernt – 25</li>
+        <li>Google-Kern entfernt – 15</li>
+        <li>Kein Google-/Xiaomi-Konto – 10</li>
+        <li>Standard-Apps ohne Google/Xiaomi – 10</li>
+        <li>Privates DNS aktiv – 5</li>
+        <li>Keine unbekannten Reste – 5</li>
+      </ul>
+      <p>Ränge: <strong>S</strong> ab 90 (komplett befreit 🏆), <strong>A</strong> ab 75, <strong>B</strong> ab 60, <strong>C</strong> ab 40, sonst <strong>D</strong>. Wer Google-Kern oder -Konto bewusst behält, erreicht kein S – das ist kein Fehler, sondern zeigt nur, wie weit man gegangen ist.</p>
+      <p>Nebenbei zeigt der Test die Zahl angemeldeter Konten (ohne Namen), die Standard-Apps, laufende Prozesse und Sicherheitspunkte wie Patch-Alter, Bootloader-Status und ob Privates DNS aktiv ist. Starten mit:</p>
+<pre><code>./hyperlight-check.sh</code></pre>
+
       <h2 class="pixel">&gt; Gut zu wissen</h2>
       <ul>
         <li>Für Apps, die du behalten willst (z. B. Taschenrechner oder Scanner), vorher Ersatz installieren, etwa aus F-Droid.</li>
@@ -133,6 +154,27 @@ adb shell getprop ro.product.device
 
 # look first, safely — nothing is changed
 ./hyperlight.sh --dry-run</code></pre>
+
+      <h2 class="pixel">&gt; Final test with a high score</h2>
+      <p>The third script, <code>hyperlight-check.sh</code>, is a read-only audit: it <strong>only reads</strong> and changes nothing on the phone. It checks how free your device is of Xiaomi and Google, and ends with a high score and a rank — in the style of an old arcade machine.</p>
+      <div class="hs-box">
+        <div class="hs-title">★ HIGHSCORE ★</div>
+        <div class="hs-bar">███████████████░░░░░ 77/100</div>
+        <div class="hs-rank">Rank A – Almost free</div>
+      </div>
+      <p>How the 100 points add up:</p>
+      <ul>
+        <li>Xiaomi list removed – 30</li>
+        <li>Google apps removed – 25</li>
+        <li>Google core removed – 15</li>
+        <li>No Google/Xiaomi account – 10</li>
+        <li>Default apps without Google/Xiaomi – 10</li>
+        <li>Private DNS active – 5</li>
+        <li>No unknown leftovers – 5</li>
+      </ul>
+      <p>Ranks: <strong>S</strong> from 90 (fully free 🏆), <strong>A</strong> from 75, <strong>B</strong> from 60, <strong>C</strong> from 40, otherwise <strong>D</strong>. If you deliberately keep the Google core or account, you can't reach S — that's not a bug, it just shows how far you went.</p>
+      <p>It also shows the number of signed-in accounts (no names), the default apps, running processes and security points like patch age, bootloader status and whether Private DNS is on. Run it with:</p>
+<pre><code>./hyperlight-check.sh</code></pre>
 
       <h2 class="pixel">&gt; Good to know</h2>
       <ul>
