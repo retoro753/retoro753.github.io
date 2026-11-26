@@ -1,5 +1,19 @@
 [
  {
+  "type": "notiz",
+  "slug": "hyperlight",
+  "title": "HyperLight: Xiaomi-Handys entschlacken",
+  "title_en": "HyperLight: declutter Xiaomi phones",
+  "date": "2026-11-26",
+  "tags": [
+   "tool",
+   "android",
+   "xiaomi",
+   "privacy",
+   "bash"
+  ]
+ },
+ {
   "type": "writeup",
   "slug": "corp-website",
   "title": "Corp Website",

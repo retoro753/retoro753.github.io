@@ -79,7 +79,15 @@ summary { cursor: pointer; color: var(--link); font-weight: bold; }
 
 @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 .cursor { color: var(--hover); animation: blink 1s steps(1) infinite; }
-@media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+/* HyperLight-Maskottchen: leuchtende Pixel-Glühbirne */
+.hl-mascot-row { text-align: center; margin: 4px 0 16px; }
+.hl-mascot { height: 72px; width: auto; animation: hlglow 1.6s ease-in-out infinite; }
+@keyframes hlglow { 0%,100% { filter: drop-shadow(0 0 2px #ffcc00); } 50% { filter: drop-shadow(0 0 11px #ffe680); } }
+.hl-rays { animation: hlrays 1.6s steps(1) infinite; }
+@keyframes hlrays { 0%,49% { opacity: .25; } 50%,100% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) { .cursor, .hl-mascot, .hl-rays { animation: none; } }
 
 /* Übersichtsseite: Filter + Liste */
 .filters { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; margin: 18px 0; }

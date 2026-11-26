@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HyperLight: Xiaomi-Handys entschlacken · RETORO_NEO</title>
+<meta name="description" content="HyperLight: eigenes Bash-Skript, das Xiaomi-Bloatware per ADB entfernt – ohne Root, ohne Bootloader-Entsperrung, umkehrbar.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://retr0.goatcounter.com; connect-src 'self' https://retr0.goatcounter.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="logbuch.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <article>
+    <p class="prompt">C:\LOGBUCH&gt; type hyperlight.txt</p>
+    <div class="hl-mascot-row"><svg class="hl-mascot" viewBox="-4 -4 19 24" shape-rendering="crispEdges" role="img" aria-label="Pixel-Glühbirne"><g class="hl-rays" fill="#ffcc00"><rect x="5" y="-3" width="1" height="2"/><rect x="-3" y="5" width="2" height="1"/><rect x="12" y="5" width="2" height="1"/><rect x="0" y="0" width="1" height="1"/><rect x="-1" y="-1" width="1" height="1"/><rect x="10" y="0" width="1" height="1"/><rect x="11" y="-1" width="1" height="1"/></g><rect x="3" y="0" width="1" height="1" fill="#ffcc00"/><rect x="4" y="0" width="1" height="1" fill="#ffcc00"/><rect x="5" y="0" width="1" height="1" fill="#ffcc00"/><rect x="6" y="0" width="1" height="1" fill="#ffcc00"/><rect x="7" y="0" width="1" height="1" fill="#ffcc00"/><rect x="2" y="1" width="1" height="1" fill="#ffcc00"/><rect x="3" y="1" width="1" height="1" fill="#ffcc00"/><rect x="4" y="1" width="1" height="1" fill="#ffcc00"/><rect x="5" y="1" width="1" height="1" fill="#ffcc00"/><rect x="6" y="1" width="1" height="1" fill="#ffcc00"/><rect x="7" y="1" width="1" height="1" fill="#ffcc00"/><rect x="8" y="1" width="1" height="1" fill="#ffcc00"/><rect x="1" y="2" width="1" height="1" fill="#ffcc00"/><rect x="2" y="2" width="1" height="1" fill="#ffcc00"/><rect x="3" y="2" width="1" height="1" fill="#fff3b0"/><rect x="4" y="2" width="1" height="1" fill="#fff3b0"/><rect x="5" y="2" width="1" height="1" fill="#ffcc00"/><rect x="6" y="2" width="1" height="1" fill="#ffcc00"/><rect x="7" y="2" width="1" height="1" fill="#ffcc00"/><rect x="8" y="2" width="1" height="1" fill="#ffcc00"/><rect x="9" y="2" width="1" height="1" fill="#ffcc00"/><rect x="0" y="3" width="1" height="1" fill="#ffcc00"/><rect x="1" y="3" width="1" height="1" fill="#ffcc00"/><rect x="2" y="3" width="1" height="1" fill="#fff3b0"/><rect x="3" y="3" width="1" height="1" fill="#fff3b0"/><rect x="4" y="3" width="1" height="1" fill="#ffcc00"/><rect x="5" y="3" width="1" height="1" fill="#ffcc00"/><rect x="6" y="3" width="1" height="1" fill="#ffcc00"/><rect x="7" y="3" width="1" height="1" fill="#ffcc00"/><rect x="8" y="3" width="1" height="1" fill="#ffcc00"/><rect x="9" y="3" width="1" height="1" fill="#ffcc00"/><rect x="10" y="3" width="1" height="1" fill="#ffcc00"/><rect x="0" y="4" width="1" height="1" fill="#ffcc00"/><rect x="1" y="4" width="1" height="1" fill="#ffcc00"/><rect x="2" y="4" width="1" height="1" fill="#fff3b0"/><rect x="3" y="4" width="1" height="1" fill="#ffcc00"/><rect x="4" y="4" width="1" height="1" fill="#ffcc00"/><rect x="5" y="4" width="1" height="1" fill="#ffcc00"/><rect x="6" y="4" width="1" height="1" fill="#ffcc00"/><rect x="7" y="4" width="1" height="1" fill="#ffcc00"/><rect x="8" y="4" width="1" height="1" fill="#ffcc00"/><rect x="9" y="4" width="1" height="1" fill="#ffcc00"/><rect x="10" y="4" width="1" height="1" fill="#ffcc00"/><rect x="0" y="5" width="1" height="1" fill="#ffcc00"/><rect x="1" y="5" width="1" height="1" fill="#ffcc00"/><rect x="2" y="5" width="1" height="1" fill="#ffcc00"/><rect x="3" y="5" width="1" height="1" fill="#ffcc00"/><rect x="4" y="5" width="1" height="1" fill="#ffcc00"/><rect x="5" y="5" width="1" height="1" fill="#ffcc00"/><rect x="6" y="5" width="1" height="1" fill="#ffcc00"/><rect x="7" y="5" width="1" height="1" fill="#ffcc00"/><rect x="8" y="5" width="1" height="1" fill="#ffcc00"/><rect x="9" y="5" width="1" height="1" fill="#ffcc00"/><rect x="10" y="5" width="1" height="1" fill="#ffcc00"/><rect x="0" y="6" width="1" height="1" fill="#ffcc00"/><rect x="1" y="6" width="1" height="1" fill="#ffcc00"/><rect x="2" y="6" width="1" height="1" fill="#ffcc00"/><rect x="3" y="6" width="1" height="1" fill="#ffcc00"/><rect x="4" y="6" width="1" height="1" fill="#ffcc00"/><rect x="5" y="6" width="1" height="1" fill="#ffcc00"/><rect x="6" y="6" width="1" height="1" fill="#ffcc00"/><rect x="7" y="6" width="1" height="1" fill="#ffcc00"/><rect x="8" y="6" width="1" height="1" fill="#ffcc00"/><rect x="9" y="6" width="1" height="1" fill="#ffcc00"/><rect x="10" y="6" width="1" height="1" fill="#ffcc00"/><rect x="1" y="7" width="1" height="1" fill="#ffcc00"/><rect x="2" y="7" width="1" height="1" fill="#ffcc00"/><rect x="3" y="7" width="1" height="1" fill="#ffcc00"/><rect x="4" y="7" width="1" height="1" fill="#ffcc00"/><rect x="5" y="7" width="1" height="1" fill="#ffcc00"/><rect x="6" y="7" width="1" height="1" fill="#ffcc00"/><rect x="7" y="7" width="1" height="1" fill="#ffcc00"/><rect x="8" y="7" width="1" height="1" fill="#ffcc00"/><rect x="9" y="7" width="1" height="1" fill="#ffcc00"/><rect x="2" y="8" width="1" height="1" fill="#ffcc00"/><rect x="3" y="8" width="1" height="1" fill="#ffcc00"/><rect x="4" y="8" width="1" height="1" fill="#ffcc00"/><rect x="5" y="8" width="1" height="1" fill="#ffcc00"/><rect x="6" y="8" width="1" height="1" fill="#ffcc00"/><rect x="7" y="8" width="1" height="1" fill="#ffcc00"/><rect x="8" y="8" width="1" height="1" fill="#ffcc00"/><rect x="2" y="9" width="1" height="1" fill="#ffcc00"/><rect x="3" y="9" width="1" height="1" fill="#ffcc00"/><rect x="4" y="9" width="1" height="1" fill="#ffcc00"/><rect x="5" y="9" width="1" height="1" fill="#ffcc00"/><rect x="6" y="9" width="1" height="1" fill="#ffcc00"/><rect x="7" y="9" width="1" height="1" fill="#ffcc00"/><rect x="8" y="9" width="1" height="1" fill="#ffcc00"/><rect x="2" y="10" width="1" height="1" fill="#6a6a6a"/><rect x="3" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="8" y="10" width="1" height="1" fill="#6a6a6a"/><rect x="2" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="8" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="2" y="12" width="1" height="1" fill="#6a6a6a"/><rect x="3" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="8" y="12" width="1" height="1" fill="#6a6a6a"/><rect x="3" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="3" y="14" width="1" height="1" fill="#6a6a6a"/><rect x="4" y="14" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="14" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="14" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="14" width="1" height="1" fill="#6a6a6a"/><rect x="4" y="15" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="15" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="15" width="1" height="1" fill="#9a9a9a"/></svg></div>
+    <p id="lang-notice" class="notice" hidden></p>
+
+    <div data-content="de">
+      <h1 class="pixel">HyperLight: Xiaomi-Handys entschlacken</h1>
+
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Eigenes Projekt</dd></div>
+        <div><dt>Datum</dt><dd>26.11.2026</dd></div>
+        <div><dt>Getestet mit</dt><dd>Redmi Note 13 4G NFC (HyperOS 2, Android 15)</dd></div>
+        <div><dt>Repo</dt><dd><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">Auf GitHub ›</a></dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tool</li>
+        <li>android</li>
+        <li>xiaomi</li>
+        <li>privacy</li>
+        <li>bash</li>
+      </ul>
+
+      <p class="notice">Mein eigenes Projekt. Nutzung auf eigene Gefahr: Das Skript ist nur auf dem unten genannten Gerät getestet und bricht bei anderen Modellen absichtlich ab.</p>
+
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>HyperLight ist ein kleines, gut kommentiertes Bash-Skript, das Werbung, Tracking-Dienste und vorinstallierte Apps von Xiaomi-Handys entfernt – <strong>ohne Root und ohne Bootloader-Entsperrung</strong>. Das Handy behält seine offiziellen Sicherheitsupdates, und jede Änderung lässt sich rückgängig machen.</p>
+
+      <h2 class="pixel">&gt; Das Problem</h2>
+      <p>Xiaomi-Handys kommen mit viel Beiwerk: einem eigenen Werbedienst (MSA), Analyse-Diensten, einem zweiten App-Store (GetApps) und vorinstallierten Fremd-Apps wie Amazon, LinkedIn oder Facebook. Das kostet Speicher, Akku und Privatsphäre, und vieles davon lässt sich auf normalem Weg nicht einfach löschen.</p>
+
+      <h2 class="pixel">&gt; Was HyperLight kann</h2>
+      <ul>
+        <li><strong>Entfernt 54 Pakete:</strong> Werbedienst, Analytics, GetApps, Mi Browser, Cloud-Dienste, ShareMe und vorinstallierte Dritt-Apps.</li>
+        <li><strong>Schutzliste:</strong> Systemkritische Pakete (Launcher, Berechtigungen, Akku, Kamera) werden nie angefasst, selbst wenn man sie versehentlich einträgt.</li>
+        <li><strong>Probelauf</strong> (<code>--dry-run</code>): zeigt, was passieren würde, ohne etwas zu ändern.</li>
+        <li><strong>Scan</strong> (<code>--scan</code>): findet Xiaomi-Pakete, die auf keiner Liste stehen.</li>
+        <li><strong>Wiederherstellung</strong> (<code>--restore</code>): holt entfernte Apps zurück.</li>
+        <li>Endbericht im Terminal und als Datei, dazu komplett zweisprachig (Deutsch/Englisch).</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Wie es funktioniert</h2>
+      <p>Das Handy wird per USB mit dem Rechner verbunden, USB-Debugging ist aktiv. Über ADB (Android Debug Bridge) entfernt das Skript die Apps mit <code>pm uninstall --user 0</code>. Das löscht sie nur für den Benutzer, die Systemdateien bleiben erhalten. Genau deshalb ist alles umkehrbar.</p>
+<pre><code># Codenamen des Geräts prüfen
+adb shell getprop ro.product.device
+
+# Erst gefahrlos anschauen, nichts wird geändert
+./hyperlight.sh --dry-run</code></pre>
+
+      <h2 class="pixel">&gt; Gut zu wissen</h2>
+      <ul>
+        <li>Für Apps, die du behalten willst (z. B. Taschenrechner oder Scanner), vorher Ersatz installieren, etwa aus F-Droid.</li>
+        <li>Große HyperOS-Updates können einzelne Apps zurückbringen. Dann das Skript einfach noch einmal laufen lassen.</li>
+        <li>Google-Play-Dienste und Play Store bleiben unangetastet, sie stehen auf der Schutzliste.</li>
+        <li>Getestet nur auf dem Redmi Note 13 4G. Auf anderen Geräten bricht es ab, aus gutem Grund.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Quelle</h2>
+      <ul>
+        <li><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">HyperLight auf GitHub</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">HyperLight: declutter Xiaomi phones</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Own project</dd></div>
+        <div><dt>Date</dt><dd>2026-11-26</dd></div>
+        <div><dt>Tested on</dt><dd>Redmi Note 13 4G NFC (HyperOS 2, Android 15)</dd></div>
+        <div><dt>Repo</dt><dd><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">On GitHub ›</a></dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tool</li>
+        <li>android</li>
+        <li>xiaomi</li>
+        <li>privacy</li>
+        <li>bash</li>
+      </ul>
+
+      <p class="notice">My own project. Use at your own risk: the script is only tested on the device below and deliberately aborts on other models.</p>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>HyperLight is a small, well-commented Bash script that removes ads, tracking services and preinstalled apps from Xiaomi phones — <strong>no root, no bootloader unlock</strong>. The phone keeps its official security updates, and every change is reversible.</p>
+
+      <h2 class="pixel">&gt; The problem</h2>
+      <p>Xiaomi phones ship with a lot of extra baggage: their own ad service (MSA), analytics services, a second app store (GetApps) and preinstalled third-party apps like Amazon, LinkedIn or Facebook. That costs storage, battery and privacy, and much of it can't simply be uninstalled the normal way.</p>
+
+      <h2 class="pixel">&gt; What HyperLight does</h2>
+      <ul>
+        <li><strong>Removes 54 packages:</strong> ad service, analytics, GetApps, Mi Browser, cloud services, ShareMe and preinstalled third-party apps.</li>
+        <li><strong>Protection list:</strong> system-critical packages (launcher, permissions, battery, camera) are never touched, even if you add them by mistake.</li>
+        <li><strong>Dry run</strong> (<code>--dry-run</code>): shows what would happen without changing anything.</li>
+        <li><strong>Scan</strong> (<code>--scan</code>): finds Xiaomi packages that aren't on any list.</li>
+        <li><strong>Restore</strong> (<code>--restore</code>): brings removed apps back.</li>
+        <li>Final report in the terminal and as a file, and fully bilingual (German/English).</li>
+      </ul>
+
+      <h2 class="pixel">&gt; How it works</h2>
+      <p>The phone is connected to the computer over USB with USB debugging on. Via ADB (Android Debug Bridge) the script removes the apps with <code>pm uninstall --user 0</code>. That removes them only for the current user; the system files stay. That's exactly why everything is reversible.</p>
+<pre><code># check the device's codename
+adb shell getprop ro.product.device
+
+# look first, safely — nothing is changed
+./hyperlight.sh --dry-run</code></pre>
+
+      <h2 class="pixel">&gt; Good to know</h2>
+      <ul>
+        <li>For apps you want to keep (e.g. calculator or scanner), install a replacement first, for example from F-Droid.</li>
+        <li>Big HyperOS updates can bring some apps back. Just run the script again afterwards.</li>
+        <li>Google Play services and the Play Store stay untouched — they're on the protection list.</li>
+        <li>Tested only on the Redmi Note 13 4G. On other devices it aborts, for good reason.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Source</h2>
+      <ul>
+        <li><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">HyperLight on GitHub</a></li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
+    <a href="../datenschutz.html" data-i18n="privacy">Datenschutz</a>
+  </div>
+</footer>
+
+<script src="artikel.js"></script>
+<script src="../zaehler.js"></script>
+</body>
+</html>
