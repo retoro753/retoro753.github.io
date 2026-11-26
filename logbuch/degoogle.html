@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Degooglen mit HyperLight · RETORO_NEO</title>
+<meta name="description" content="HyperLight-Degoogle-Skript: Google-Apps und optional die Google-Dienste per ADB entfernen. Zwei Stufen, mit klaren Warnungen (FRP) und Wiederherstellung.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://retr0.goatcounter.com; connect-src 'self' https://retr0.goatcounter.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" href="../logo.svg" type="image/svg+xml">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="logbuch.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo pixel"><img src="../logo.svg" alt="" width="24" height="24">RETORO_NEO</a>
+    <div class="nav-right">
+      <a href="./" class="back" data-i18n="back">‹ Logbuch</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <article>
+    <p class="prompt">C:\LOGBUCH&gt; type degoogle.txt</p>
+    <div class="hl-mascot-row"><svg class="hl-mascot" viewBox="-4 -4 19 24" shape-rendering="crispEdges" role="img" aria-label="Pixel-Glühbirne"><g class="hl-rays" fill="#ffcc00"><rect x="5" y="-3" width="1" height="2"/><rect x="-3" y="5" width="2" height="1"/><rect x="12" y="5" width="2" height="1"/><rect x="0" y="0" width="1" height="1"/><rect x="-1" y="-1" width="1" height="1"/><rect x="10" y="0" width="1" height="1"/><rect x="11" y="-1" width="1" height="1"/></g><rect x="3" y="0" width="1" height="1" fill="#ffcc00"/><rect x="4" y="0" width="1" height="1" fill="#ffcc00"/><rect x="5" y="0" width="1" height="1" fill="#ffcc00"/><rect x="6" y="0" width="1" height="1" fill="#ffcc00"/><rect x="7" y="0" width="1" height="1" fill="#ffcc00"/><rect x="2" y="1" width="1" height="1" fill="#ffcc00"/><rect x="3" y="1" width="1" height="1" fill="#ffcc00"/><rect x="4" y="1" width="1" height="1" fill="#ffcc00"/><rect x="5" y="1" width="1" height="1" fill="#ffcc00"/><rect x="6" y="1" width="1" height="1" fill="#ffcc00"/><rect x="7" y="1" width="1" height="1" fill="#ffcc00"/><rect x="8" y="1" width="1" height="1" fill="#ffcc00"/><rect x="1" y="2" width="1" height="1" fill="#ffcc00"/><rect x="2" y="2" width="1" height="1" fill="#ffcc00"/><rect x="3" y="2" width="1" height="1" fill="#fff3b0"/><rect x="4" y="2" width="1" height="1" fill="#fff3b0"/><rect x="5" y="2" width="1" height="1" fill="#ffcc00"/><rect x="6" y="2" width="1" height="1" fill="#ffcc00"/><rect x="7" y="2" width="1" height="1" fill="#ffcc00"/><rect x="8" y="2" width="1" height="1" fill="#ffcc00"/><rect x="9" y="2" width="1" height="1" fill="#ffcc00"/><rect x="0" y="3" width="1" height="1" fill="#ffcc00"/><rect x="1" y="3" width="1" height="1" fill="#ffcc00"/><rect x="2" y="3" width="1" height="1" fill="#fff3b0"/><rect x="3" y="3" width="1" height="1" fill="#fff3b0"/><rect x="4" y="3" width="1" height="1" fill="#ffcc00"/><rect x="5" y="3" width="1" height="1" fill="#ffcc00"/><rect x="6" y="3" width="1" height="1" fill="#ffcc00"/><rect x="7" y="3" width="1" height="1" fill="#ffcc00"/><rect x="8" y="3" width="1" height="1" fill="#ffcc00"/><rect x="9" y="3" width="1" height="1" fill="#ffcc00"/><rect x="10" y="3" width="1" height="1" fill="#ffcc00"/><rect x="0" y="4" width="1" height="1" fill="#ffcc00"/><rect x="1" y="4" width="1" height="1" fill="#ffcc00"/><rect x="2" y="4" width="1" height="1" fill="#fff3b0"/><rect x="3" y="4" width="1" height="1" fill="#ffcc00"/><rect x="4" y="4" width="1" height="1" fill="#ffcc00"/><rect x="5" y="4" width="1" height="1" fill="#ffcc00"/><rect x="6" y="4" width="1" height="1" fill="#ffcc00"/><rect x="7" y="4" width="1" height="1" fill="#ffcc00"/><rect x="8" y="4" width="1" height="1" fill="#ffcc00"/><rect x="9" y="4" width="1" height="1" fill="#ffcc00"/><rect x="10" y="4" width="1" height="1" fill="#ffcc00"/><rect x="0" y="5" width="1" height="1" fill="#ffcc00"/><rect x="1" y="5" width="1" height="1" fill="#ffcc00"/><rect x="2" y="5" width="1" height="1" fill="#ffcc00"/><rect x="3" y="5" width="1" height="1" fill="#ffcc00"/><rect x="4" y="5" width="1" height="1" fill="#ffcc00"/><rect x="5" y="5" width="1" height="1" fill="#ffcc00"/><rect x="6" y="5" width="1" height="1" fill="#ffcc00"/><rect x="7" y="5" width="1" height="1" fill="#ffcc00"/><rect x="8" y="5" width="1" height="1" fill="#ffcc00"/><rect x="9" y="5" width="1" height="1" fill="#ffcc00"/><rect x="10" y="5" width="1" height="1" fill="#ffcc00"/><rect x="0" y="6" width="1" height="1" fill="#ffcc00"/><rect x="1" y="6" width="1" height="1" fill="#ffcc00"/><rect x="2" y="6" width="1" height="1" fill="#ffcc00"/><rect x="3" y="6" width="1" height="1" fill="#ffcc00"/><rect x="4" y="6" width="1" height="1" fill="#ffcc00"/><rect x="5" y="6" width="1" height="1" fill="#ffcc00"/><rect x="6" y="6" width="1" height="1" fill="#ffcc00"/><rect x="7" y="6" width="1" height="1" fill="#ffcc00"/><rect x="8" y="6" width="1" height="1" fill="#ffcc00"/><rect x="9" y="6" width="1" height="1" fill="#ffcc00"/><rect x="10" y="6" width="1" height="1" fill="#ffcc00"/><rect x="1" y="7" width="1" height="1" fill="#ffcc00"/><rect x="2" y="7" width="1" height="1" fill="#ffcc00"/><rect x="3" y="7" width="1" height="1" fill="#ffcc00"/><rect x="4" y="7" width="1" height="1" fill="#ffcc00"/><rect x="5" y="7" width="1" height="1" fill="#ffcc00"/><rect x="6" y="7" width="1" height="1" fill="#ffcc00"/><rect x="7" y="7" width="1" height="1" fill="#ffcc00"/><rect x="8" y="7" width="1" height="1" fill="#ffcc00"/><rect x="9" y="7" width="1" height="1" fill="#ffcc00"/><rect x="2" y="8" width="1" height="1" fill="#ffcc00"/><rect x="3" y="8" width="1" height="1" fill="#ffcc00"/><rect x="4" y="8" width="1" height="1" fill="#ffcc00"/><rect x="5" y="8" width="1" height="1" fill="#ffcc00"/><rect x="6" y="8" width="1" height="1" fill="#ffcc00"/><rect x="7" y="8" width="1" height="1" fill="#ffcc00"/><rect x="8" y="8" width="1" height="1" fill="#ffcc00"/><rect x="2" y="9" width="1" height="1" fill="#ffcc00"/><rect x="3" y="9" width="1" height="1" fill="#ffcc00"/><rect x="4" y="9" width="1" height="1" fill="#ffcc00"/><rect x="5" y="9" width="1" height="1" fill="#ffcc00"/><rect x="6" y="9" width="1" height="1" fill="#ffcc00"/><rect x="7" y="9" width="1" height="1" fill="#ffcc00"/><rect x="8" y="9" width="1" height="1" fill="#ffcc00"/><rect x="2" y="10" width="1" height="1" fill="#6a6a6a"/><rect x="3" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="10" width="1" height="1" fill="#9a9a9a"/><rect x="8" y="10" width="1" height="1" fill="#6a6a6a"/><rect x="2" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="8" y="11" width="1" height="1" fill="#9a9a9a"/><rect x="2" y="12" width="1" height="1" fill="#6a6a6a"/><rect x="3" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="12" width="1" height="1" fill="#9a9a9a"/><rect x="8" y="12" width="1" height="1" fill="#6a6a6a"/><rect x="3" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="4" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="13" width="1" height="1" fill="#9a9a9a"/><rect x="3" y="14" width="1" height="1" fill="#6a6a6a"/><rect x="4" y="14" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="14" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="14" width="1" height="1" fill="#9a9a9a"/><rect x="7" y="14" width="1" height="1" fill="#6a6a6a"/><rect x="4" y="15" width="1" height="1" fill="#9a9a9a"/><rect x="5" y="15" width="1" height="1" fill="#9a9a9a"/><rect x="6" y="15" width="1" height="1" fill="#9a9a9a"/></svg></div>
+    <p id="lang-notice" class="notice" hidden></p>
+
+    <div data-content="de">
+      <h1 class="pixel">Degooglen mit HyperLight</h1>
+
+      <dl class="meta">
+        <div><dt>Art</dt><dd>Eigenes Projekt (Teil von HyperLight)</dd></div>
+        <div><dt>Datum</dt><dd>26.11.2026</dd></div>
+        <div><dt>Getestet mit</dt><dd>Redmi Note 13 4G NFC (HyperOS 2, Android 15)</dd></div>
+        <div><dt>Repo</dt><dd><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">Auf GitHub ›</a></dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tool</li>
+        <li>android</li>
+        <li>google</li>
+        <li>privacy</li>
+        <li>bash</li>
+      </ul>
+
+      <p class="notice">Mein eigenes Projekt, nur auf dem unten genannten Gerät getestet. <strong>Stufe 2 ist heikel</strong> – lies vorher unbedingt den Abschnitt „Die wichtigste Warnung".</p>
+
+      <h2 class="pixel">&gt; Kurz gesagt</h2>
+      <p>Zu HyperLight gehört jetzt ein zweites Skript: <code>hyperlight-degoogle.sh</code>. Es entfernt Google vom Handy, per ADB, ohne Root und ohne Bootloader-Entsperrung. Es arbeitet in <strong>zwei Stufen</strong>, damit du selbst entscheidest, wie weit du gehst. Beide Skripte sind unabhängig. Empfohlen: erst entbloaten (<code>hyperlight.sh</code>), dann bei Bedarf degooglen.</p>
+
+      <h2 class="pixel">&gt; Die zwei Stufen</h2>
+      <ul>
+        <li><strong>Stufe 1 – Google-Apps</strong> (<code>./hyperlight-degoogle.sh</code>): entfernt 36 Pakete wie YouTube, Gmail, Maps, Fotos, Drive, Kalender, die Google-App, Assistant/Gemini, Chrome, dazu Telefon, Kontakte, Messages und Gboard. Das Handy bleibt alltagstauglich.</li>
+        <li><strong>Stufe 2 – Google-Kern</strong> (<code>--core</code>): entfernt zusätzlich die <strong>Play-Dienste</strong>, den <strong>Play Store</strong>, das Google Services Framework und das Google-Backup. Das ist eher etwas für Test- oder Zweitgeräte.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; Die wichtigste Warnung</h2>
+      <p>Stufe 2 ist <strong>gesperrt, solange ein Google-Konto auf dem Handy angemeldet ist</strong>. Das ist Absicht: Nach einem Werksreset verlangt Android genau dieses Konto zurück (Diebstahlschutz, genannt FRP). Wer vorher degoogelt und sich später aussperrt, bekommt das Handy unter Umständen nicht mehr auf. Darum erst das Google-Konto entfernen (<em>Einstellungen → Konten → Google → Konto entfernen</em>), und zur Sicherheit muss man zum Bestätigen <code>DEGOOGLE</code> eintippen.</p>
+
+      <h2 class="pixel">&gt; Was danach nicht mehr geht</h2>
+      <p>Nach Stufe 2 funktionieren nicht mehr: der Play Store (Ersatz: F-Droid oder Aurora Store), Push-Benachrichtigungen vieler Apps, Apps mit Google-Abhängigkeit (manche Banking-Apps und Spiele) und die schnelle Ortung übers Netz. Reines GPS läuft weiter.</p>
+
+      <h2 class="pixel">&gt; Die Sicherheitsnetze</h2>
+      <ul>
+        <li><strong>Schutzliste:</strong> Google-Pakete, die eigentlich Android selbst sind (WebView, Berechtigungs-Controller, Paket-Installer, Netzwerk-Stack, Notfallwarnungen, System-Module), werden nie angefasst.</li>
+        <li><strong>Ersatz-Prüfung:</strong> Telefon, SMS, Kontakte, Tastatur und Browser werden nur entfernt, wenn vorher ein Ersatz als Standard gesetzt ist.</li>
+        <li><strong>Probelauf</strong> (<code>--dry-run</code>) und <strong>Wiederherstellung</strong> (<code>--restore</code>) mit eigenen Logs. Die Play-Dienste werden dabei immer zuerst zurückgeholt.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; So läuft es ab</h2>
+<pre><code># Stufe 1 erst gefahrlos ansehen
+./hyperlight-degoogle.sh --dry-run
+
+# Stufe 1: Google-Apps entfernen
+./hyperlight-degoogle.sh
+
+# Stufe 2 ansehen, dann (nach Konto-Abmeldung) ausführen
+./hyperlight-degoogle.sh --core --dry-run
+./hyperlight-degoogle.sh --core</code></pre>
+
+      <h2 class="pixel">&gt; Quelle</h2>
+      <ul>
+        <li><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">HyperLight auf GitHub</a></li>
+        <li><a href="hyperlight.html">Meine Notiz: HyperLight (Xiaomi entschlacken)</a></li>
+      </ul>
+    </div>
+
+    <div data-content="en" lang="en" hidden>
+      <h1 class="pixel">Degoogling with HyperLight</h1>
+
+      <dl class="meta">
+        <div><dt>Type</dt><dd>Own project (part of HyperLight)</dd></div>
+        <div><dt>Date</dt><dd>2026-11-26</dd></div>
+        <div><dt>Tested on</dt><dd>Redmi Note 13 4G NFC (HyperOS 2, Android 15)</dd></div>
+        <div><dt>Repo</dt><dd><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">On GitHub ›</a></dd></div>
+      </dl>
+      <ul class="tags">
+        <li>tool</li>
+        <li>android</li>
+        <li>google</li>
+        <li>privacy</li>
+        <li>bash</li>
+      </ul>
+
+      <p class="notice">My own project, only tested on the device below. <strong>Stage 2 is risky</strong> — be sure to read "The most important warning" first.</p>
+
+      <h2 class="pixel">&gt; In short</h2>
+      <p>HyperLight now has a second script: <code>hyperlight-degoogle.sh</code>. It removes Google from the phone via ADB, no root, no bootloader unlock. It works in <strong>two stages</strong> so you decide how far to go. The two scripts are independent. Recommended: debloat first (<code>hyperlight.sh</code>), then degoogle if you want.</p>
+
+      <h2 class="pixel">&gt; The two stages</h2>
+      <ul>
+        <li><strong>Stage 1 – Google apps</strong> (<code>./hyperlight-degoogle.sh</code>): removes 36 packages like YouTube, Gmail, Maps, Photos, Drive, Calendar, the Google app, Assistant/Gemini, Chrome, plus Phone, Contacts, Messages and Gboard. The phone stays usable day to day.</li>
+        <li><strong>Stage 2 – Google core</strong> (<code>--core</code>): additionally removes <strong>Play services</strong>, the <strong>Play Store</strong>, the Google Services Framework and Google backup. This is more for test or secondary devices.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; The most important warning</h2>
+      <p>Stage 2 is <strong>blocked while a Google account is signed in</strong>. That's on purpose: after a factory reset Android demands exactly that account back (theft protection, called FRP). Degoogle first and lock yourself out later, and you may not get back into the phone. So remove the Google account first (<em>Settings → Accounts → Google → Remove account</em>), and as a safeguard you have to type <code>DEGOOGLE</code> to confirm.</p>
+
+      <h2 class="pixel">&gt; What stops working afterwards</h2>
+      <p>After stage 2, these no longer work: the Play Store (use F-Droid or Aurora Store instead), push notifications for many apps, apps that depend on Google (some banking apps and games) and fast network-based location. Plain GPS keeps working.</p>
+
+      <h2 class="pixel">&gt; The safety nets</h2>
+      <ul>
+        <li><strong>Protection list:</strong> Google packages that are really part of Android itself (WebView, permission controller, package installer, network stack, emergency alerts, system modules) are never touched.</li>
+        <li><strong>Replacement check:</strong> Phone, SMS, contacts, keyboard and browser are only removed if a replacement is already set as default.</li>
+        <li><strong>Dry run</strong> (<code>--dry-run</code>) and <strong>restore</strong> (<code>--restore</code>) with their own logs. Play services are always restored first.</li>
+      </ul>
+
+      <h2 class="pixel">&gt; How it goes</h2>
+<pre><code># look at stage 1 safely first
+./hyperlight-degoogle.sh --dry-run
+
+# stage 1: remove Google apps
+./hyperlight-degoogle.sh
+
+# review stage 2, then run it (after signing the account out)
+./hyperlight-degoogle.sh --core --dry-run
+./hyperlight-degoogle.sh --core</code></pre>
+
+      <h2 class="pixel">&gt; Source</h2>
+      <ul>
+        <li><a href="https://github.com/retoro753/HyperLight" target="_blank" rel="noopener noreferrer">HyperLight on GitHub</a></li>
+        <li><a href="hyperlight.html">My note: HyperLight (declutter Xiaomi)</a></li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="./" data-i18n="backLong">‹ Zurück zum Logbuch</a>
+    <a href="../datenschutz.html" data-i18n="privacy">Datenschutz</a>
+  </div>
+</footer>
+
+<script src="artikel.js"></script>
+<script src="../zaehler.js"></script>
+</body>
+</html>

@@ -1,6 +1,20 @@
 [
  {
   "type": "notiz",
+  "slug": "degoogle",
+  "title": "Degooglen mit HyperLight",
+  "title_en": "Degoogling with HyperLight",
+  "date": "2026-11-26",
+  "tags": [
+   "tool",
+   "android",
+   "google",
+   "privacy",
+   "bash"
+  ]
+ },
+ {
+  "type": "notiz",
   "slug": "hyperlight",
   "title": "HyperLight: Xiaomi-Handys entschlacken",
   "title_en": "HyperLight: declutter Xiaomi phones",
