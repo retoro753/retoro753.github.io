@@ -132,6 +132,27 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-s
 .foot a{color:var(--muted);margin-left:18px}
 .foot a:hover{color:var(--violet-700)}
 
+/* Terminal windows (recreated script output) */
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;align-items:start}
+.term{background:#15102b;border:1px solid #2a2150;border-radius:14px;overflow:hidden;
+      box-shadow:0 12px 30px rgba(27,22,48,.14)}
+.term-bar{display:flex;align-items:center;gap:9px;padding:10px 14px;background:#1f1840;border-bottom:1px solid #2a2150}
+.dots{display:flex;gap:6px}
+.dots i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.dots .r{background:#ff5f57}.dots .y{background:#febc2e}.dots .g{background:#28c840}
+.term-name{color:#b3a9e0;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:12px;margin-left:4px}
+.term-body{padding:16px 18px;overflow-x:auto;color:#d9d2f5;white-space:normal;
+           font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.65}
+.ln{display:block;white-space:pre}
+.ln.cmd{color:#c4b5fd}
+.ln.cmd::before{content:"$ ";color:#7c6fb0}
+.ln.ok{color:#86efac}
+.ln.warn{color:#fcd34d}
+.ln.prot{color:#93c5fd}
+.ln.dim{color:#8b82b5}
+.ln.cy{color:#67e8f9}
+.ln.bld{color:#efeaff;font-weight:700}
+
 /* utilities (keep inline styles out for CSP) */
 .pt0{padding-top:0}
 .band{background:var(--soft)}
