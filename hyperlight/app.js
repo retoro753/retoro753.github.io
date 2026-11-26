@@ -1,0 +1,177 @@
+(function () {
+  'use strict';
+
+  var TEXTS = {
+    de: {
+      navFeatures: 'Features',
+      navCompare: 'Vergleich',
+      navStart: 'Schnellstart',
+      heroEyebrow: 'OHNE ROOT · OHNE BOOTLOADER-ENTSPERRUNG',
+      heroTitle: 'Dein Xiaomi.<br><span class="hl">Ohne Ballast.</span>',
+      heroLead: 'HyperLight entfernt Werbung, Tracking und vorinstallierte Apps von deinem Xiaomi – per ADB, umkehrbar, in Minuten. Kein custom ROM, kein Risiko fürs System.',
+      ctaGithub: 'Auf GitHub ansehen ↗',
+      ctaStart: 'Schnellstart',
+      badge1: '🔓 Ohne Entsperren',
+      badge2: '↩︎ Umkehrbar',
+      badge3: '🔒 Updates bleiben',
+      badge4: '⭐ Open Source',
+      featHead: 'Drei kleine Skripte, ein sauberes Handy',
+      featSub: 'Jedes macht genau eine Sache – unabhängig voneinander nutzbar, in der Reihenfolge, die du willst.',
+      f1t: 'Entbloaten',
+      f1p: 'Entfernt 54 Xiaomi-Pakete: Werbedienst, Analytics, GetApps, Mi Browser und vorinstallierte Fremd-Apps. <code>hyperlight.sh</code>',
+      f2t: 'Degooglen',
+      f2p: 'Google-Apps und optional die Google-Dienste entfernen – in zwei klaren Stufen, mit Schutz vor Aussperren. <code>--degoogle</code>',
+      f3t: 'Highscore-Test',
+      f3p: 'Ein Audit, das nur liest und misst, wie frei dein Handy von Xiaomi und Google ist – mit Punktzahl und Rang. <code>--check</code>',
+      scoreHead: 'Wie sauber ist dein Handy?',
+      scoreSub: 'Am Ende vergibt HyperLight einen Highscore von 0 bis 100 – mit Rang S bis D.',
+      rankLabel: 'Rang A · Fast frei',
+      pt1: 'Xiaomi-Liste entfernt',
+      pt2: 'Google-Apps entfernt',
+      pt3: 'Google-Kern entfernt',
+      pt4: 'Kein Google-/Xiaomi-Konto',
+      pt5: 'Standard-Apps ohne Google/Xiaomi',
+      pt6: 'Privates DNS aktiv',
+      cmpHead: 'Warum nicht gleich GrapheneOS?',
+      cmpSub: 'GrapheneOS ist großartig – aber aufwendig. HyperLight ist der leichte Einstieg für alle, denen das zu viel ist.',
+      cmpMeTag: 'Entschlacken ohne Umbau',
+      me1: 'Läuft auf deinem vorhandenen Xiaomi',
+      me2: 'Kein Entsperren, kein Flashen, kein Datenverlust',
+      me3: 'In Minuten erledigt, jederzeit umkehrbar',
+      me4: 'Offizielle Sicherheitsupdates bleiben',
+      me5: 'Kein komplett neues, gehärtetes System',
+      cmpGosTag: 'Maximale Härtung',
+      gos1: 'Komplett entgoogeltes, gehärtetes Betriebssystem',
+      gos2: 'Nur auf Google-Pixel-Geräten',
+      gos3: 'Bootloader entsperren und neu flashen nötig',
+      gos4: 'Gerät wird dabei komplett zurückgesetzt',
+      gos5: 'Mehr Aufwand und Einarbeitung',
+      safeHead: 'Sicher gebaut, ehrlich beschrieben',
+      safeSub: 'Open Source, nachvollziehbar, und mit eingebauten Bremsen.',
+      s1t: 'Schutzliste',
+      s1p: 'Systemkritische Pakete (Launcher, Berechtigungen, Kamera, WebView) werden nie angefasst – auch nicht aus Versehen.',
+      s2t: 'Erst ansehen',
+      s2p: 'Mit <code>--dry-run</code> siehst du genau, was passieren würde, bevor irgendetwas verändert wird.',
+      s3t: 'Umkehrbar',
+      s3p: 'Nichts wird gelöscht, nur für den Nutzer entfernt. <code>--restore</code> holt alles zurück.',
+      warnT: '⚠️ Ehrlich gesagt: nur ein Gerät ist getestet',
+      warnP: 'HyperLight ist auf dem <strong>Redmi Note 13 4G NFC</strong> (HyperOS 2, Android 15) getestet und bricht bei anderen Modellen absichtlich ab. Nutzung auf eigene Gefahr.',
+      noteT: 'Anderes Modell, z. B. Redmi 15? So passt du es an',
+      noteP: 'Die Google-Teile funktionieren geräteunabhängig. Für ein anderes Xiaomi trägst du oben im Skript deinen Codenamen ein (<code>adb shell getprop ro.product.device</code>) und prüfst die Paketliste. <code>--dry-run</code> und <code>--scan</code> helfen dabei. Etwas Technik-Wissen vorausgesetzt – und immer auf eigene Gefahr.',
+      startHead: 'In wenigen Minuten startklar',
+      startSub: 'Du brauchst nur einen Rechner mit ADB und ein USB-Kabel.',
+      req1: 'Rechner mit <strong>ADB</strong> (Android Platform-Tools)',
+      req2: 'Am Handy: <strong>USB-Debugging</strong> aktivieren',
+      req3: 'Per <strong>USB</strong> verbinden und bestätigen',
+      req4: 'Skript herunterladen und ausführbar machen',
+      req5: 'Erst <code>--dry-run</code>, dann loslegen',
+      code1: '# Repo holen',
+      code2: '# erst gefahrlos ansehen',
+      code3: '# dann entbloaten',
+      code4: '# ✓',
+      finalH: 'Hol dir dein Handy zurück',
+      finalP: 'Kostenlos, quelloffen, umkehrbar. Schau in den Code, bevor du loslegst – genau so soll es sein.',
+      finalBtn: '⭐ Auf GitHub ansehen ↗',
+      footCopy: '© 2026 RETORO_NEO · HyperLight ist ein freies Hobby-Projekt'
+    },
+    en: {
+      navFeatures: 'Features',
+      navCompare: 'Compare',
+      navStart: 'Quick start',
+      heroEyebrow: 'NO ROOT · NO BOOTLOADER UNLOCK',
+      heroTitle: 'Your Xiaomi.<br><span class="hl">Without the bloat.</span>',
+      heroLead: 'HyperLight removes ads, tracking and pre-installed apps from your Xiaomi — via ADB, reversible, in minutes. No custom ROM, no risk to the system.',
+      ctaGithub: 'View on GitHub ↗',
+      ctaStart: 'Quick start',
+      badge1: '🔓 No unlocking',
+      badge2: '↩︎ Reversible',
+      badge3: '🔒 Updates stay',
+      badge4: '⭐ Open source',
+      featHead: 'Three small scripts, one clean phone',
+      featSub: 'Each does exactly one thing — usable independently, in whatever order you like.',
+      f1t: 'Debloat',
+      f1p: 'Removes 54 Xiaomi packages: ad service, analytics, GetApps, Mi Browser and pre-installed third-party apps. <code>hyperlight.sh</code>',
+      f2t: 'Degoogle',
+      f2p: 'Remove Google apps and optionally Google services — in two clear stages, with protection against lockout. <code>--degoogle</code>',
+      f3t: 'High-score test',
+      f3p: 'An audit that only reads and measures how free your phone is of Xiaomi and Google — with a score and rank. <code>--check</code>',
+      scoreHead: 'How clean is your phone?',
+      scoreSub: 'At the end HyperLight gives a high score from 0 to 100 — with a rank from S to D.',
+      rankLabel: 'Rank A · Almost free',
+      pt1: 'Xiaomi list removed',
+      pt2: 'Google apps removed',
+      pt3: 'Google core removed',
+      pt4: 'No Google/Xiaomi account',
+      pt5: 'Defaults free of Google/Xiaomi',
+      pt6: 'Private DNS active',
+      cmpHead: 'Why not just GrapheneOS?',
+      cmpSub: 'GrapheneOS is great — but involved. HyperLight is the easy entry point for everyone who finds that too much.',
+      cmpMeTag: 'Slim down, no rebuild',
+      me1: 'Runs on your existing Xiaomi',
+      me2: 'No unlocking, no flashing, no data loss',
+      me3: 'Done in minutes, reversible anytime',
+      me4: 'Official security updates stay',
+      me5: 'Not a brand-new, hardened system',
+      cmpGosTag: 'Maximum hardening',
+      gos1: 'Fully degoogled, hardened operating system',
+      gos2: 'Only on Google Pixel devices',
+      gos3: 'Requires unlocking the bootloader and reflashing',
+      gos4: 'The device is wiped in the process',
+      gos5: 'More effort and a learning curve',
+      safeHead: 'Built safely, described honestly',
+      safeSub: 'Open source, transparent, and with brakes built in.',
+      s1t: 'Protection list',
+      s1p: 'System-critical packages (launcher, permissions, camera, WebView) are never touched — not even by accident.',
+      s2t: 'Preview first',
+      s2p: 'With <code>--dry-run</code> you see exactly what would happen before anything is changed.',
+      s3t: 'Reversible',
+      s3p: 'Nothing is deleted, only removed for the user. <code>--restore</code> brings it all back.',
+      warnT: '⚠️ Honestly: only one device is tested',
+      warnP: 'HyperLight is tested on the <strong>Redmi Note 13 4G NFC</strong> (HyperOS 2, Android 15) and deliberately aborts on other models. Use at your own risk.',
+      noteT: 'Different model, e.g. a Redmi 15? Here is how to adapt it',
+      noteP: 'The Google parts work regardless of device. For another Xiaomi, enter your codename at the top of the script (<code>adb shell getprop ro.product.device</code>) and review the package list. <code>--dry-run</code> and <code>--scan</code> help with that. Some technical knowledge required — and always at your own risk.',
+      startHead: 'Ready to go in minutes',
+      startSub: 'All you need is a computer with ADB and a USB cable.',
+      req1: 'Computer with <strong>ADB</strong> (Android platform tools)',
+      req2: 'On the phone: enable <strong>USB debugging</strong>',
+      req3: 'Connect via <strong>USB</strong> and confirm',
+      req4: 'Download the script and make it executable',
+      req5: 'First <code>--dry-run</code>, then go',
+      code1: '# get the repo',
+      code2: '# preview safely first',
+      code3: '# then debloat',
+      code4: '# ✓',
+      finalH: 'Get your phone back',
+      finalP: 'Free, open source, reversible. Read the code before you start — that is exactly how it should be.',
+      finalBtn: '⭐ View on GitHub ↗',
+      footCopy: '© 2026 RETORO_NEO · HyperLight is a free hobby project'
+    }
+  };
+
+  function setLang(lang) {
+    if (lang !== 'en') lang = 'de';
+    var dict = TEXTS[lang];
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      var key = nodes[i].getAttribute('data-i18n');
+      if (dict[key] !== undefined) nodes[i].innerHTML = dict[key];
+    }
+    var btns = document.querySelectorAll('.lang button');
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].setAttribute('aria-pressed', btns[j].getAttribute('data-lang') === lang ? 'true' : 'false');
+    }
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  var langBtns = document.querySelectorAll('.lang button');
+  for (var k = 0; k < langBtns.length; k++) {
+    langBtns[k].addEventListener('click', function () {
+      setLang(this.getAttribute('data-lang'));
+    });
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  setLang(saved === 'en' ? 'en' : 'de');
+})();

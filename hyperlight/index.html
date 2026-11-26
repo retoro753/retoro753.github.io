@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>HyperLight — Xiaomi ohne Ballast</title>
+<link rel="icon" href="/logo.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="brand"><span class="dot"></span>HyperLight</div>
+    <nav class="nav-links">
+      <a href="#features" data-i18n="navFeatures">Features</a>
+      <a href="#vergleich" data-i18n="navCompare">Vergleich</a>
+      <a href="#start" data-i18n="navStart">Schnellstart</a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="https://github.com/retoro753/HyperLight" class="btn btn-primary" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow" data-i18n="heroEyebrow">OHNE ROOT · OHNE BOOTLOADER-ENTSPERRUNG</p>
+      <h1 data-i18n="heroTitle">Dein Xiaomi.<br><span class="hl">Ohne Ballast.</span></h1>
+      <p class="lead" data-i18n="heroLead">HyperLight entfernt Werbung, Tracking und vorinstallierte Apps von deinem Xiaomi – per ADB, umkehrbar, in Minuten. Kein custom ROM, kein Risiko fürs System.</p>
+      <div class="cta">
+        <a href="https://github.com/retoro753/HyperLight" class="btn btn-primary" rel="noopener noreferrer" target="_blank" data-i18n="ctaGithub">Auf GitHub ansehen ↗</a>
+        <a href="#start" class="btn btn-ghost" data-i18n="ctaStart">Schnellstart</a>
+      </div>
+      <div class="badges">
+        <span class="pill" data-i18n="badge1">🔓 Ohne Entsperren</span>
+        <span class="pill" data-i18n="badge2">↩︎ Umkehrbar</span>
+        <span class="pill" data-i18n="badge3">🔒 Updates bleiben</span>
+        <span class="pill" data-i18n="badge4">⭐ Open Source</span>
+      </div>
+    </div>
+    <div class="art">
+      <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: aufgeräumtes Smartphone">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#6d28d9"/>
+          </linearGradient>
+          <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#faf5ff"/><stop offset="1" stop-color="#ede9fe"/>
+          </linearGradient>
+        </defs>
+        <g class="junk"><rect x="300" y="150" width="34" height="34" rx="9" fill="#c4b5fd"/><text x="317" y="172" font-size="18" text-anchor="middle">📦</text></g>
+        <g class="junk j2"><rect x="312" y="205" width="30" height="30" rx="8" fill="#ddd6fe"/><text x="327" y="226" font-size="16" text-anchor="middle">📣</text></g>
+        <g class="junk j3"><rect x="296" y="110" width="28" height="28" rx="8" fill="#ede9fe"/><text x="310" y="130" font-size="15" text-anchor="middle">🛒</text></g>
+        <g class="phone">
+          <rect x="120" y="40" width="160" height="300" rx="30" fill="url(#g)"/>
+          <rect x="133" y="58" width="134" height="264" rx="20" fill="url(#scr)"/>
+          <rect x="170" y="48" width="60" height="9" rx="4.5" fill="#4c1d95" opacity=".5"/>
+          <circle cx="200" cy="165" r="46" fill="none" stroke="#7c3aed" stroke-width="7"/>
+          <circle cx="184" cy="153" r="7" fill="#7c3aed"/>
+          <circle cx="216" cy="153" r="7" fill="#7c3aed"/>
+          <path d="M178 180 q22 24 44 0" fill="none" stroke="#7c3aed" stroke-width="7" stroke-linecap="round"/>
+          <rect x="156" y="238" width="88" height="10" rx="5" fill="#ddd6fe"/>
+          <rect x="156" y="258" width="64" height="10" rx="5" fill="#e9e5fb"/>
+          <rect x="156" y="278" width="76" height="10" rx="5" fill="#e9e5fb"/>
+        </g>
+        <g fill="#a78bfa">
+          <path class="spark" d="M96 90 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6 z"/>
+          <path class="spark s2" d="M300 70 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z"/>
+          <path class="spark s3" d="M92 270 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z"/>
+          <path class="spark s4" d="M330 300 l5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5 z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="featHead">Drei kleine Skripte, ein sauberes Handy</h2>
+      <p data-i18n="featSub">Jedes macht genau eine Sache – unabhängig voneinander nutzbar, in der Reihenfolge, die du willst.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ic">🧹</div>
+        <h3 data-i18n="f1t">Entbloaten</h3>
+        <p data-i18n="f1p">Entfernt 54 Xiaomi-Pakete: Werbedienst, Analytics, GetApps, Mi Browser und vorinstallierte Fremd-Apps. <code>hyperlight.sh</code></p>
+      </div>
+      <div class="card">
+        <div class="ic">🚫</div>
+        <h3 data-i18n="f2t">Degooglen</h3>
+        <p data-i18n="f2p">Google-Apps und optional die Google-Dienste entfernen – in zwei klaren Stufen, mit Schutz vor Aussperren. <code>--degoogle</code></p>
+      </div>
+      <div class="card">
+        <div class="ic">🎮</div>
+        <h3 data-i18n="f3t">Highscore-Test</h3>
+        <p data-i18n="f3p">Ein Audit, das nur liest und misst, wie frei dein Handy von Xiaomi und Google ist – mit Punktzahl und Rang. <code>--check</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pt0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="scoreHead">Wie sauber ist dein Handy?</h2>
+      <p data-i18n="scoreSub">Am Ende vergibt HyperLight einen Highscore von 0 bis 100 – mit Rang S bis D.</p>
+    </div>
+    <div class="score-wrap">
+      <div class="score-top">
+        <div class="score-num">77<span> / 100</span></div>
+        <div class="rank" data-i18n="rankLabel">Rang A · Fast frei</div>
+      </div>
+      <div class="bar"><i></i></div>
+      <div class="pts">
+        <div class="pt"><span data-i18n="pt1">Xiaomi-Liste entfernt</span><b>30</b></div>
+        <div class="pt"><span data-i18n="pt2">Google-Apps entfernt</span><b>25</b></div>
+        <div class="pt"><span data-i18n="pt3">Google-Kern entfernt</span><b>15</b></div>
+        <div class="pt"><span data-i18n="pt4">Kein Google-/Xiaomi-Konto</span><b>10</b></div>
+        <div class="pt"><span data-i18n="pt5">Standard-Apps ohne Google/Xiaomi</span><b>10</b></div>
+        <div class="pt"><span data-i18n="pt6">Privates DNS aktiv</span><b>5</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vergleich" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="cmpHead">Warum nicht gleich GrapheneOS?</h2>
+      <p data-i18n="cmpSub">GrapheneOS ist großartig – aber aufwendig. HyperLight ist der leichte Einstieg für alle, denen das zu viel ist.</p>
+    </div>
+    <div class="cmp">
+      <div class="col me">
+        <h3>HyperLight</h3>
+        <p class="tagline" data-i18n="cmpMeTag">Entschlacken ohne Umbau</p>
+        <ul>
+          <li class="y" data-i18n="me1">Läuft auf deinem vorhandenen Xiaomi</li>
+          <li class="y" data-i18n="me2">Kein Entsperren, kein Flashen, kein Datenverlust</li>
+          <li class="y" data-i18n="me3">In Minuten erledigt, jederzeit umkehrbar</li>
+          <li class="y" data-i18n="me4">Offizielle Sicherheitsupdates bleiben</li>
+          <li class="n" data-i18n="me5">Kein komplett neues, gehärtetes System</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>GrapheneOS</h3>
+        <p class="tagline" data-i18n="cmpGosTag">Maximale Härtung</p>
+        <ul>
+          <li class="y" data-i18n="gos1">Komplett entgoogeltes, gehärtetes Betriebssystem</li>
+          <li class="n" data-i18n="gos2">Nur auf Google-Pixel-Geräten</li>
+          <li class="n" data-i18n="gos3">Bootloader entsperren und neu flashen nötig</li>
+          <li class="n" data-i18n="gos4">Gerät wird dabei komplett zurückgesetzt</li>
+          <li class="n" data-i18n="gos5">Mehr Aufwand und Einarbeitung</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="safeHead">Sicher gebaut, ehrlich beschrieben</h2>
+      <p data-i18n="safeSub">Open Source, nachvollziehbar, und mit eingebauten Bremsen.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ic">🛡️</div><h3 data-i18n="s1t">Schutzliste</h3><p data-i18n="s1p">Systemkritische Pakete (Launcher, Berechtigungen, Kamera, WebView) werden nie angefasst – auch nicht aus Versehen.</p></div>
+      <div class="card"><div class="ic">👀</div><h3 data-i18n="s2t">Erst ansehen</h3><p data-i18n="s2p">Mit <code>--dry-run</code> siehst du genau, was passieren würde, bevor irgendetwas verändert wird.</p></div>
+      <div class="card"><div class="ic">↩︎</div><h3 data-i18n="s3t">Umkehrbar</h3><p data-i18n="s3p">Nichts wird gelöscht, nur für den Nutzer entfernt. <code>--restore</code> holt alles zurück.</p></div>
+    </div>
+
+    <div class="note warn">
+      <h4 data-i18n="warnT">⚠️ Ehrlich gesagt: nur ein Gerät ist getestet</h4>
+      <p data-i18n="warnP">HyperLight ist auf dem <strong>Redmi Note 13 4G NFC</strong> (HyperOS 2, Android 15) getestet und bricht bei anderen Modellen absichtlich ab. Nutzung auf eigene Gefahr.</p>
+    </div>
+
+    <div class="note">
+      <h4 data-i18n="noteT">Anderes Modell, z. B. Redmi 15? So passt du es an</h4>
+      <p data-i18n="noteP">Die Google-Teile funktionieren geräteunabhängig. Für ein anderes Xiaomi trägst du oben im Skript deinen Codenamen ein (<code>adb shell getprop ro.product.device</code>) und prüfst die Paketliste. <code>--dry-run</code> und <code>--scan</code> helfen dabei. Etwas Technik-Wissen vorausgesetzt – und immer auf eigene Gefahr.</p>
+    </div>
+  </div>
+</section>
+
+<section id="start" class="band">
+  <div class="wrap">
+    <div class="sec-head"><h2 data-i18n="startHead">In wenigen Minuten startklar</h2><p data-i18n="startSub">Du brauchst nur einen Rechner mit ADB und ein USB-Kabel.</p></div>
+    <div class="steps">
+      <ul class="reqs">
+        <li data-i18n="req1">Rechner mit <strong>ADB</strong> (Android Platform-Tools)</li>
+        <li data-i18n="req2">Am Handy: <strong>USB-Debugging</strong> aktivieren</li>
+        <li data-i18n="req3">Per <strong>USB</strong> verbinden und bestätigen</li>
+        <li data-i18n="req4">Skript herunterladen und ausführbar machen</li>
+        <li data-i18n="req5">Erst <code>--dry-run</code>, dann loslegen</li>
+      </ul>
+      <div class="code">
+<span class="c" data-i18n="code1"># Repo holen</span><br>
+git clone https://github.com/retoro753/HyperLight.git<br>
+cd HyperLight<br>
+chmod +x *.sh<br><br>
+<span class="c" data-i18n="code2"># erst gefahrlos ansehen</span><br>
+./hyperlight.sh --dry-run<br><br>
+<span class="c" data-i18n="code3"># dann entbloaten</span><br>
+./hyperlight.sh <span class="g" data-i18n="code4"># ✓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <h2 data-i18n="finalH">Hol dir dein Handy zurück</h2>
+      <p data-i18n="finalP">Kostenlos, quelloffen, umkehrbar. Schau in den Code, bevor du loslegst – genau so soll es sein.</p>
+      <div class="cta center">
+        <a href="https://github.com/retoro753/HyperLight" class="btn btn-ghost" rel="noopener noreferrer" target="_blank" data-i18n="finalBtn">⭐ Auf GitHub ansehen ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span data-i18n="footCopy">© 2026 RETORO_NEO · HyperLight ist ein freies Hobby-Projekt</span>
+    <span>
+      <a href="https://github.com/retoro753/HyperLight" rel="noopener noreferrer" target="_blank">GitHub</a>
+      <a href="/">retoro_neo</a>
+    </span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
