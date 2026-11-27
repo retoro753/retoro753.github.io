@@ -123,6 +123,16 @@ h2{font-size:34px;letter-spacing:-.6px;margin:0 0 12px;font-weight:800}
 .reqs li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}
 .reqs li::before{content:"\2192";position:absolute;left:0;color:var(--violet);font-weight:700}
 
+/* ADB install box */
+.adb{margin-top:30px;max-width:620px}
+.adb h3{margin:0 0 14px;font-size:18px}
+.adb-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.adb-list li{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.adb-list .os{min-width:140px;font-weight:650;color:var(--ink);font-size:15px}
+.adb-list code{background:#1b1630;color:#e7e2fa;padding:5px 11px;border-radius:8px;
+               font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px}
+.adb-note{color:var(--muted);font-size:14px;margin:16px 0 0}
+
 .final{background:var(--grad);border-radius:26px;padding:52px;text-align:center;color:#fff}
 .final h2{color:#fff}.final p{color:#eaddff;font-size:17px;margin:0 auto 26px;max-width:520px}
 .final .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.4)}
